@@ -6,25 +6,7 @@ import axios from 'axios';
 import FixtureTable from '../components/FixtureTable';
 import { Typography } from '@mui/material';
 
-function createData(
-  name: string,
-  GP: string,
-  W: string,
-  FTS: string,
-  CS: string,
-  BTS: string,
-  TG: string,
-  GF: string,
-  GA: string,
-  P15: string,
-  P25: string,
-  P35: string,
-  PPG: string
-) {
-  return { name, GP, W, FTS, CS, BTS, TG, GF, GA, P15, P25, P35, PPG };
-}
-
-const Home: NextPage = () => {
+const ACEPPage: NextPage = () => {
   const [fixtures, setFixtures] = React.useState<Fixture[]>([]);
   const [count, setCount] = React.useState<number>(-1);
 
@@ -63,4 +45,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default ACEPPage;

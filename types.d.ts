@@ -1,9 +1,3 @@
-type Item = {
-  id: number;
-  name: string;
-  description: string;
-};
-
 type Fixture = {
   id: number;
   time: string;

@@ -1,43 +1,48 @@
+import * as React from 'react';
+import type { NextPage } from 'next';
 import Head from 'next/head';
-import { InferGetServerSidePropsType } from 'next';
+import Box from '@mui/material/Box';
+import axios from 'axios';
+import FixtureTable from '../components/FixtureTable';
+import { Typography } from '@mui/material';
 
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
+const HomePage: NextPage = () => {
+  const [fixtures, setFixtures] = React.useState<Fixture[]>([]);
+  const [count, setCount] = React.useState<number>(-1);
 
-import { getOrCreateConnection } from '../utils';
-import { ItemModel } from '../models/item.model';
+  React.useEffect(() => {
+    axios
+      .get('/api/fixtures')
+      .then((response) => {
+        const fixtures = response.data?.fixtures as unknown as Fixture[];
+        const count = response.data?.count as unknown as number;
+        setCount(count);
+        setFixtures(fixtures);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
-import { ItemListComponent } from '../components/ItemListComponent';
-
-const Home = (
-  props: InferGetServerSidePropsType<typeof getServerSideProps>
-) => {
   return (
-    <div>
+    <React.Fragment>
       <Head>
-        <title>Next With Typeorm Starter</title>
+        <title>Soccerstats Fucker</title>
       </Head>
-
-      <main>
-        <Grid container justifyContent="center">
-          <Grid item>
-            <Typography variant="h2">{props.message}</Typography>
-            <ItemListComponent items={props.items} />
-          </Grid>
-        </Grid>
-      </main>
-    </div>
+      <Box m={5}>
+        <Typography variant="h6" gutterBottom>
+          {count}
+        </Typography>
+        {fixtures.length > 0 &&
+          fixtures.map((fixture) => (
+            <React.Fragment key={fixture.id}>
+              <FixtureTable fixture={fixture} />
+            </React.Fragment>
+          ))}
+      </Box>
+    </React.Fragment>
   );
 };
 
-export async function getServerSideProps() {
-  const conn = await getOrCreateConnection();
-  const itemRepo = conn.getRepository<ItemModel>('ItemModel');
-  const allItems = await itemRepo.find();
-  console.log(`${allItems.length} items fetched from the database`);
-  return {
-    props: { message: 'Welcome to Next-With-Typeorm-Starter', items: allItems },
-  };
-}
-
-export default Home;
+export default HomePage;
