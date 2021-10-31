@@ -1,4 +1,5 @@
 import { getConnection, createConnection } from 'typeorm';
+import { FixtureModel } from '../models/fixture.model';
 import { ItemModel } from '../models/item.model';
 
 export async function getOrCreateConnection() {
@@ -13,7 +14,7 @@ export async function getOrCreateConnection() {
       username: process.env.POSTGRES_USER as string,
       password: process.env.POSTGRES_PASSWORD as string,
       database: process.env.POSTGRES_DB as string,
-      entities: [ItemModel],
+      entities: [FixtureModel, ItemModel],
       synchronize: true,
       logging: false,
     });

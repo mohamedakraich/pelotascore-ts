@@ -30,7 +30,7 @@ const Home: NextPage = () => {
 
   React.useEffect(() => {
     axios
-      .get('http://localhost:8080/acep')
+      .get('/api/acep')
       .then((response) => {
         const fixtures = response.data?.fixtures as unknown as Fixture[];
         const count = response.data?.count as unknown as number;
