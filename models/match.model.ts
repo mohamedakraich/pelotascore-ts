@@ -1,40 +1,40 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'england' })
-export class FixtureModel {
+export class MatchModel {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ default: -1 })
   status: number;
 
-  @Column()
+  @Column({ default: '' })
   date: string;
 
-  @Column()
+  @Column({ default: '' })
   time: string;
 
-  @Column()
+  @Column({ default: '' })
   home_name: string;
 
-  @Column()
+  @Column({ default: -1 })
   home_FullTimeGoals: number;
 
-  @Column()
+  @Column({ default: -1 })
   home_FirstHalfGoals: number;
 
-  @Column()
+  @Column({ default: -1 })
   home_SecondHalfGoals: number;
 
-  @Column()
+  @Column({ default: '' })
   away_name: string;
 
-  @Column()
+  @Column({ default: -1 })
   away_FullTimeGoals: number;
 
-  @Column()
+  @Column({ default: -1 })
   away_FirstHalfGoals: number;
 
-  @Column()
+  @Column({ default: -1 })
   away_SecondHalfGoals: number;
 }
