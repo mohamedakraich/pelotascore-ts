@@ -1,15 +1,16 @@
+import 'reflect-metadata';
+import path from 'path';
 import * as dotenv from 'dotenv';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
-import path from 'path';
-
 import cliProgress from 'cli-progress';
+
 import { exit } from 'process';
 import { Connection } from 'typeorm';
 import { getOrCreateConnection } from '../utils';
 import { leagues } from './data/leagues';
 
-import { getMatch } from './scraper_utils';
+import { getMatch } from './matches_utils';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 
@@ -36,7 +37,7 @@ const logLeague = async (connection: Connection, league: any) => {
   }
 };
 
-const logLeagues = async (connection: Connection) => {
+getOrCreateConnection().then(async (connection) => {
   let counter = 0;
   bar.start(LEAGUES_LENGTH, 0);
   for (let l = 0; l < leagues.length; l++) {
@@ -50,8 +51,4 @@ const logLeagues = async (connection: Connection) => {
     }
   }
   bar.stop();
-};
-
-getOrCreateConnection().then((connection) => {
-  logLeagues(connection);
 });

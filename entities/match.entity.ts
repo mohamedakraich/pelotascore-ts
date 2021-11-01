@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'england' })
-export class MatchModel {
+export class MatchEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
