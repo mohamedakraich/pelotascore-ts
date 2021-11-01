@@ -3,7 +3,6 @@ export const leagues = [
     id: 'austria_1',
     link: 'https://www.soccerstats.com/results.asp?league=austria&pmtype=bydate',
   },
-  ,
   {
     id: 'belgium_1',
     link: 'https://www.soccerstats.com/results.asp?league=belgium&pmtype=bydate',
