@@ -10,7 +10,7 @@ import { Connection } from 'typeorm';
 import { getOrCreateConnection } from '../utils';
 import { leagues } from './data/leagues';
 
-import { getMatch } from './matches_utils';
+import { getLeagueStartingMonth, getMatch } from './matches_utils';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 
@@ -25,10 +25,15 @@ const logLeague = async (connection: Connection, league: any) => {
     });
     const html = response.data as string;
     let $ = cheerio.load(html);
+    let leagueStartingMonth = -1;
     let matches = $('#btable').first().find('tr.odd[height="28"]');
     for (let m = 0; m < matches.length; m++) {
       let match: any = matches[m];
-      const matchModel = getMatch(match);
+      if (m === 0) {
+        leagueStartingMonth = getLeagueStartingMonth(match);
+        console.log('leagueStartingMonth', leagueStartingMonth);
+      }
+      const matchModel = getMatch(match, leagueStartingMonth);
       await connection.manager.save(matchModel);
     }
   } catch (e) {

@@ -1,13 +1,16 @@
 import { MatchEntity } from '../entities/match.entity';
 
-export const getMatchResult = (match: any): MatchEntity => {
+export const getMatchResult = (
+  match: any,
+  leagueStartingMonth: number
+): MatchEntity => {
   let matchModel = new MatchEntity();
 
   const matchDate = match.children[0].children[0].children[0].data.trim();
   const home_name = match.children[1].children[0].data.trim();
   const away_name = match.children[3].children[0].data.trim();
 
-  matchModel.date = matchDate;
+  matchModel.date = getDateFromDateStr(matchDate, leagueStartingMonth);
   matchModel.status = 1;
   matchModel.home_name = home_name;
   matchModel.away_name = away_name;
@@ -41,7 +44,7 @@ export const getMatchResult = (match: any): MatchEntity => {
   return matchModel;
 };
 
-export const getMatchFixture = (match: any) => {
+export const getMatchFixture = (match: any, leagueStartingMonth: number) => {
   let matchModel = new MatchEntity();
 
   const fixtureDate = match.children[0].children[0].children[0].data.trim();
@@ -52,7 +55,7 @@ export const getMatchFixture = (match: any) => {
   const home_name = match.children[1].children[0].data.trim();
   const away_name = match.children[3].children[0].data.trim();
 
-  matchModel.date = fixtureDate;
+  matchModel.date = getDateFromDateStr(fixtureDate, leagueStartingMonth);
   matchModel.time = fixtureTime;
   matchModel.status = 0;
   matchModel.home_name = home_name;
@@ -60,10 +63,31 @@ export const getMatchFixture = (match: any) => {
   return matchModel;
 };
 
-export const getMatch = (match: any): MatchEntity | null => {
+export const getMatch = (
+  match: any,
+  leagueStartingMonth: number
+): MatchEntity | null => {
   if (match.children.length === 9) {
-    return getMatchResult(match);
+    return getMatchResult(match, leagueStartingMonth);
   } else if (match.children.length === 7) {
-    return getMatchFixture(match);
+    return getMatchFixture(match, leagueStartingMonth);
   } else return null;
+};
+
+export const getLeagueStartingMonth = (match: any) => {
+  const matchDateStr = match.children[0].children[0].children[0].data.trim();
+  return new Date(matchDateStr).getMonth();
+};
+
+export const getDateFromDateStr = (
+  dateStr: string,
+  leagueStartingMonth: number
+) => {
+  let tmpDate = new Date(dateStr);
+  if (tmpDate.getMonth() >= leagueStartingMonth && tmpDate.getMonth() <= 11) {
+    tmpDate.setFullYear(2021);
+  } else {
+    tmpDate.setFullYear(2022);
+  }
+  return tmpDate;
 };

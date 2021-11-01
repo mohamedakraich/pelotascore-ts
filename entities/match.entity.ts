@@ -8,8 +8,8 @@ export class MatchEntity {
   @Column({ default: -1 })
   status: number;
 
-  @Column({ default: '' })
-  date: string;
+  @Column()
+  date: Date;
 
   @Column({ default: '' })
   time: string;
