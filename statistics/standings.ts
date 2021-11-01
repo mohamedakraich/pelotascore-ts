@@ -40,6 +40,7 @@ interface StandingsMap {
     GA: number;
     GD: number;
     P: number;
+    P15: number;
     ACEP35: number;
     P35: number;
   };
@@ -55,6 +56,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -67,6 +69,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -79,6 +82,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -91,6 +95,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -103,6 +108,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -115,6 +121,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -127,6 +134,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -139,6 +147,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -151,6 +160,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -163,6 +173,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -175,6 +186,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -187,6 +199,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -199,6 +212,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -211,6 +225,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -223,6 +238,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -235,6 +251,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -247,6 +264,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -259,6 +277,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -271,6 +290,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -283,6 +303,7 @@ let standings: StandingsMap = {
     GA: 0,
     GD: 0,
     P: 0,
+    P15: 0,
     ACEP35: 0,
     P35: 0,
   },
@@ -308,6 +329,15 @@ getOrCreateConnection().then(async (connection) => {
     standings[match.away_name].GD +=
       match.away_FullTimeGoals - match.home_FullTimeGoals;
 
+    // Checking for P15 option
+    if (match.home_FullTimeGoals >= 2) {
+      standings[match.home_name].P15 += 1;
+    }
+    if (match.away_FullTimeGoals >= 2) {
+      standings[match.away_name].P15 += 1;
+    }
+
+    // Checking for P35 option
     if (match.home_FullTimeGoals > match.away_FullTimeGoals) {
       standings[match.home_name].P35 += 1;
       standings[match.away_name].P35 += 1;
@@ -333,7 +363,7 @@ getOrCreateConnection().then(async (connection) => {
   });
 
   const standingsTable = Object.entries(standings).sort(
-    (a, b) => b[1].P35 - a[1].P35
+    (a, b) => b[1].P15 - a[1].P15
   );
 
   console.log(standingsTable);
