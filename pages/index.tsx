@@ -12,7 +12,7 @@ const HomePage: NextPage = () => {
 
   React.useEffect(() => {
     axios
-      .get('/api/fixtures')
+      .get('/api/statistics')
       .then((response) => {
         const fixtures = response.data?.fixtures as unknown as Fixture[];
         const count = response.data?.count as unknown as number;

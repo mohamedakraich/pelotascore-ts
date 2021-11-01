@@ -9,10 +9,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const fixtures = await connection
       .getRepository<FixtureEntity>('FixtureEntity')
       .createQueryBuilder('fixture')
-      .where('fixture.home_GP >= :hgp', { hgp: 4 })
-      .andWhere('fixture.away_GP >= :agp', { agp: 4 })
-      .andWhere('fixture.away_PPG - fixture.home_PPG >= :ppg', { ppg: 2 })
       .orderBy('fixture.time', 'ASC')
+      .take(100)
       .getMany();
 
     res.status(200).json({ count: fixtures.length, fixtures });

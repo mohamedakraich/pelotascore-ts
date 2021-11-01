@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({ name: '10-31-2021' })
-export class FixtureModel {
+@Entity({ name: '2021-11-01' })
+export class FixtureEntity {
   @PrimaryGeneratedColumn()
   id: number;
 

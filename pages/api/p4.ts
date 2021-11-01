@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { FixtureModel } from '../../models/fixture.model';
+import { FixtureEntity } from '../../entities/fixture.entity';
 import { getOrCreateConnection } from '../../utils';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -7,7 +7,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const connection = await getOrCreateConnection();
 
     const fixtures = await connection
-      .getRepository<FixtureModel>('FixtureModel')
+      .getRepository<FixtureEntity>('FixtureEntity')
       .createQueryBuilder('fixture')
       .where('fixture.home_GF +  fixture.away_GA >= :atg', { atg: 6 })
       .orWhere('fixture.home_GA + fixture.away_GF >= :btg', { btg: 6 })
