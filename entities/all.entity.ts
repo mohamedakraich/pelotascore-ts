@@ -34,7 +34,11 @@ export class MatchEntity {
   @Column({ default: -1 })
   status: number;
 
+  @Column()
+  leagueId: string;
+
   @ManyToOne(() => LeagueEntity, (league) => league.matches)
+  @JoinColumn({ name: 'leagueId' })
   league: LeagueEntity;
 
   @Column()

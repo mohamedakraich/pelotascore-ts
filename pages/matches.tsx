@@ -5,23 +5,21 @@ import Box from '@mui/material/Box';
 import axios from 'axios';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import MatchDayRows from '../components/MatchDayRows';
 
 const HomePage: NextPage = () => {
-  const [matches, setMatches] = React.useState<Match[]>([]);
+  const [matches, setMatches] = React.useState<MatchesType>({});
   const [count, setCount] = React.useState<number>(-1);
 
   React.useEffect(() => {
     axios
       .get('/api/matches')
       .then((response) => {
-        const matches = response.data?.matches as unknown as Match[];
+        const matches = response.data?.matches as unknown as MatchesType;
         const count = response.data?.count as unknown as number;
         setCount(count);
         setMatches(matches);
@@ -42,66 +40,14 @@ const HomePage: NextPage = () => {
           All Matches
         </Typography>
         <Grid container>
-          <Grid item xs={6}></Grid>
-          <Grid item xs={6}>
-            <TableContainer component={Paper} elevation={10}>
+          <Grid item xs></Grid>
+          <Grid item xs={8}>
+            <TableContainer component={Paper} elevation={5}>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableBody>
-                  {matches
-                    .filter((match) => match.status === 1)
-                    .map((match) => (
-                      <TableRow
-                        key={match.id}
-                        sx={{
-                          '&:last-child td, &:last-child th': { border: 0 },
-                        }}
-                      >
-                        <TableCell component="th" scope="row">
-                          {match.date.split('T')[0]}
-                        </TableCell>
-                        <TableCell align="right">{match.home_name}</TableCell>
-                        <TableCell align="center">{`${match.home_FullTimeGoals} - ${match.away_FullTimeGoals}`}</TableCell>
-                        <TableCell align="left">{match.away_name}</TableCell>
-                        <TableCell align="left">
-                          {'(' +
-                            match.home_FirstHalfGoals +
-                            ' - ' +
-                            match.away_FirstHalfGoals +
-                            ')'}
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-
-            <TableContainer component={Paper} elevation={10}>
-              <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <TableBody>
-                  {matches
-                    .filter((match) => match.status === 0)
-                    .map((match) => (
-                      <TableRow
-                        key={match.id}
-                        sx={{
-                          '&:last-child td, &:last-child th': { border: 0 },
-                        }}
-                      >
-                        <TableCell component="th" scope="row">
-                          {match.date.split('T')[0]}
-                        </TableCell>
-                        <TableCell align="right">{match.home_name}</TableCell>
-                        <TableCell align="center">{match.time}</TableCell>
-                        <TableCell align="left">{match.away_name}</TableCell>
-                        <TableCell align="left"></TableCell>
-                      </TableRow>
-                    ))}
+                  {Object.keys(matches).map((key) => (
+                    <MatchDayRows matches={matches[key]} />
+                  ))}
                 </TableBody>
               </Table>
             </TableContainer>

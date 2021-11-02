@@ -49,7 +49,6 @@ type Match = {
   id: number;
   status: number;
   date: string;
-  time: string;
   home_name: string;
   home_FullTimeGoals: number;
   home_FirstHalfGoals: number;
@@ -58,4 +57,8 @@ type Match = {
   away_FullTimeGoals: number;
   away_FirstHalfGoals: number;
   away_SecondHalfGoals: number;
+};
+
+type MatchesType = {
+  [key: string]: Match[];
 };
