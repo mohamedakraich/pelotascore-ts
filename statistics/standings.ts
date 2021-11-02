@@ -6,6 +6,8 @@ dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 
 import { MatchEntity } from '../entities/match.entity';
 import { getOrCreateConnection } from '../utils';
+import { League } from '../scraper/matches';
+import { leagues } from '../scraper/data/leagues';
 
 const teams = [
   'Arsenal',
@@ -19,7 +21,7 @@ const teams = [
   'Leeds Utd',
   'Leicester City',
   'Liverpool',
-  'Manchester C',
+  'Manchester City',
   'Manchester Utd',
   'Newcastle Utd',
   'Norwich City',
@@ -39,9 +41,8 @@ const initialTeamStats = {
   GA: 0,
   GD: 0,
   P: 0,
-  P15: 0,
-  ACEP35: 0,
-  P35: 0,
+  LP15: 0,
+  VP15: 0,
 };
 
 interface StandingsMap {
@@ -54,40 +55,42 @@ interface StandingsMap {
     GA: number;
     GD: number;
     P: number;
-    P15: number;
-    ACEP35: number;
-    P35: number;
+    LP15: number;
+    VP15: number;
   };
 }
 
 let standings: StandingsMap = {
-  Arsenal: initialTeamStats,
-  'Aston Villa': initialTeamStats,
-  Brentford: initialTeamStats,
-  Brighton: initialTeamStats,
-  Burnley: initialTeamStats,
-  Chelsea: initialTeamStats,
-  'Crystal Palace': initialTeamStats,
-  Everton: initialTeamStats,
-  'Leeds Utd': initialTeamStats,
-  'Leicester City': initialTeamStats,
-  Liverpool: initialTeamStats,
-  'Manchester City': initialTeamStats,
-  'Manchester Utd': initialTeamStats,
-  'Newcastle Utd': initialTeamStats,
-  'Norwich City': initialTeamStats,
-  Southampton: initialTeamStats,
-  Tottenham: initialTeamStats,
-  Watford: initialTeamStats,
-  'West Ham Utd': initialTeamStats,
-  Wolverhampton: initialTeamStats,
+  Arsenal: { ...initialTeamStats },
+  'Aston Villa': { ...initialTeamStats },
+  Brentford: { ...initialTeamStats },
+  Brighton: { ...initialTeamStats },
+  Burnley: { ...initialTeamStats },
+  Chelsea: { ...initialTeamStats },
+  'Crystal Palace': { ...initialTeamStats },
+  Everton: { ...initialTeamStats },
+  'Leeds Utd': { ...initialTeamStats },
+  'Leicester City': { ...initialTeamStats },
+  Liverpool: { ...initialTeamStats },
+  'Manchester City': { ...initialTeamStats },
+  'Manchester Utd': { ...initialTeamStats },
+  'Newcastle Utd': { ...initialTeamStats },
+  'Norwich City': { ...initialTeamStats },
+  Southampton: { ...initialTeamStats },
+  Tottenham: { ...initialTeamStats },
+  Watford: { ...initialTeamStats },
+  'West Ham Utd': { ...initialTeamStats },
+  Wolverhampton: { ...initialTeamStats },
 };
 
-getOrCreateConnection().then(async (connection) => {
+const generatestats = async (league: League) => {
+  const connection = await getOrCreateConnection();
+
   const matches = await connection
     .getRepository<MatchEntity>('MatchEntity')
     .createQueryBuilder('match')
-    .where('match.status = :status', { status: 1 })
+    .where('match.league = :league_id', { league_id: league.id })
+    .andWhere('match.status = :status', { status: 1 })
     .getMany();
 
   matches.forEach((match) => {
@@ -105,22 +108,14 @@ getOrCreateConnection().then(async (connection) => {
 
     // Checking for P15 option
     if (match.home_FullTimeGoals >= 2) {
-      standings[match.home_name].P15 += 1;
+      standings[match.home_name].LP15 += 1;
     }
     if (match.away_FullTimeGoals >= 2) {
-      standings[match.away_name].P15 += 1;
+      standings[match.away_name].VP15 += 1;
     }
 
-    // Checking for P35 option
+    // Checking For P, W, D, L
     if (match.home_FullTimeGoals > match.away_FullTimeGoals) {
-      standings[match.home_name].P35 += 1;
-      standings[match.away_name].P35 += 1;
-    }
-
-    if (match.home_FullTimeGoals > match.away_FullTimeGoals) {
-      if (match.home_FullTimeGoals + match.away_FullTimeGoals > 3.5) {
-        standings[match.home_name].ACEP35 += 1;
-      }
       standings[match.home_name].P += 3;
       standings[match.home_name].W += 1;
       standings[match.away_name].L += 1;
@@ -137,8 +132,10 @@ getOrCreateConnection().then(async (connection) => {
   });
 
   const standingsTable = Object.entries(standings).sort(
-    (a, b) => b[1].P15 - a[1].P15
+    (a, b) => b[1].LP15 + b[1].VP15 - (a[1].LP15 + a[1].VP15)
   );
 
   console.log(standingsTable);
-});
+};
+
+generatestats(leagues[0]);
