@@ -11,7 +11,7 @@ import { getOrCreateConnection } from '../utils';
 import { leagues } from './data/leagues';
 
 import { getLeagueStartingMonth, getMatch } from './matches_utils';
-import { LeagueEntity } from '../entities/league.entity';
+import { LeagueEntity } from '../entities/all.entity';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 

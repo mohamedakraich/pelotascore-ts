@@ -2,6 +2,24 @@ import { League } from '../matches';
 
 export const leagues: League[] = [
   {
+    id: 'austria_1',
+    name: 'Austria - Bundesliga',
+    country: 'Austria',
+    link: 'https://www.soccerstats.com/results.asp?league=austria&pmtype=bydate',
+  },
+  {
+    id: 'belgium_1',
+    name: 'Belgium - Jupiler League',
+    country: 'Belgium',
+    link: 'https://www.soccerstats.com/results.asp?league=belgium&pmtype=bydate',
+  },
+  {
+    id: 'denmark_1',
+    name: 'Denmark - Superligaen',
+    country: 'Denmark',
+    link: 'https://www.soccerstats.com/results.asp?league=denmark&pmtype=bydate',
+  },
+  {
     id: 'england_1',
     name: 'Premier League',
     country: 'England',
@@ -34,18 +52,7 @@ export const leagues: League[] = [
 ];
 
 /*export const leagues = [
-  {
-    id: 'austria_1',
-    link: 'https://www.soccerstats.com/results.asp?league=austria&pmtype=bydate',
-  },
-  {
-    id: 'belgium_1',
-    link: 'https://www.soccerstats.com/results.asp?league=belgium&pmtype=bydate',
-  },
-  {
-    id: 'denmark_1',
-    link: 'https://www.soccerstats.com/results.asp?league=denmark&pmtype=bydate',
-  },
+
   {
     id: 'england_1',
     link: 'https://www.soccerstats.com/results.asp?league=england&pmtype=bydate',

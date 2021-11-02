@@ -1,8 +1,7 @@
 import { getConnection, createConnection } from 'typeorm';
 import { FixtureEntity } from '../entities/fixture.entity';
-import { LeagueEntity } from '../entities/league.entity';
-import { MatchEntity } from '../entities/match.entity';
-import { StatisticsEntity } from '../entities/statistics.entity';
+import { LeagueEntity, MatchEntity } from '../entities/all.entity';
+import { StatisticsEntity } from '../entities/all.entity';
 
 export async function getOrCreateConnection() {
   try {
@@ -17,7 +16,7 @@ export async function getOrCreateConnection() {
       username: process.env.POSTGRES_USER as string,
       password: process.env.POSTGRES_PASSWORD as string,
       database: process.env.POSTGRES_DB as string,
-      entities: [FixtureEntity, MatchEntity, LeagueEntity, StatisticsEntity],
+      entities: [LeagueEntity, FixtureEntity, MatchEntity, StatisticsEntity],
       synchronize: true,
       logging: false,
     });

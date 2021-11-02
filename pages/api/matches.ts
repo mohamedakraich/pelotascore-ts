@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { MatchEntity } from '../../entities/match.entity';
+import { MatchEntity } from '../../entities/all.entity';
+
 import { getOrCreateConnection } from '../../utils';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -9,6 +10,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const matches = await connection
       .getRepository<MatchEntity>('MatchEntity')
       .createQueryBuilder('match')
+      .where('match.leagueId = :lid', { lid: 'germany_1' })
+      //.where('extract(month from match.date) = :m', { m: 11 })
+      //.andWhere('extract(day from match.date) = :d', { d: 6 })
       //.orderBy('fixture.time', 'ASC')
       //.take(100)
       .getMany();

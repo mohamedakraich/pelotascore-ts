@@ -57,7 +57,7 @@ const HomePage: NextPage = () => {
                         }}
                       >
                         <TableCell component="th" scope="row">
-                          {match.date}
+                          {match.date.split('T')[0]}
                         </TableCell>
                         <TableCell align="right">{match.home_name}</TableCell>
                         <TableCell align="center">{`${match.home_FullTimeGoals} - ${match.away_FullTimeGoals}`}</TableCell>
@@ -94,7 +94,7 @@ const HomePage: NextPage = () => {
                         }}
                       >
                         <TableCell component="th" scope="row">
-                          {match.date}
+                          {match.date.split('T')[0]}
                         </TableCell>
                         <TableCell align="right">{match.home_name}</TableCell>
                         <TableCell align="center">{match.time}</TableCell>

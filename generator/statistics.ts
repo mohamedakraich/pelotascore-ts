@@ -4,11 +4,10 @@ import * as dotenv from 'dotenv';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 
-import { MatchEntity } from '../entities/match.entity';
+import { MatchEntity, StatisticsEntity } from '../entities/all.entity';
 import { getOrCreateConnection } from '../utils';
 import { League } from '../scraper/matches';
 import { leagues } from '../scraper/data/leagues';
-import { StatisticsEntity } from '../entities/statistics.entity';
 import { exit } from 'process';
 
 const initialTeamStats = {

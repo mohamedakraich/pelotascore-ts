@@ -1,4 +1,4 @@
-import { MatchEntity } from '../entities/match.entity';
+import { MatchEntity } from '../entities/all.entity';
 
 export const getMatchResult = (
   match: any,
