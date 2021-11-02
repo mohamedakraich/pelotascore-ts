@@ -10,9 +10,12 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import MatchDayRows from '../components/MatchDayRows';
+import StandingsTable from '../components/StandingsTable';
 
 const HomePage: NextPage = () => {
   const [matches, setMatches] = React.useState<MatchesType>({});
+  const [standings, setStandings] = React.useState<StandingsType[]>([]);
+
   const [count, setCount] = React.useState<number>(-1);
 
   React.useEffect(() => {
@@ -23,6 +26,19 @@ const HomePage: NextPage = () => {
         const count = response.data?.count as unknown as number;
         setCount(count);
         setMatches(matches);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  React.useEffect(() => {
+    axios
+      .get('/api/standings')
+      .then((response) => {
+        const standings = response.data
+          ?.standings as unknown as StandingsType[];
+        setStandings(standings);
         console.log(response.data);
       })
       .catch((error) => {
@@ -36,14 +52,13 @@ const HomePage: NextPage = () => {
         <title>Soccerstats Fucker</title>
       </Head>
       <Box m={5}>
-        <Typography variant="h6" gutterBottom>
-          All Matches
-        </Typography>
-        <Grid container>
-          <Grid item xs></Grid>
-          <Grid item xs={8}>
+        <Grid container spacing={2}>
+          <Grid item xs>
+            {standings.length > 0 && <StandingsTable standings={standings} />}
+          </Grid>
+          <Grid item xs>
             <TableContainer component={Paper} elevation={5}>
-              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <Table size="small">
                 <TableBody>
                   {Object.keys(matches).map((key) => (
                     <MatchDayRows matches={matches[key]} />
