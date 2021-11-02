@@ -5,7 +5,7 @@
   "scripts": {
     "scrape-matches": "ts-node scraper/matches.ts",
     "scrape-statistics": "ts-node scraper/statistics.ts",
-    "generate-statistics": "ts-node statistics/standings",
+    "generate-statistics": "ts-node generator/statistics",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

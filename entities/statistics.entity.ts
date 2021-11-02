@@ -1,9 +1,23 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
+import { LeagueEntity } from './league.entity';
 
 @Entity({ name: 'statistics' })
 export class StatisticsEntity {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column({ nullable: true })
+  leagueId: string;
+
+  @ManyToOne(() => LeagueEntity, (league) => league.stats)
+  @JoinColumn({ name: 'leagueId' })
+  league: LeagueEntity;
 
   @Column()
   team_name: string;
@@ -25,6 +39,9 @@ export class StatisticsEntity {
 
   @Column()
   GA: number;
+
+  @Column()
+  GD: number;
 
   @Column()
   P: number;
