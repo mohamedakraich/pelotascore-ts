@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { LeagueEntity } from './league.entity';
 
-@Entity({ name: 'england' })
+@Entity({ name: 'matches' })
 export class MatchEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -8,11 +9,11 @@ export class MatchEntity {
   @Column({ default: -1 })
   status: number;
 
+  @ManyToOne(() => LeagueEntity, (league) => league.matches)
+  league: LeagueEntity;
+
   @Column()
   date: Date;
-
-  @Column({ default: '' })
-  time: string;
 
   @Column({ default: '' })
   home_name: string;

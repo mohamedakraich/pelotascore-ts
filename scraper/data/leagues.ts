@@ -1,7 +1,35 @@
-export const leagues = [
+import { League } from '../matches';
+
+export const leagues: League[] = [
   {
     id: 'england_1',
+    name: 'Premier League',
+    country: 'England',
     link: 'https://www.soccerstats.com/results.asp?league=england&pmtype=bydate',
+  },
+  {
+    id: 'france_1',
+    name: 'France - Ligue 1',
+    country: 'France',
+    link: 'https://www.soccerstats.com/results.asp?league=france&pmtype=bydate',
+  },
+  {
+    id: 'germany_1',
+    name: 'Bundesliga',
+    country: 'Germany',
+    link: 'https://www.soccerstats.com/results.asp?league=germany&pmtype=bydate',
+  },
+  {
+    id: 'italy_1',
+    name: 'Italy - Serie A',
+    country: 'Italy',
+    link: 'https://www.soccerstats.com/results.asp?league=italy&pmtype=bydate',
+  },
+  {
+    id: 'spain_1',
+    name: 'La Liga',
+    country: 'Spain',
+    link: 'https://www.soccerstats.com/results.asp?league=spain&pmtype=bydate',
   },
 ];
 

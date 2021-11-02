@@ -38,8 +38,13 @@ export const getMatchResult = (
     matchModel.away_SecondHalfGoals = away_SecondHalfGoals;
   } else if (match.children[2].children[0].children[0].data === 'Aw. L') {
     const matchTime = match.children[2].children[0].children[0].data;
+    const timeHours = parseInt(matchTime.split(':')[0]);
+    const timeMinutes = parseInt(matchTime.split(':')[1]);
 
-    matchModel.time = matchTime;
+    matchModel.date.setHours(timeHours);
+    matchModel.date.setMinutes(timeMinutes);
+
+    //matchModel.time = matchTime;
   }
   return matchModel;
 };
@@ -48,15 +53,24 @@ export const getMatchFixture = (match: any, leagueStartingMonth: number) => {
   let matchModel = new MatchEntity();
 
   const fixtureDate = match.children[0].children[0].children[0].data.trim();
+
   const fixtureTime =
     match.children[2].children[0].data === 'pp.'
       ? match.children[2].children[0].data
       : match.children[2].children[0].children[0].data;
+
   const home_name = match.children[1].children[0].data.trim();
   const away_name = match.children[3].children[0].data.trim();
 
   matchModel.date = getDateFromDateStr(fixtureDate, leagueStartingMonth);
-  matchModel.time = fixtureTime;
+
+  if (fixtureTime !== 'pp.') {
+    const timeHours = parseInt(fixtureTime.split(':')[0]);
+    const timeMinutes = parseInt(fixtureTime.split(':')[1]);
+    matchModel.date.setHours(timeHours);
+    matchModel.date.setMinutes(timeMinutes);
+  }
+  //matchModel.time = fixtureTime;
   matchModel.status = 0;
   matchModel.home_name = home_name;
   matchModel.away_name = away_name;

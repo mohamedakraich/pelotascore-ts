@@ -11,6 +11,7 @@ import { getOrCreateConnection } from '../utils';
 import { leagues } from './data/leagues';
 
 import { getLeagueStartingMonth, getMatch } from './matches_utils';
+import { LeagueEntity } from '../entities/league.entity';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 
@@ -18,7 +19,14 @@ const LEAGUES_LENGTH = leagues.length;
 
 const bar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
 
-const logLeague = async (connection: Connection, league: any) => {
+export type League = {
+  id: string;
+  name: string;
+  country: string;
+  link: string;
+};
+
+const logLeague = async (connection: Connection, league: League) => {
   try {
     const response = await axios.get(league.link, {
       responseType: 'text',
@@ -27,14 +35,21 @@ const logLeague = async (connection: Connection, league: any) => {
     let $ = cheerio.load(html);
     let leagueStartingMonth = -1;
     let matches = $('#btable').first().find('tr.odd[height="28"]');
+    const leagueEntity = new LeagueEntity();
+    leagueEntity.id = league.id;
+    leagueEntity.name = league.name;
+    leagueEntity.country = league.country;
+    const insertedLeague = await connection.manager.save(leagueEntity);
     for (let m = 0; m < matches.length; m++) {
       let match: any = matches[m];
       if (m === 0) {
         leagueStartingMonth = getLeagueStartingMonth(match);
-        console.log('leagueStartingMonth', leagueStartingMonth);
       }
       const matchModel = getMatch(match, leagueStartingMonth);
-      await connection.manager.save(matchModel);
+      if (matchModel) {
+        matchModel.league = insertedLeague;
+        await connection.manager.save(matchModel);
+      }
     }
   } catch (e) {
     console.error(league.id, e);
