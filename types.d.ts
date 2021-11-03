@@ -60,6 +60,8 @@ type Match = {
 };
 
 type Stats = {
+  GP: number;
+  W: number;
   LP15: number;
   VP15: number;
 };
@@ -92,6 +94,10 @@ type MatchStatsDTO = {
   away_FullTimeGoals: number;
   away_FirstHalfGoals: number;
   away_SecondHalfGoals: number;
+};
+
+type MatchStatsType = {
+  [key: string]: MatchStatsDTO[];
 };
 
 type MatchesType = {

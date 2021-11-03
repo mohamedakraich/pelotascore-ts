@@ -63,8 +63,14 @@ const LeagueMatchTable: React.FC<LeagueMatchTableProps> = ({ matches }) => {
                 <StyledTableRow>
                   <StyledTableCell>{match.home_name}</StyledTableCell>
                   <StyledTableCell rowSpan={2} align="center"></StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
+                  <StyledTableCell align="left">
+                    {match.home_stats.GP}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {Math.floor(
+                      (match.home_stats.W / match.home_stats.GP) * 100
+                    ) + '%'}
+                  </StyledTableCell>
                   <StyledTableCell align="left">
                     {match.home_stats.LP15}
                   </StyledTableCell>
@@ -84,8 +90,14 @@ const LeagueMatchTable: React.FC<LeagueMatchTableProps> = ({ matches }) => {
                   <StyledTableCell component="th" scope="row">
                     {match.away_name}
                   </StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
+                  <StyledTableCell align="left">
+                    {match.away_stats.GP}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {Math.floor(
+                      (match.away_stats.W / match.away_stats.GP) * 100
+                    ) + '%'}
+                  </StyledTableCell>
                   <StyledTableCell align="left">
                     {match.away_stats.LP15}
                   </StyledTableCell>

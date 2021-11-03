@@ -15,7 +15,7 @@ import { useRouter } from 'next/router';
 import LeagueMatchTable from '../components/LeagueMatchTable';
 
 const MatchesPage: NextPage = () => {
-  const [matches, setMatches] = React.useState<MatchesType>({});
+  const [matches, setMatches] = React.useState<MatchStatsType>({});
   const { query } = useRouter();
 
   console.log(query);
@@ -26,7 +26,7 @@ const MatchesPage: NextPage = () => {
     axios
       .get(`/api/matches`)
       .then((response) => {
-        const matches = response.data?.matches as unknown as MatchesType;
+        const matches = response.data?.matches as unknown as MatchStatsType;
         const count = response.data?.count as unknown as number;
         setCount(count);
         setMatches(matches);
