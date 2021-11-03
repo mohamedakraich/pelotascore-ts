@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { MatchEntity, StatisticsEntity } from '../../entities/all.entity';
-
-import { getOrCreateConnection } from '../../utils';
+import { MatchEntity, StatisticsEntity } from '../../../entities/all.entity';
+import { getOrCreateConnection } from '../../../utils';
 
 interface matchesType {
   [key: string]: Match[];
@@ -17,28 +16,15 @@ const matchEntityToMatch = (matchEntity: MatchEntity) => {
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
+    const { league_id } = req.query;
     const connection = await getOrCreateConnection();
 
     const standings = await connection
       .getRepository<StatisticsEntity>('StatisticsEntity')
       .createQueryBuilder('statistics')
-      .where('statistics.leagueId = :lid', { lid: 'germany_1' })
+      .where('statistics.leagueId = :league_id', { league_id })
       .orderBy('statistics.P', 'DESC')
       .getMany();
-
-    /*const matchesResponse: matchesType = {};
-    matches.forEach((match) => {
-      if (!matchesResponse[match.date.toDateString()]) {
-        matchesResponse[match.date.toDateString()] = [
-          matchEntityToMatch(match),
-        ];
-      } else {
-        matchesResponse[match.date.toDateString()].push(
-          matchEntityToMatch(match)
-        );
-      }
-    });*/
-
     res.status(200).json({ count: standings.length, standings });
   } catch (e) {
     console.error(e);
