@@ -6,6 +6,8 @@ import {
   PrimaryColumn,
   OneToMany,
   JoinColumn,
+  OneToOne,
+  Index,
 } from 'typeorm';
 
 @Entity({ name: 'leagues' })
@@ -24,49 +26,6 @@ export class LeagueEntity {
 
   @OneToMany(() => StatisticsEntity, (stats) => stats.league)
   stats: StatisticsEntity[];
-}
-
-@Entity({ name: 'matches' })
-export class MatchEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Column({ default: -1 })
-  status: number;
-
-  @Column()
-  leagueId: string;
-
-  @ManyToOne(() => LeagueEntity, (league) => league.matches)
-  @JoinColumn({ name: 'leagueId' })
-  league: LeagueEntity;
-
-  @Column()
-  date: Date;
-
-  @Column({ default: '' })
-  home_name: string;
-
-  @Column({ default: -1 })
-  home_FullTimeGoals: number;
-
-  @Column({ default: -1 })
-  home_FirstHalfGoals: number;
-
-  @Column({ default: -1 })
-  home_SecondHalfGoals: number;
-
-  @Column({ default: '' })
-  away_name: string;
-
-  @Column({ default: -1 })
-  away_FullTimeGoals: number;
-
-  @Column({ default: -1 })
-  away_FirstHalfGoals: number;
-
-  @Column({ default: -1 })
-  away_SecondHalfGoals: number;
 }
 
 @Entity({ name: 'statistics' })
@@ -113,4 +72,65 @@ export class StatisticsEntity {
 
   @Column()
   VP15: number;
+}
+
+@Entity({ name: 'teams' })
+export class TeamEntity {
+  @PrimaryColumn()
+  name: string;
+
+  @OneToOne(() => StatisticsEntity)
+  @JoinColumn()
+  stats: StatisticsEntity;
+
+  @OneToMany(() => MatchEntity, (match) => match.home_team)
+  home_matches: MatchEntity[];
+
+  @OneToMany(() => MatchEntity, (match) => match.away_team)
+  away_matches: MatchEntity[];
+}
+
+@Entity({ name: 'matches' })
+export class MatchEntity {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({ default: -1 })
+  status: number;
+
+  @Column()
+  leagueId: string;
+
+  @Column()
+  date: Date;
+
+  @ManyToOne(() => TeamEntity, (team) => team.home_matches)
+  @JoinColumn({ name: 'home_team_name' })
+  home_team: TeamEntity;
+
+  @ManyToOne(() => TeamEntity, (team) => team.away_matches)
+  @JoinColumn({ name: 'away_team_name' })
+  away_team: TeamEntity;
+
+  @Column({ default: -1 })
+  home_FullTimeGoals: number;
+
+  @Column({ default: -1 })
+  home_FirstHalfGoals: number;
+
+  @Column({ default: -1 })
+  home_SecondHalfGoals: number;
+
+  @Column({ default: -1 })
+  away_FullTimeGoals: number;
+
+  @Column({ default: -1 })
+  away_FirstHalfGoals: number;
+
+  @Column({ default: -1 })
+  away_SecondHalfGoals: number;
+
+  @ManyToOne(() => LeagueEntity, (league) => league.matches)
+  @JoinColumn({ name: 'leagueId' })
+  league: LeagueEntity;
 }

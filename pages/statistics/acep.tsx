@@ -3,16 +3,16 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Box from '@mui/material/Box';
 import axios from 'axios';
-import FixtureTable from '../components/FixtureTable';
+import FixtureTable from '../../components/FixtureTable';
 import { Typography } from '@mui/material';
 
-const DOSPage: NextPage = () => {
+const ACEPPage: NextPage = () => {
   const [fixtures, setFixtures] = React.useState<Fixture[]>([]);
   const [count, setCount] = React.useState<number>(-1);
 
   React.useEffect(() => {
     axios
-      .get('/api/dos')
+      .get('/api/acep')
       .then((response) => {
         const fixtures = response.data?.fixtures as unknown as Fixture[];
         const count = response.data?.count as unknown as number;
@@ -45,4 +45,4 @@ const DOSPage: NextPage = () => {
   );
 };
 
-export default DOSPage;
+export default ACEPPage;

@@ -45,7 +45,7 @@ const logLeague = async (connection: Connection, league: League) => {
       if (m === 0) {
         leagueStartingMonth = getLeagueStartingMonth(match);
       }
-      const matchModel = getMatch(match, leagueStartingMonth);
+      const matchModel = await getMatch(connection, match, leagueStartingMonth);
       if (matchModel) {
         matchModel.league = insertedLeague;
         await connection.manager.save(matchModel);
@@ -58,6 +58,9 @@ const logLeague = async (connection: Connection, league: League) => {
 };
 
 getOrCreateConnection().then(async (connection) => {
+  await connection.dropDatabase();
+  await connection.synchronize();
+
   let counter = 0;
   bar.start(LEAGUES_LENGTH, 0);
   for (let l = 0; l < leagues.length; l++) {

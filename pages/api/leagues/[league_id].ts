@@ -2,18 +2,11 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { MatchEntity } from '../../../entities/all.entity';
 
 import { getOrCreateConnection } from '../../../utils';
+import { matchEntityToMatchDTO } from '../../../utils/dtos';
 
 interface matchesType {
   [key: string]: Match[];
 }
-
-const matchEntityToMatch = (matchEntity: MatchEntity) => {
-  const matchDTO: Match = {
-    ...matchEntity,
-    date: matchEntity.date.toDateString(),
-  };
-  return matchDTO;
-};
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -24,22 +17,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       .getRepository<MatchEntity>('MatchEntity')
       .createQueryBuilder('match')
       .where('match.leagueId = :league_id', { league_id })
-      //.where('extract(month from match.date) = :m', { m: 11 })
-      //.andWhere('extract(day from match.date) = :d', { d: 6 })
       .orderBy('match.date', 'ASC')
-      //.take(100)
-      //.groupBy('match.date')
       .getMany();
 
     const matchesResponse: matchesType = {};
     matches.forEach((match) => {
       if (!matchesResponse[match.date.toDateString()]) {
         matchesResponse[match.date.toDateString()] = [
-          matchEntityToMatch(match),
+          matchEntityToMatchDTO(match),
         ];
       } else {
         matchesResponse[match.date.toDateString()].push(
-          matchEntityToMatch(match)
+          matchEntityToMatchDTO(match)
         );
       }
     });

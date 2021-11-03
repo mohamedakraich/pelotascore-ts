@@ -59,6 +59,41 @@ type Match = {
   away_SecondHalfGoals: number;
 };
 
+type Stats = {
+  LP15: number;
+  VP15: number;
+};
+
+type MatchDTO = {
+  id: number;
+  status: number;
+  date: string;
+  home_name: string;
+  home_FullTimeGoals: number;
+  home_FirstHalfGoals: number;
+  home_SecondHalfGoals: number;
+  away_name: string;
+  away_FullTimeGoals: number;
+  away_FirstHalfGoals: number;
+  away_SecondHalfGoals: number;
+};
+
+type MatchStatsDTO = {
+  id: number;
+  status: number;
+  date: string;
+  home_name: string;
+  home_stats: Stats;
+  home_FullTimeGoals: number;
+  home_FirstHalfGoals: number;
+  home_SecondHalfGoals: number;
+  away_name: string;
+  away_stats: Stats;
+  away_FullTimeGoals: number;
+  away_FirstHalfGoals: number;
+  away_SecondHalfGoals: number;
+};
+
 type MatchesType = {
   [key: string]: Match[];
 };

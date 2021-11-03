@@ -1,18 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { MatchEntity, StatisticsEntity } from '../../../entities/all.entity';
+import { StatisticsEntity } from '../../../entities/all.entity';
 import { getOrCreateConnection } from '../../../utils';
-
-interface matchesType {
-  [key: string]: Match[];
-}
-
-const matchEntityToMatch = (matchEntity: MatchEntity) => {
-  const matchDTO: Match = {
-    ...matchEntity,
-    date: matchEntity.date.toDateString(),
-  };
-  return matchDTO;
-};
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {

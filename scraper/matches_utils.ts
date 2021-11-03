@@ -1,19 +1,45 @@
-import { MatchEntity } from '../entities/all.entity';
+import { Connection } from 'typeorm';
+import { MatchEntity, TeamEntity } from '../entities/all.entity';
 
-export const getMatchResult = (
+export const getMatchResult = async (
+  connection: Connection,
   match: any,
   leagueStartingMonth: number
-): MatchEntity => {
+) => {
   let matchModel = new MatchEntity();
 
   const matchDate = match.children[0].children[0].children[0].data.trim();
   const home_name = match.children[1].children[0].data.trim();
   const away_name = match.children[3].children[0].data.trim();
 
+  let home_team = await connection
+    .getRepository<TeamEntity>('TeamEntity')
+    .createQueryBuilder('team')
+    .where('team.name = :name', { name: home_name })
+    .getOne();
+
+  let away_team = await connection
+    .getRepository<TeamEntity>('TeamEntity')
+    .createQueryBuilder('team')
+    .where('team.name = :name', { name: away_name })
+    .getOne();
+
+  if (!home_team) {
+    home_team = await connection
+      .getRepository<TeamEntity>('TeamEntity')
+      .save({ name: home_name });
+  }
+
+  if (!away_team) {
+    away_team = await connection
+      .getRepository<TeamEntity>('TeamEntity')
+      .save({ name: away_name });
+  }
+
   matchModel.date = getDateFromDateStr(matchDate, leagueStartingMonth);
   matchModel.status = 1;
-  matchModel.home_name = home_name;
-  matchModel.away_name = away_name;
+  matchModel.home_team = home_team;
+  matchModel.away_team = away_team;
 
   if (match.children[2].children[0].children[0].data !== 'Aw. L') {
     const fullTimeScoreStr =
@@ -46,10 +72,15 @@ export const getMatchResult = (
 
     //matchModel.time = matchTime;
   }
+
   return matchModel;
 };
 
-export const getMatchFixture = (match: any, leagueStartingMonth: number) => {
+export const getMatchFixture = async (
+  connection: Connection,
+  match: any,
+  leagueStartingMonth: number
+) => {
   let matchModel = new MatchEntity();
 
   const fixtureDate = match.children[0].children[0].children[0].data.trim();
@@ -62,6 +93,40 @@ export const getMatchFixture = (match: any, leagueStartingMonth: number) => {
   const home_name = match.children[1].children[0].data.trim();
   const away_name = match.children[3].children[0].data.trim();
 
+  let home_team = await connection
+    .getRepository<TeamEntity>('TeamEntity')
+    .createQueryBuilder('team')
+    .where('team.name = :name', { name: home_name })
+    .getOne();
+
+  let away_team = await connection
+    .getRepository<TeamEntity>('TeamEntity')
+    .createQueryBuilder('team')
+    .where('team.name = :name', { name: away_name })
+    .getOne();
+
+  if (!home_team) {
+    const homeInsertResult = await connection
+      .createQueryBuilder()
+      .insert()
+      .into(TeamEntity)
+      .values([{ name: home_name }])
+      .execute();
+
+    home_team = homeInsertResult.generatedMaps[0] as TeamEntity;
+  }
+
+  if (!away_team) {
+    const awayInsertResult = await connection
+      .createQueryBuilder()
+      .insert()
+      .into(TeamEntity)
+      .values([{ name: away_name }])
+      .execute();
+
+    away_team = awayInsertResult.generatedMaps[0] as TeamEntity;
+  }
+
   matchModel.date = getDateFromDateStr(fixtureDate, leagueStartingMonth);
 
   if (fixtureTime !== 'pp.') {
@@ -72,19 +137,20 @@ export const getMatchFixture = (match: any, leagueStartingMonth: number) => {
   }
   //matchModel.time = fixtureTime;
   matchModel.status = 0;
-  matchModel.home_name = home_name;
-  matchModel.away_name = away_name;
+  matchModel.home_team = home_team;
+  matchModel.away_team = away_team;
   return matchModel;
 };
 
-export const getMatch = (
+export const getMatch = async (
+  connection: Connection,
   match: any,
   leagueStartingMonth: number
-): MatchEntity | null => {
+) => {
   if (match.children.length === 9) {
-    return getMatchResult(match, leagueStartingMonth);
+    return await getMatchResult(connection, match, leagueStartingMonth);
   } else if (match.children.length === 7) {
-    return getMatchFixture(match, leagueStartingMonth);
+    return await getMatchFixture(connection, match, leagueStartingMonth);
   } else return null;
 };
 

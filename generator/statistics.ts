@@ -4,7 +4,11 @@ import * as dotenv from 'dotenv';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 
-import { MatchEntity, StatisticsEntity } from '../entities/all.entity';
+import {
+  MatchEntity,
+  StatisticsEntity,
+  TeamEntity,
+} from '../entities/all.entity';
 import { getOrCreateConnection } from '../utils';
 import { League } from '../scraper/matches';
 import { leagues } from '../scraper/data/leagues';
@@ -48,49 +52,51 @@ const generatestats = async (league: League) => {
     .createQueryBuilder('match')
     .where('match.league = :league_id', { league_id: league.id })
     .andWhere('match.status = :status', { status: 1 })
+    .leftJoinAndSelect('match.home_team', 'home_team')
+    .leftJoinAndSelect('match.away_team', 'away_team')
     .getMany();
 
   matches.forEach((match) => {
-    if (!statistics[match.home_name]) {
-      statistics[match.home_name] = { ...initialTeamStats };
+    if (!statistics[match.home_team.name]) {
+      statistics[match.home_team.name] = { ...initialTeamStats };
     }
-    if (!statistics[match.away_name]) {
-      statistics[match.away_name] = { ...initialTeamStats };
+    if (!statistics[match.away_team.name]) {
+      statistics[match.away_team.name] = { ...initialTeamStats };
     }
-    statistics[match.home_name].GP += 1;
-    statistics[match.home_name].GF += match.home_FullTimeGoals;
-    statistics[match.home_name].GA += match.away_FullTimeGoals;
-    statistics[match.home_name].GD +=
+    statistics[match.home_team.name].GP += 1;
+    statistics[match.home_team.name].GF += match.home_FullTimeGoals;
+    statistics[match.home_team.name].GA += match.away_FullTimeGoals;
+    statistics[match.home_team.name].GD +=
       match.home_FullTimeGoals - match.away_FullTimeGoals;
 
-    statistics[match.away_name].GP += 1;
-    statistics[match.away_name].GF += match.away_FullTimeGoals;
-    statistics[match.away_name].GA += match.home_FullTimeGoals;
-    statistics[match.away_name].GD +=
+    statistics[match.away_team.name].GP += 1;
+    statistics[match.away_team.name].GF += match.away_FullTimeGoals;
+    statistics[match.away_team.name].GA += match.home_FullTimeGoals;
+    statistics[match.away_team.name].GD +=
       match.away_FullTimeGoals - match.home_FullTimeGoals;
 
     // Checking for P15 option
     if (match.home_FullTimeGoals >= 2) {
-      statistics[match.home_name].LP15 += 1;
+      statistics[match.home_team.name].LP15 += 1;
     }
     if (match.away_FullTimeGoals >= 2) {
-      statistics[match.away_name].VP15 += 1;
+      statistics[match.away_team.name].VP15 += 1;
     }
 
     // Checking For P, W, D, L
     if (match.home_FullTimeGoals > match.away_FullTimeGoals) {
-      statistics[match.home_name].P += 3;
-      statistics[match.home_name].W += 1;
-      statistics[match.away_name].L += 1;
+      statistics[match.home_team.name].P += 3;
+      statistics[match.home_team.name].W += 1;
+      statistics[match.away_team.name].L += 1;
     } else if (match.home_FullTimeGoals < match.away_FullTimeGoals) {
-      statistics[match.away_name].P += 3;
-      statistics[match.away_name].W += 1;
-      statistics[match.home_name].L += 1;
+      statistics[match.away_team.name].P += 3;
+      statistics[match.away_team.name].W += 1;
+      statistics[match.home_team.name].L += 1;
     } else {
-      statistics[match.home_name].P += 1;
-      statistics[match.home_name].D += 1;
-      statistics[match.away_name].P += 1;
-      statistics[match.away_name].D += 1;
+      statistics[match.home_team.name].P += 1;
+      statistics[match.home_team.name].D += 1;
+      statistics[match.away_team.name].P += 1;
+      statistics[match.away_team.name].D += 1;
     }
   });
 
@@ -120,7 +126,18 @@ getOrCreateConnection().then(async (connection) => {
         statsEntity.P = statistics[key].P;
         statsEntity.LP15 = statistics[key].LP15;
         statsEntity.VP15 = statistics[key].VP15;
-        await connection.manager.save(statsEntity);
+        const foundTeam = await connection
+          .getRepository<TeamEntity>('TeamEntity')
+          .findOne({ name: key });
+        if (foundTeam) {
+          const insertedStats = await connection
+            .getRepository<StatisticsEntity>('StatisticsEntity')
+            .save(statsEntity);
+          foundTeam.stats = insertedStats;
+          await connection
+            .getRepository<TeamEntity>('TeamEntity')
+            .save(foundTeam);
+        }
       });
     }
   } catch (e) {

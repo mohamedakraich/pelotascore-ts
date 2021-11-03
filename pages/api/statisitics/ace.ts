@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { FixtureEntity } from '../../entities/fixture.entity';
-import { getOrCreateConnection } from '../../utils';
+import { FixtureEntity } from '../../../entities/fixture.entity';
+import { getOrCreateConnection } from '../../../utils';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -9,8 +9,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const fixtures = await connection
       .getRepository<FixtureEntity>('FixtureEntity')
       .createQueryBuilder('fixture')
-      .where('fixture.home_GF +  fixture.away_GA >= :atg', { atg: 6 })
-      .orWhere('fixture.home_GA + fixture.away_GF >= :btg', { btg: 6 })
+      .where('fixture.home_GP >= :hgp', { hgp: 4 })
+      .andWhere('fixture.away_GP >= :agp', { agp: 4 })
+      .andWhere('fixture.home_PPG - fixture.away_PPG >= :ppg', { ppg: 2 })
       .orderBy('fixture.time', 'ASC')
       .getMany();
 
