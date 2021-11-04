@@ -62,8 +62,13 @@ type Match = {
 type Stats = {
   GP: number;
   W: number;
-  LP15: number;
-  VP15: number;
+  S2G: number;
+  C2G: number;
+  S3G: number;
+  C3G: number;
+  FHS2G: number;
+  FHC2G: number;
+  FHP15: number;
 };
 
 type MatchDTO = {

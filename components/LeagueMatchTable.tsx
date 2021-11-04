@@ -9,6 +9,10 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
+const calculatePercentage = (value: number, total: number) => {
+  return Math.floor((value / total) * 100) + '%';
+};
+
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -45,16 +49,16 @@ const LeagueMatchTable: React.FC<LeagueMatchTableProps> = ({ matches }) => {
               <StyledTableCell></StyledTableCell>
               <StyledTableCell align="left">GP</StyledTableCell>
               <StyledTableCell align="left">W%</StyledTableCell>
-              <StyledTableCell align="left">LP15</StyledTableCell>
-              <StyledTableCell align="left">VP15</StyledTableCell>
-              <StyledTableCell align="left">BTS</StyledTableCell>
-              <StyledTableCell align="left">TG</StyledTableCell>
-              <StyledTableCell align="left">GF</StyledTableCell>
-              <StyledTableCell align="left">GA</StyledTableCell>
-              <StyledTableCell align="left">P15</StyledTableCell>
+              <StyledTableCell align="left">S2G%</StyledTableCell>
+              <StyledTableCell align="left">C2G%</StyledTableCell>
+              <StyledTableCell align="left">S3G%</StyledTableCell>
+              <StyledTableCell align="left">C3G%</StyledTableCell>
+              <StyledTableCell align="left">FHS2G%</StyledTableCell>
+              <StyledTableCell align="left">FHC2G%</StyledTableCell>
+              <StyledTableCell align="left">FHP15</StyledTableCell>
               <StyledTableCell align="left">P25</StyledTableCell>
               <StyledTableCell align="left">P35</StyledTableCell>
-              <StyledTableCell align="left">PPG</StyledTableCell>
+              <StyledTableCell align="left">P45</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -67,21 +71,53 @@ const LeagueMatchTable: React.FC<LeagueMatchTableProps> = ({ matches }) => {
                     {match.home_stats.GP}
                   </StyledTableCell>
                   <StyledTableCell align="left">
-                    {Math.floor(
-                      (match.home_stats.W / match.home_stats.GP) * 100
-                    ) + '%'}
+                    {calculatePercentage(
+                      match.home_stats.W,
+                      match.home_stats.GP
+                    )}
                   </StyledTableCell>
                   <StyledTableCell align="left">
-                    {match.home_stats.LP15}
+                    {calculatePercentage(
+                      match.home_stats.S2G,
+                      match.home_stats.GP
+                    )}
                   </StyledTableCell>
                   <StyledTableCell align="left">
-                    {match.home_stats.VP15}
+                    {calculatePercentage(
+                      match.home_stats.C2G,
+                      match.home_stats.GP
+                    )}
                   </StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
+                      match.home_stats.S3G,
+                      match.home_stats.GP
+                    )}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
+                      match.home_stats.C3G,
+                      match.home_stats.GP
+                    )}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
+                      match.home_stats.FHS2G,
+                      match.home_stats.GP
+                    )}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
+                      match.home_stats.FHC2G,
+                      match.home_stats.GP
+                    )}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
+                      match.home_stats.FHP15,
+                      match.home_stats.GP
+                    )}
+                  </StyledTableCell>
                   <StyledTableCell align="left"></StyledTableCell>
                   <StyledTableCell align="left"></StyledTableCell>
                   <StyledTableCell align="left"></StyledTableCell>
@@ -94,21 +130,53 @@ const LeagueMatchTable: React.FC<LeagueMatchTableProps> = ({ matches }) => {
                     {match.away_stats.GP}
                   </StyledTableCell>
                   <StyledTableCell align="left">
-                    {Math.floor(
-                      (match.away_stats.W / match.away_stats.GP) * 100
-                    ) + '%'}
+                    {calculatePercentage(
+                      match.away_stats.W,
+                      match.away_stats.GP
+                    )}
                   </StyledTableCell>
                   <StyledTableCell align="left">
-                    {match.away_stats.LP15}
+                    {calculatePercentage(
+                      match.away_stats.S2G,
+                      match.away_stats.GP
+                    )}
                   </StyledTableCell>
                   <StyledTableCell align="left">
-                    {match.away_stats.VP15}
+                    {calculatePercentage(
+                      match.away_stats.C2G,
+                      match.away_stats.GP
+                    )}
                   </StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
+                      match.away_stats.S3G,
+                      match.away_stats.GP
+                    )}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
+                      match.away_stats.C3G,
+                      match.away_stats.GP
+                    )}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
+                      match.away_stats.FHS2G,
+                      match.away_stats.GP
+                    )}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
+                      match.away_stats.FHC2G,
+                      match.away_stats.GP
+                    )}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
+                      match.away_stats.FHP15,
+                      match.away_stats.GP
+                    )}
+                  </StyledTableCell>
                   <StyledTableCell align="left"></StyledTableCell>
                   <StyledTableCell align="left"></StyledTableCell>
                   <StyledTableCell align="left"></StyledTableCell>
