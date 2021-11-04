@@ -13,6 +13,7 @@ import MatchDayRows from '../components/MatchDayRows';
 import StandingsTable from '../components/StandingsTable';
 import { useRouter } from 'next/router';
 import LeagueMatchTable from '../components/LeagueMatchTable';
+import { styled } from '@mui/material/styles';
 
 const MatchesPage: NextPage = () => {
   const [matches, setMatches] = React.useState<MatchStatsType>({});

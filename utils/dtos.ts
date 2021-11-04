@@ -1,4 +1,4 @@
-import { MatchEntity } from '../entities/statistics.entity';
+import { MatchEntity } from '../entities/all.entity';
 
 export const matchEntityToMatchDTO = (matchEntity: MatchEntity) => {
   const {
@@ -39,6 +39,7 @@ export const matchEntityToMatchStatsDTO = (
     id,
     status,
     date,
+    league: { name: league_name },
     home_team: { name: home_name, stats: home_stats },
     home_FullTimeGoals,
     home_FirstHalfGoals,
@@ -52,7 +53,8 @@ export const matchEntityToMatchStatsDTO = (
   const matchStatsDTO = {
     id,
     status,
-    date: date.toDateString(),
+    date: date.toISOString(),
+    league_name,
     home_name,
     home_stats: {
       GP: home_stats.GP,

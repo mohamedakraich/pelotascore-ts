@@ -24,6 +24,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       .orderBy('match.date', 'ASC')
       .getMany();
 
+    console.log(matches);
+
     const matchesResponse: matchesType = {};
     matches.forEach((match) => {
       if (!matchesResponse[match.leagueId]) {
