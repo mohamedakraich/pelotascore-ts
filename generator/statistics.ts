@@ -23,8 +23,13 @@ const initialTeamStats = {
   GA: 0,
   GD: 0,
   P: 0,
-  LP15: 0,
-  VP15: 0,
+  S2G: 0,
+  C2G: 0,
+  S3G: 0,
+  C3G: 0,
+  FHS2G: 0,
+  FHC2G: 0,
+  FHP15: 0,
 };
 
 interface statisticsMap {
@@ -37,8 +42,13 @@ interface statisticsMap {
     GA: number;
     GD: number;
     P: number;
-    LP15: number;
-    VP15: number;
+    S2G: number;
+    C2G: number;
+    S3G: number;
+    C3G: number;
+    FHS2G: number;
+    FHC2G: number;
+    FHP15: number;
   };
 }
 
@@ -75,12 +85,40 @@ const generatestats = async (league: League) => {
     statistics[match.away_team.name].GD +=
       match.away_FullTimeGoals - match.home_FullTimeGoals;
 
-    // Checking for P15 option
+    //Checking for FHP15
+    if (match.home_FirstHalfGoals + match.away_FirstHalfGoals >= 2) {
+      statistics[match.home_team.name].FHP15 += 1;
+      statistics[match.away_team.name].FHP15 += 1;
+    }
+
+    //Checking for S2G and C2G
     if (match.home_FullTimeGoals >= 2) {
-      statistics[match.home_team.name].LP15 += 1;
+      statistics[match.home_team.name].S2G += 1;
+      statistics[match.away_team.name].C2G += 1;
     }
     if (match.away_FullTimeGoals >= 2) {
-      statistics[match.away_team.name].VP15 += 1;
+      statistics[match.away_team.name].S2G += 1;
+      statistics[match.home_team.name].C2G += 1;
+    }
+
+    //Checking for S3G and C3G
+    if (match.home_FullTimeGoals >= 3) {
+      statistics[match.home_team.name].S3G += 1;
+      statistics[match.away_team.name].C3G += 1;
+    }
+    if (match.away_FullTimeGoals >= 3) {
+      statistics[match.away_team.name].S3G += 1;
+      statistics[match.home_team.name].C3G += 1;
+    }
+
+    //Checking for FHS2G and FHC2G
+    if (match.home_FirstHalfGoals >= 2) {
+      statistics[match.home_team.name].FHS2G += 1;
+      statistics[match.away_team.name].FHC2G += 1;
+    }
+    if (match.away_FirstHalfGoals >= 3) {
+      statistics[match.away_team.name].FHS2G += 1;
+      statistics[match.home_team.name].FHC2G += 1;
     }
 
     // Checking For P, W, D, L
@@ -100,11 +138,6 @@ const generatestats = async (league: League) => {
     }
   });
 
-  /*const statisticsTable = Object.entries(statistics).sort(
-    (a, b) => b[1].LP15 + b[1].VP15 - (a[1].LP15 + a[1].VP15)
-  );
-
-  console.log(statisticsTable);*/
   return statistics;
 };
 
@@ -124,8 +157,13 @@ getOrCreateConnection().then(async (connection) => {
         statsEntity.GA = statistics[key].GA;
         statsEntity.GD = statistics[key].GD;
         statsEntity.P = statistics[key].P;
-        statsEntity.LP15 = statistics[key].LP15;
-        statsEntity.VP15 = statistics[key].VP15;
+        statsEntity.S2G = statistics[key].S2G;
+        statsEntity.C2G = statistics[key].C2G;
+        statsEntity.S3G = statistics[key].S3G;
+        statsEntity.C3G = statistics[key].C3G;
+        statsEntity.FHS2G = statistics[key].FHS2G;
+        statsEntity.FHC2G = statistics[key].FHC2G;
+        statsEntity.FHP15 = statistics[key].FHP15;
         const foundTeam = await connection
           .getRepository<TeamEntity>('TeamEntity')
           .findOne({ name: key });

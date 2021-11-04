@@ -68,10 +68,25 @@ export class StatisticsEntity {
   P: number;
 
   @Column()
-  LP15: number;
+  S2G: number;
 
   @Column()
-  VP15: number;
+  C2G: number;
+
+  @Column()
+  S3G: number;
+
+  @Column()
+  C3G: number;
+
+  @Column()
+  FHS2G: number;
+
+  @Column()
+  FHC2G: number;
+
+  @Column()
+  FHP15: number;
 }
 
 @Entity({ name: 'teams' })
