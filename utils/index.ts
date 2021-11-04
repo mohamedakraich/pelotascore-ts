@@ -1,5 +1,5 @@
 import { getConnection, createConnection } from 'typeorm';
-import { FixtureEntity } from '../entities/fixture.entity';
+import path from 'path';
 import {
   LeagueEntity,
   MatchEntity,
@@ -12,7 +12,7 @@ export async function getOrCreateConnection() {
     const conn = getConnection('pelotascore');
     return conn;
   } catch (e) {
-    return createConnection({
+    const conn = await createConnection({
       name: 'pelotascore',
       type: 'postgres',
       host: process.env.POSTGRES_HOST as string,
@@ -20,16 +20,12 @@ export async function getOrCreateConnection() {
       username: process.env.POSTGRES_USER as string,
       password: process.env.POSTGRES_PASSWORD as string,
       database: process.env.POSTGRES_DB as string,
-      entities: [
-        LeagueEntity,
-        TeamEntity,
-        FixtureEntity,
-        MatchEntity,
-        StatisticsEntity,
-      ],
+      //entities: [path.resolve(__dirname + '/../entities/*.ts')],
+      entities: [LeagueEntity, TeamEntity, MatchEntity, StatisticsEntity],
       synchronize: true,
       logging: false,
     });
+    return conn;
   }
 }
 

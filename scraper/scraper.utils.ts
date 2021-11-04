@@ -66,11 +66,8 @@ export const getMatchResult = async (
     const matchTime = match.children[2].children[0].children[0].data;
     const timeHours = parseInt(matchTime.split(':')[0]);
     const timeMinutes = parseInt(matchTime.split(':')[1]);
-
     matchModel.date.setHours(timeHours);
     matchModel.date.setMinutes(timeMinutes);
-
-    //matchModel.time = matchTime;
   }
 
   return matchModel;
@@ -135,7 +132,6 @@ export const getMatchFixture = async (
     matchModel.date.setHours(timeHours);
     matchModel.date.setMinutes(timeMinutes);
   }
-  //matchModel.time = fixtureTime;
   matchModel.status = 0;
   matchModel.home_team = home_team;
   matchModel.away_team = away_team;

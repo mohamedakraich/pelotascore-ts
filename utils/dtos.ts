@@ -1,4 +1,4 @@
-import { MatchEntity } from '../entities/all.entity';
+import { MatchEntity } from '../entities/statistics.entity';
 
 export const matchEntityToMatchDTO = (matchEntity: MatchEntity) => {
   const {
@@ -61,9 +61,14 @@ export const matchEntityToMatchStatsDTO = (
       C2G: home_stats.C2G,
       S3G: home_stats.S3G,
       C3G: home_stats.C3G,
+      FHS1G: home_stats.FHS1G,
+      FHC1G: home_stats.FHC1G,
       FHS2G: home_stats.FHS2G,
       FHC2G: home_stats.FHC2G,
       FHP15: home_stats.FHP15,
+      P25: home_stats.P25,
+      P35: home_stats.P35,
+      P45: home_stats.P45,
     },
     home_FullTimeGoals,
     home_FirstHalfGoals,
@@ -76,9 +81,14 @@ export const matchEntityToMatchStatsDTO = (
       C2G: away_stats.C2G,
       S3G: away_stats.S3G,
       C3G: away_stats.C3G,
+      FHS1G: away_stats.FHS1G,
+      FHC1G: away_stats.FHC1G,
       FHS2G: away_stats.FHS2G,
       FHC2G: away_stats.FHC2G,
       FHP15: away_stats.FHP15,
+      P25: away_stats.P25,
+      P35: away_stats.P35,
+      P45: away_stats.P45,
     },
     away_FullTimeGoals,
     away_FirstHalfGoals,

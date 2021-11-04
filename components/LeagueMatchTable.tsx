@@ -53,6 +53,8 @@ const LeagueMatchTable: React.FC<LeagueMatchTableProps> = ({ matches }) => {
               <StyledTableCell align="left">C2G%</StyledTableCell>
               <StyledTableCell align="left">S3G%</StyledTableCell>
               <StyledTableCell align="left">C3G%</StyledTableCell>
+              <StyledTableCell align="left">FHS1G%</StyledTableCell>
+              <StyledTableCell align="left">FHC1G%</StyledTableCell>
               <StyledTableCell align="left">FHS2G%</StyledTableCell>
               <StyledTableCell align="left">FHC2G%</StyledTableCell>
               <StyledTableCell align="left">FHP15</StyledTableCell>
@@ -102,6 +104,18 @@ const LeagueMatchTable: React.FC<LeagueMatchTableProps> = ({ matches }) => {
                   </StyledTableCell>
                   <StyledTableCell align="left">
                     {calculatePercentage(
+                      match.home_stats.FHS1G,
+                      match.home_stats.GP
+                    )}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
+                      match.home_stats.FHC1G,
+                      match.home_stats.GP
+                    )}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
                       match.home_stats.FHS2G,
                       match.home_stats.GP
                     )}
@@ -118,9 +132,24 @@ const LeagueMatchTable: React.FC<LeagueMatchTableProps> = ({ matches }) => {
                       match.home_stats.GP
                     )}
                   </StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
+                      match.home_stats.P25,
+                      match.home_stats.GP
+                    )}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
+                      match.home_stats.P35,
+                      match.home_stats.GP
+                    )}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
+                      match.home_stats.P45,
+                      match.home_stats.GP
+                    )}
+                  </StyledTableCell>
                 </StyledTableRow>
                 <StyledTableRow>
                   <StyledTableCell component="th" scope="row">
@@ -161,6 +190,18 @@ const LeagueMatchTable: React.FC<LeagueMatchTableProps> = ({ matches }) => {
                   </StyledTableCell>
                   <StyledTableCell align="left">
                     {calculatePercentage(
+                      match.away_stats.FHS1G,
+                      match.away_stats.GP
+                    )}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
+                      match.away_stats.FHC1G,
+                      match.away_stats.GP
+                    )}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
                       match.away_stats.FHS2G,
                       match.away_stats.GP
                     )}
@@ -177,9 +218,24 @@ const LeagueMatchTable: React.FC<LeagueMatchTableProps> = ({ matches }) => {
                       match.away_stats.GP
                     )}
                   </StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
-                  <StyledTableCell align="left"></StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
+                      match.away_stats.P25,
+                      match.away_stats.GP
+                    )}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
+                      match.away_stats.P35,
+                      match.away_stats.GP
+                    )}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">
+                    {calculatePercentage(
+                      match.away_stats.P45,
+                      match.away_stats.GP
+                    )}
+                  </StyledTableCell>
                 </StyledTableRow>
                 <TableRow>
                   <TableCell colSpan={14} sx={{ height: 10 }} />

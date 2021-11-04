@@ -15,7 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       .getRepository<MatchEntity>('MatchEntity')
       .createQueryBuilder('match')
       .where('extract(month from match.date) = :m', { m: 11 })
-      .andWhere('extract(day from match.date) = :d', { d: 7 })
+      .andWhere('extract(day from match.date) = :d', { d: 5 })
       .leftJoinAndSelect('match.league', 'league')
       .leftJoinAndSelect('match.home_team', 'home_team')
       .leftJoinAndSelect('home_team.stats', 'home_team_stats')
@@ -24,7 +24,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       .orderBy('match.date', 'ASC')
       .getMany();
 
-    console.log(matches);
     const matchesResponse: matchesType = {};
     matches.forEach((match) => {
       if (!matchesResponse[match.leagueId]) {

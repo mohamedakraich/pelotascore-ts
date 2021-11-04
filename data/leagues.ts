@@ -1,4 +1,4 @@
-import { League } from '../matches';
+import { League } from '../scraper';
 
 export const leagues: League[] = [
   {
@@ -6,6 +6,12 @@ export const leagues: League[] = [
     name: 'Austria - Bundesliga',
     country: 'Austria',
     link: 'https://www.soccerstats.com/results.asp?league=austria&pmtype=bydate',
+  },
+  {
+    id: 'austria_2',
+    name: 'Austria - 2. Liga',
+    country: 'Austria',
+    link: 'https://www.soccerstats.com/results.asp?league=austria2&pmtype=bydate',
   },
   {
     id: 'belgium_1',
@@ -92,6 +98,24 @@ export const leagues: League[] = [
     link: 'https://www.soccerstats.com/results.asp?league=norway&pmtype=bydate',
   },
   {
+    id: 'norway_2',
+    name: 'Norway - 1st Division',
+    country: 'Norway',
+    link: 'https://www.soccerstats.com/results.asp?league=norway2&pmtype=bydate',
+  },
+  {
+    id: 'poland_1',
+    name: 'Poland - Ekstraklasa',
+    country: 'Poland',
+    link: 'https://www.soccerstats.com/results.asp?league=poland&pmtype=bydate',
+  },
+  {
+    id: 'poland_2',
+    name: 'Poland - 1. Liga',
+    country: 'Poland',
+    link: 'https://www.soccerstats.com/results.asp?league=poland2&pmtype=bydate',
+  },
+  {
     id: 'portugal_1',
     name: 'Portugal - Primeira Liga',
     country: 'Portugal',
@@ -108,6 +132,12 @@ export const leagues: League[] = [
     name: 'Switzerland - Super League',
     country: 'Switzerland',
     link: 'https://www.soccerstats.com/results.asp?league=switzerland&pmtype=bydate',
+  },
+  {
+    id: 'switzerland_2',
+    name: 'Switzerland - Challenge League',
+    country: 'Switzerland',
+    link: 'https://www.soccerstats.com/results.asp?league=switzerland2&pmtype=bydate',
   },
   {
     id: 'spain_1',

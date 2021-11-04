@@ -66,9 +66,14 @@ type Stats = {
   C2G: number;
   S3G: number;
   C3G: number;
+  FHS1G: number;
+  FHC1G: number;
   FHS2G: number;
   FHC2G: number;
   FHP15: number;
+  P25: number;
+  P35: number;
+  P45: number;
 };
 
 type MatchDTO = {

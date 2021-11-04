@@ -1,13 +1,12 @@
 import {
-  Entity,
   Column,
-  PrimaryGeneratedColumn,
-  ManyToOne,
-  PrimaryColumn,
-  OneToMany,
+  Entity,
   JoinColumn,
+  ManyToOne,
+  OneToMany,
   OneToOne,
-  Index,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 
 @Entity({ name: 'leagues' })
@@ -80,6 +79,12 @@ export class StatisticsEntity {
   C3G: number;
 
   @Column()
+  FHS1G: number;
+
+  @Column()
+  FHC1G: number;
+
+  @Column()
   FHS2G: number;
 
   @Column()
@@ -87,6 +92,15 @@ export class StatisticsEntity {
 
   @Column()
   FHP15: number;
+
+  @Column()
+  P25: number;
+
+  @Column()
+  P35: number;
+
+  @Column()
+  P45: number;
 }
 
 @Entity({ name: 'teams' })

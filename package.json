@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "scrape-matches": "ts-node scraper/matches.ts",
-    "scrape-statistics": "ts-node scraper/statistics.ts",
-    "generate-statistics": "ts-node generator/statistics",
+    "scrape": "ts-node scraper/index.ts",
+    "generate": "ts-node generator/index.ts",
+    "pelotascore": "yarn run scrape && yarn run generate",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

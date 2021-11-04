@@ -8,14 +8,14 @@ import cliProgress from 'cli-progress';
 import { exit } from 'process';
 import { Connection } from 'typeorm';
 import { getOrCreateConnection } from '../utils';
-import { leagues } from './data/leagues';
+import { leagues } from '../data/leagues';
 
-import { getLeagueStartingMonth, getMatch } from './matches_utils';
+import { getLeagueStartingMonth, getMatch } from './scraper.utils';
 import { LeagueEntity } from '../entities/all.entity';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
 
-const LEAGUES_LENGTH = leagues.length;
+export const LEAGUES_LENGTH = leagues.length;
 
 const bar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
 
@@ -26,7 +26,7 @@ export type League = {
   link: string;
 };
 
-const logLeague = async (connection: Connection, league: League) => {
+const saveLeague = async (connection: Connection, league: League) => {
   try {
     const response = await axios.get(league.link, {
       responseType: 'text',
@@ -60,12 +60,11 @@ const logLeague = async (connection: Connection, league: League) => {
 getOrCreateConnection().then(async (connection) => {
   await connection.dropDatabase();
   await connection.synchronize();
-
   let counter = 0;
   bar.start(LEAGUES_LENGTH, 0);
   for (let l = 0; l < leagues.length; l++) {
     try {
-      await logLeague(connection, leagues[l]);
+      await saveLeague(connection, leagues[l]);
       counter++;
       bar.update(counter);
     } catch (e) {
@@ -74,4 +73,5 @@ getOrCreateConnection().then(async (connection) => {
     }
   }
   bar.stop();
+  await connection.close();
 });
