@@ -51,7 +51,7 @@ const LeagueMatchTable: React.FC<LeagueMatchTableProps> = ({ matches }) => {
         <Grid item>
           <StyledGrid container alignItems="center" direction="row">
             <Grid item>
-              <Typography component="h2" color="white">
+              <Typography variant="h6" color="white">
                 {matches[0].league_name || ''}
               </Typography>
             </Grid>

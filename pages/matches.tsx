@@ -46,6 +46,11 @@ const MatchesPage: NextPage = () => {
       <Box m={5}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
+            <Typography variant="h6" color="black">
+              Number of matches: {count}
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
             {Object.keys(matches).map((key) => (
               <LeagueMatchTable key={key} matches={matches[key]} />
             ))}

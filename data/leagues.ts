@@ -2,6 +2,12 @@ import { League } from '../scraper';
 
 export const leagues: League[] = [
   {
+    id: 'argentina_1',
+    name: 'Argentina - Liga Profesional',
+    country: 'Argentina',
+    link: 'https://www.soccerstats.com/results.asp?league=argentina&pmtype=bydate',
+  },
+  {
     id: 'austria_1',
     name: 'Austria - Bundesliga',
     country: 'Austria',
@@ -18,6 +24,24 @@ export const leagues: League[] = [
     name: 'Belgium - Jupiler League',
     country: 'Belgium',
     link: 'https://www.soccerstats.com/results.asp?league=belgium&pmtype=bydate',
+  },
+  {
+    id: 'belarus_1',
+    name: 'Belarus - Premier League',
+    country: 'Belarus',
+    link: 'https://www.soccerstats.com/results.asp?league=belarus&pmtype=bydate',
+  },
+  {
+    id: 'brazil_1',
+    name: 'Brazil - Serie A',
+    country: 'Brazil',
+    link: 'https://www.soccerstats.com/results.asp?league=brazil&pmtype=bydate',
+  },
+  {
+    id: 'brazil_2',
+    name: 'Brazil - Serie B',
+    country: 'Brazil',
+    link: 'https://www.soccerstats.com/results.asp?league=brazil2&pmtype=bydate',
   },
   {
     id: 'denmark_1',
@@ -56,6 +80,12 @@ export const leagues: League[] = [
     link: 'https://www.soccerstats.com/results.asp?league=france3&pmtype=bydate',
   },
   {
+    id: 'egypt_1',
+    name: 'Egypt - Premier League',
+    country: 'Egypt',
+    link: 'https://www.soccerstats.com/results.asp?league=egypt&pmtype=bydate',
+  },
+  {
     id: 'germany_1',
     name: 'Bundesliga',
     country: 'Germany',
@@ -80,6 +110,12 @@ export const leagues: League[] = [
     link: 'https://www.soccerstats.com/results.asp?league=italy2&pmtype=bydate',
   },
   {
+    id: 'ireland_1',
+    name: 'Ireland - Premier Division',
+    country: 'Ireland',
+    link: 'https://www.soccerstats.com/results.asp?league=ireland&pmtype=bydate',
+  },
+  {
     id: 'morocco_1',
     name: 'Morocco - Botola Pro',
     country: 'Morocco',
@@ -90,6 +126,12 @@ export const leagues: League[] = [
     name: 'Netherlands - Eredivisie',
     country: 'Netherlands',
     link: 'https://www.soccerstats.com/results.asp?league=netherlands&pmtype=bydate',
+  },
+  {
+    id: 'netherlands_2',
+    name: 'Netherlands - Eerste Divisie',
+    country: 'Netherlands',
+    link: 'https://www.soccerstats.com/results.asp?league=netherlands2&pmtype=bydate',
   },
   {
     id: 'norway_1',
@@ -122,10 +164,46 @@ export const leagues: League[] = [
     link: 'https://www.soccerstats.com/results.asp?league=portugal&pmtype=bydate',
   },
   {
+    id: 'romania_1',
+    name: 'Romania - Liga 1',
+    country: 'Romania',
+    link: 'https://www.soccerstats.com/results.asp?league=romania&pmtype=bydate',
+  },
+  {
+    id: 'russia_1',
+    name: 'Russia - Premier League',
+    country: 'Russia',
+    link: 'https://www.soccerstats.com/results.asp?league=russia&pmtype=bydate',
+  },
+  {
+    id: 'russia_2',
+    name: 'Russia - FNL',
+    country: 'Russia',
+    link: 'https://www.soccerstats.com/results.asp?league=russia2&pmtype=bydate',
+  },
+  {
     id: 'sweden_1',
     name: 'Sweden - Allsvenskan',
     country: 'Sweden',
     link: 'https://www.soccerstats.com/results.asp?league=sweden&pmtype=bydate',
+  },
+  {
+    id: 'sweden_2',
+    name: 'Sweden - Superettan',
+    country: 'Sweden',
+    link: 'https://www.soccerstats.com/results.asp?league=sweden2&pmtype=bydate',
+  },
+  {
+    id: 'sweden_3',
+    name: 'Sweden - Div 1 - Norra',
+    country: 'Sweden',
+    link: 'https://www.soccerstats.com/results.asp?league=sweden3&pmtype=bydate',
+  },
+  {
+    id: 'sweden_4',
+    name: 'Sweden - Div 1 - Södra',
+    country: 'Sweden',
+    link: 'https://www.soccerstats.com/results.asp?league=sweden4&pmtype=bydate',
   },
   {
     id: 'switzerland_1',
@@ -156,5 +234,11 @@ export const leagues: League[] = [
     name: 'Turkey - Super Lig',
     country: 'Turkey',
     link: 'https://www.soccerstats.com/results.asp?league=turkey&pmtype=bydate',
+  },
+  {
+    id: 'wales_1',
+    name: 'Wales - Cymru Premier',
+    country: 'Wales',
+    link: 'https://www.soccerstats.com/results.asp?league=wales&pmtype=bydate',
   },
 ];
