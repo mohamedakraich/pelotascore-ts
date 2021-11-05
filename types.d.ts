@@ -1,3 +1,5 @@
+declare module 'react-country-flag';
+
 type Team = {
   name: string;
   GP: string;

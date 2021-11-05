@@ -14,6 +14,7 @@ import StandingsTable from '../components/StandingsTable';
 import { useRouter } from 'next/router';
 import LeagueMatchTable from '../components/LeagueMatchTable';
 import { styled } from '@mui/material/styles';
+import Layout from '../components/Layout';
 
 const MatchesPage: NextPage = () => {
   const [matches, setMatches] = React.useState<MatchStatsType>({});
@@ -39,11 +40,11 @@ const MatchesPage: NextPage = () => {
   }, [query]);
 
   return (
-    <React.Fragment>
+    <Layout>
       <Head>
         <title>Soccerstats Fucker</title>
       </Head>
-      <Box m={5}>
+      <Box m={1}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <Typography variant="h6" color="black">
@@ -57,7 +58,7 @@ const MatchesPage: NextPage = () => {
           </Grid>
         </Grid>
       </Box>
-    </React.Fragment>
+    </Layout>
   );
 };
 
