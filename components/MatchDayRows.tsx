@@ -1,10 +1,15 @@
 import * as React from 'react';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
+import { styled } from '@mui/material/styles';
 
 interface MatchDayTableProps {
   matches: Match[];
 }
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.light,
+}));
 
 const MatchDayRows: React.FC<MatchDayTableProps> = ({ matches }) => {
   return (
@@ -48,13 +53,9 @@ const MatchDayRows: React.FC<MatchDayTableProps> = ({ matches }) => {
           </TableRow>
         );
       })}
-      <TableRow
-        sx={{
-          '&:last-child td, &:last-child th': { border: 0 },
-        }}
-      >
+      <StyledTableRow>
         <TableCell component="th" scope="row" colSpan={5}></TableCell>
-      </TableRow>
+      </StyledTableRow>
     </React.Fragment>
   );
 };

@@ -95,42 +95,80 @@ const Layout: React.FC = ({ children }) => {
         <List>
           <ListSubheader>All Leagues</ListSubheader>
           {[
-            { code: 'AR', name: 'Liga Profesional' },
-            { code: 'AT', name: 'Bundesliga' },
-            { code: 'AT', name: '2. Liga' },
-            { code: 'BE', name: 'Jupiler League' },
-            { code: 'BY', name: 'Premier League' },
-            { code: 'BR', name: 'Serie A' },
-            { code: 'BR', name: 'Serie B' },
-            { code: 'DK', name: 'Superligaen' },
-            { code: 'GB', name: 'Premiere League' },
-            { code: 'GB', name: 'Championship' },
-            { code: 'FR', name: 'Ligue 1' },
-            { code: 'FR', name: 'Ligue 2' },
-            { code: 'FR', name: 'National' },
-            { code: 'EG', name: 'Premier League' },
-            { code: 'DE', name: 'Bundesliga' },
-            { code: 'DE', name: '2. Bundesliga' },
-            { code: 'IT', name: 'Serie A' },
-            { code: 'IT', name: 'Serie B' },
-            { code: 'IE', name: 'Premier Division' },
-            { code: 'MA', name: 'Botola Pro' },
-            { code: 'NL', name: 'Eredivisie' },
-            { code: 'NL', name: 'Eerste Divisie' },
+            {
+              code: 'ar',
+              name: 'Liga Profesional',
+              link: '/leagues?id=argentina_1',
+            },
+            { code: 'at', name: 'Bundesliga', link: '/leagues?id=austria_1' },
+            { code: 'at', name: '2. Liga', link: '/leagues?id=austria_2' },
+            {
+              code: 'be',
+              name: 'Jupiler League',
+              link: '/leagues?id=belgium_1',
+            },
+            {
+              code: 'by',
+              name: 'Premier League',
+              link: '/leagues?id=belarus_1',
+            },
+            { code: 'br', name: 'Serie A', link: '/leagues?id=brazil_1' },
+            { code: 'br', name: 'Serie B', link: '/leagues?id=brazil_2' },
+            { code: 'dk', name: 'Superligaen', link: '/leagues?id=denmark_1' },
+            {
+              code: 'gb-eng',
+              name: 'Premiere League',
+              link: '/leagues?id=england_1',
+            },
+            {
+              code: 'gb-eng',
+              name: 'Championship',
+              link: '/leagues?id=england_2',
+            },
+            { code: 'fr', name: 'Ligue 1', link: '/leagues?id=france_1' },
+            { code: 'fr', name: 'Ligue 2', link: '/leagues?id=france_2' },
+            { code: 'fr', name: 'National', link: '/leagues?id=france_3' },
+            {
+              code: 'eg',
+              name: 'Premier League',
+              link: '/leagues?id=egypt_1',
+            },
+            { code: 'de', name: 'Bundesliga', link: '/leagues?id=germany_1' },
+            {
+              code: 'de',
+              name: '2. Bundesliga',
+              link: '/leagues?id=germany_2',
+            },
+            { code: 'it', name: 'Serie A', link: '/leagues?id=italy_1' },
+            { code: 'it', name: 'Serie B', link: '/leagues?id=italy_2' },
+            {
+              code: 'ie',
+              name: 'Premier Division',
+              link: '/leagues?id=ireland_1',
+            },
+            { code: 'ma', name: 'Botola Pro', link: '/leagues?id=morocco_1' },
+            {
+              code: 'nl',
+              name: 'Eredivisie',
+              link: '/leagues?id=netherlands_1',
+            },
+            {
+              code: 'nl',
+              name: 'Eerste Divisie',
+              link: '/leagues?id=netherlands_2',
+            },
           ].map((item, index) => (
-            <ListItem button key={index}>
-              <ListItemIcon>
-                <ReactCountryFlag
-                  countryCode={item.code}
-                  svg
-                  style={{
-                    width: '3em',
-                    height: '1.5em',
-                  }}
-                />
-              </ListItemIcon>
-              <ListItemText primary={item.name} />
-            </ListItem>
+            <Link key={index} href={item.link} passHref>
+              <ListItem button key={index}>
+                <ListItemIcon>
+                  <span
+                    className={'flag-icon flag-icon-' + item.code}
+                    style={{ width: '3em', height: '1.5em' }}
+                  ></span>
+                </ListItemIcon>
+                <ListItemText primary={item.name} />
+              </ListItem>
+            </Link>
           ))}
         </List>
       </Drawer>
