@@ -80,6 +80,22 @@ const Layout: React.FC = ({ children }) => {
             { code: 'BE', name: 'Jupiler League' },
             { code: 'BY', name: 'Premier League' },
             { code: 'BR', name: 'Serie A' },
+            { code: 'BR', name: 'Serie B' },
+            { code: 'DK', name: 'Superligaen' },
+            { code: 'GB', name: 'Premiere League' },
+            { code: 'GB', name: 'Championship' },
+            { code: 'FR', name: 'Ligue 1' },
+            { code: 'FR', name: 'Ligue 2' },
+            { code: 'FR', name: 'National' },
+            { code: 'EG', name: 'Premier League' },
+            { code: 'DE', name: 'Bundesliga' },
+            { code: 'DE', name: '2. Bundesliga' },
+            { code: 'IT', name: 'Serie A' },
+            { code: 'IT', name: 'Serie B' },
+            { code: 'IE', name: 'Premier Division' },
+            { code: 'MA', name: 'Botola Pro' },
+            { code: 'NL', name: 'Eredivisie' },
+            { code: 'NL', name: 'Eerste Divisie' },
           ].map((item, index) => (
             <ListItem button key={index}>
               <ListItemIcon>
