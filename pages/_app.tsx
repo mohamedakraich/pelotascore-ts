@@ -7,16 +7,17 @@ import React from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { CssBaseline } from '@mui/material';
+import Layout from '../components/Layout';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <React.Fragment>
+    <Layout>
       <CssBaseline />
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <Component {...pageProps} />
-    </React.Fragment>
+    </Layout>
   );
 }
 

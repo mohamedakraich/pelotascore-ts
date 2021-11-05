@@ -15,6 +15,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import ReactCountryFlag from 'react-country-flag';
 import { ListSubheader } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
+import Link from 'next/link';
 
 const drawerWidth = 240;
 
@@ -49,25 +50,41 @@ const Layout: React.FC = ({ children }) => {
         <List>
           <ListSubheader>Favorite Leagues</ListSubheader>
           {[
-            { code: 'GB', name: 'Premiere League' },
-            { code: 'FR', name: 'Ligue 1' },
-            { code: 'DE', name: 'Bundesliga' },
-            { code: 'IT', name: 'Serie A' },
-            { code: 'ES', name: 'LaLiga' },
+            {
+              code: 'GB',
+              name: 'Premiere League',
+              link: '/leagues?id=england_1',
+            },
+            { code: 'FR', name: 'Ligue 1', link: '/leagues?id=france_1' },
+            { code: 'DE', name: 'Bundesliga', link: '/leagues?id=germany_1' },
+            { code: 'IT', name: 'Serie A', link: '/leagues?id=italy_1' },
+            { code: 'ES', name: 'LaLiga', link: '/leagues?id=spain_1' },
+            {
+              code: 'PT',
+              name: 'Primeira Liga',
+              link: '/leagues?id=portugal_1',
+            },
+            {
+              code: 'NL',
+              name: 'Eredivisie',
+              link: '/leagues?id=netherlands_1',
+            },
           ].map((item, index) => (
-            <ListItem button key={index}>
-              <ListItemIcon>
-                <ReactCountryFlag
-                  countryCode={item.code}
-                  svg
-                  style={{
-                    width: '3em',
-                    height: '1.5em',
-                  }}
-                />
-              </ListItemIcon>
-              <ListItemText primary={item.name} />
-            </ListItem>
+            <Link key={index} href={item.link} passHref>
+              <ListItem button>
+                <ListItemIcon>
+                  <ReactCountryFlag
+                    countryCode={item.code}
+                    svg
+                    style={{
+                      width: '3em',
+                      height: '1.5em',
+                    }}
+                  />
+                </ListItemIcon>
+                <ListItemText primary={item.name} />
+              </ListItem>
+            </Link>
           ))}
         </List>
         <Divider />
