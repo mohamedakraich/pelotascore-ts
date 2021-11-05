@@ -51,21 +51,21 @@ const Layout: React.FC = ({ children }) => {
           <ListSubheader>Favorite Leagues</ListSubheader>
           {[
             {
-              code: 'GB',
+              code: 'gb-eng',
               name: 'Premiere League',
               link: '/leagues?id=england_1',
             },
-            { code: 'FR', name: 'Ligue 1', link: '/leagues?id=france_1' },
-            { code: 'DE', name: 'Bundesliga', link: '/leagues?id=germany_1' },
-            { code: 'IT', name: 'Serie A', link: '/leagues?id=italy_1' },
-            { code: 'ES', name: 'LaLiga', link: '/leagues?id=spain_1' },
+            { code: 'fr', name: 'Ligue 1', link: '/leagues?id=france_1' },
+            { code: 'de', name: 'Bundesliga', link: '/leagues?id=germany_1' },
+            { code: 'it', name: 'Serie A', link: '/leagues?id=italy_1' },
+            { code: 'es', name: 'LaLiga', link: '/leagues?id=spain_1' },
             {
-              code: 'PT',
+              code: 'pt',
               name: 'Primeira Liga',
               link: '/leagues?id=portugal_1',
             },
             {
-              code: 'NL',
+              code: 'nl',
               name: 'Eredivisie',
               link: '/leagues?id=netherlands_1',
             },
@@ -73,14 +73,18 @@ const Layout: React.FC = ({ children }) => {
             <Link key={index} href={item.link} passHref>
               <ListItem button>
                 <ListItemIcon>
-                  <ReactCountryFlag
+                  <span
+                    className={'flag-icon flag-icon-' + item.code}
+                    style={{ width: '3em', height: '1.5em' }}
+                  ></span>
+                  {/*<ReactCountryFlag
                     countryCode={item.code}
                     svg
                     style={{
                       width: '3em',
                       height: '1.5em',
                     }}
-                  />
+                  />*/}
                 </ListItemIcon>
                 <ListItemText primary={item.name} />
               </ListItem>

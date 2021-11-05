@@ -40,6 +40,7 @@
     "babel-plugin-transform-typescript-metadata": "^0.3.2",
     "eslint": "7",
     "eslint-config-next": "12.0.1",
+    "flag-icon-css": "^4.1.5",
     "nodemon": "^2.0.14",
     "ts-node": "^10.4.0",
     "typescript": "4.4.4"

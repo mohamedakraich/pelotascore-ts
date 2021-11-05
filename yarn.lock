@@ -2390,6 +2390,11 @@ find-up@^4.0.0:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
 
+flag-icon-css@^4.1.5:
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/flag-icon-css/-/flag-icon-css-4.1.5.tgz#e62bb9b06cb659bb89fcf15ecec44ad65bf26180"
+  integrity sha512-n79GW+Seau2sBgT6UF4njkAIVYktGxp133+MPvs92pbqycuFxikfpb8MOCCT0u5niybkHHVXVab19a9xNqxm0g==
+
 flat-cache@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/flat-cache/-/flat-cache-3.0.4.tgz#61b0338302b2fe9f957dcc32fc2a87f1c3048b11"
