@@ -17,6 +17,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       .getRepository<MatchEntity>('MatchEntity')
       .createQueryBuilder('match')
       .where('match.leagueId = :league_id', { league_id })
+      .andWhere('match.status = :status', { status: 0 })
       .leftJoinAndSelect('match.home_team', 'home_team')
       .leftJoinAndSelect('match.away_team', 'away_team')
       .orderBy('match.date', 'ASC')

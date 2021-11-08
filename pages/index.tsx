@@ -9,7 +9,7 @@ import TableContainer from '@mui/material/TableContainer';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import MatchDayRows from '../components/MatchDayRows';
+import MatchDayRows from '../components/MatchesTable';
 import StandingsTable from '../components/StandingsTable';
 import { useRouter } from 'next/router';
 import LeagueMatchTable from '../components/LeagueMatchTable';
