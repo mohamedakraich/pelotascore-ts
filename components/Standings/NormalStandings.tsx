@@ -10,7 +10,7 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import MatchesTable from '../MatchesTable';
-import StandingsTable from '../StandingsTable';
+import StandingsTable from './StandingsTable';
 import { useRouter } from 'next/router';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -24,13 +24,11 @@ const a11yProps = (index: number) => {
   };
 };
 
-interface StandingsComponentProps {
+interface NormalStandingsProps {
   standings: StandingsType[];
 }
 
-const StandingsComponent: React.FC<StandingsComponentProps> = ({
-  standings,
-}) => {
+const NormalStandings: React.FC<NormalStandingsProps> = ({ standings }) => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -50,10 +48,9 @@ const StandingsComponent: React.FC<StandingsComponentProps> = ({
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <StyledTab label="Standings" {...a11yProps(0)} />
-          <StyledTab label="Form" {...a11yProps(1)} />
-          <StyledTab label="Under/Over" {...a11yProps(2)} />
-          <StyledTab label="HT/FT" {...a11yProps(2)} />
+          <StyledTab label="Overall" {...a11yProps(0)} />
+          <StyledTab label="home" {...a11yProps(1)} />
+          <StyledTab label="Away" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
@@ -67,4 +64,4 @@ const StandingsComponent: React.FC<StandingsComponentProps> = ({
   );
 };
 
-export default StandingsComponent;
+export default NormalStandings;
