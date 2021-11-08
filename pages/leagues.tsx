@@ -87,6 +87,7 @@ const HomePage: NextPage = () => {
         const fixturesCount = response.data?.count as unknown as number;
         setCount(fixturesCount);
         setFixtures(fixturesResponse);
+        console.log('fixturesResponse', fixturesResponse);
       })
       .catch((error) => {
         console.log(error);

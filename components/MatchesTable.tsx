@@ -19,7 +19,7 @@ const MatchesTable: React.FC<MatchDayTableProps> = ({ matches }) => {
       <StyledTableRow>
         <TableCell component="th" scope="row" colSpan={4}>
           <Typography variant="subtitle2" color="white">
-            {matches[0].date.split('T')[0]}
+            {matches[0].date.split('#')[0]}
           </Typography>
         </TableCell>
       </StyledTableRow>
@@ -72,8 +72,8 @@ const MatchesTable: React.FC<MatchDayTableProps> = ({ matches }) => {
               </Typography>
             </TableCell>
             <TableCell align="center">
-              <Typography variant="subtitle2" color="black">
-                {match.date.split('T')[1]}
+              <Typography variant="body2" color="black">
+                {match.date.split('#')[1]}
               </Typography>
             </TableCell>
             <TableCell align="left">

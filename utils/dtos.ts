@@ -18,7 +18,12 @@ export const matchEntityToMatchDTO = (matchEntity: MatchEntity) => {
   const matchDTO = {
     id,
     status,
-    date: date.toDateString(),
+    date:
+      date.toDateString() +
+      '#' +
+      ('0' + date.getHours()).slice(-2) +
+      ':' +
+      ('0' + date.getMinutes()).slice(-2),
     home_name,
     home_FullTimeGoals,
     home_FirstHalfGoals,
