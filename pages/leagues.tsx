@@ -14,6 +14,8 @@ import StandingsTable from '../components/StandingsTable';
 import { useRouter } from 'next/router';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import { styled } from '@mui/material/styles';
+import StandingsComponent from '../components/Standings/StandingsComponent';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -21,7 +23,27 @@ interface TabPanelProps {
   value: number;
 }
 
-function TabPanel(props: TabPanelProps) {
+interface StyledTabProps {
+  label: string;
+}
+
+export const StyledTab = styled((props: StyledTabProps) => (
+  <Tab disableRipple {...props} />
+))(({ theme }) => ({
+  backgroundColor: theme.palette.grey[200],
+  '&.Mui-selected': {
+    backgroundColor: theme.palette.primary.main,
+    color: '#fff',
+  },
+}));
+
+const StyledBox = styled((props) => <Tab disableRipple {...props} />)(
+  ({ theme }) => ({
+    backgroundColor: theme.palette.primary.main,
+  })
+);
+
+export const TabPanel = (props: TabPanelProps) => {
   const { children, value, index, ...other } = props;
 
   return (
@@ -33,13 +55,13 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
+        <Box sx={{ p: 0 }}>
           <Typography>{children}</Typography>
         </Box>
       )}
     </div>
   );
-}
+};
 
 function a11yProps(index: number) {
   return {
@@ -114,19 +136,24 @@ const HomePage: NextPage = () => {
         <title>Soccerstats Fucker</title>
       </Head>
       <Box sx={{ width: '100%' }}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Box sx={{ borderBottom: 5, borderColor: 'primary.main' }}>
           <Tabs
+            TabIndicatorProps={{
+              style: {
+                display: 'none',
+              },
+            }}
             value={value}
             onChange={handleChange}
             aria-label="basic tabs example"
           >
-            <Tab label="Results" {...a11yProps(0)} />
-            <Tab label="Fixtures" {...a11yProps(1)} />
-            <Tab label="Standings" {...a11yProps(2)} />
+            <StyledTab label="Results" {...a11yProps(0)} />
+            <StyledTab label="Fixtures" {...a11yProps(1)} />
+            <StyledTab label="Standings" {...a11yProps(2)} />
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
-          <Grid container spacing={2}>
+          <Grid container p={3}>
             <Grid item xs={12} md>
               <TableContainer component={Paper} elevation={5}>
                 <Table size="small">
@@ -141,7 +168,7 @@ const HomePage: NextPage = () => {
           </Grid>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Grid container spacing={2}>
+          <Grid container p={3}>
             <Grid item xs={12} md>
               <TableContainer component={Paper} elevation={5}>
                 <Table size="small">
@@ -158,11 +185,7 @@ const HomePage: NextPage = () => {
           </Grid>
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md>
-              {standings.length > 0 && <StandingsTable standings={standings} />}
-            </Grid>
-          </Grid>
+          <StandingsComponent standings={standings} />
         </TabPanel>
       </Box>
     </React.Fragment>
