@@ -1,5 +1,7 @@
 declare module 'react-country-flag';
 
+type MatchMode = 'HOME' | 'AWAY';
+
 type Team = {
   name: string;
   GP: string;
