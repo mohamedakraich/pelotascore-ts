@@ -40,7 +40,7 @@ const StandingsComponent: React.FC<StandingsComponentProps> = ({
 
   return (
     <Box sx={{ width: '100%', mt: 2 }}>
-      <Box sx={{ borderBottom: 5, borderColor: 'primary.main' }}>
+      <Box>
         <Tabs
           TabIndicatorProps={{
             style: {
