@@ -21,6 +21,7 @@ export const intialFormStats = {
   GA: 0,
   GD: 0,
   Pts: 0,
+  FormString: '',
 };
 
 export const initialStats = {

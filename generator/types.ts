@@ -21,6 +21,7 @@ export interface FormStatType {
   GA: number;
   GD: number;
   Pts: number;
+  FormString: string;
 }
 
 export interface StatsType {

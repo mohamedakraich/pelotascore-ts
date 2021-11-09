@@ -3,10 +3,11 @@ import { League } from '../scraper';
 import { getOrCreateConnection } from '../utils';
 import { initialStatsMap } from '../utils/constants';
 import { matchEntityToMatchDTO } from '../utils/dtos';
+import { add_stats } from './add_stats';
 import generate_team_stats from './generate_team_stats';
 import { StatisticsMap } from './types';
 
-export const generatestats = async (league: League) => {
+const generate_stats = async (league: League) => {
   let statistics: StatisticsMap = {};
 
   try {
@@ -51,9 +52,12 @@ export const generatestats = async (league: League) => {
 
       statistics[key].home.stats = homeStats;
       statistics[key].away.stats = awayStats;
+      statistics[key].overall.stats = add_stats(homeStats, awayStats);
     });
   } catch (e) {
     console.error('generatestats', e);
   }
   return statistics;
 };
+
+export default generate_stats;

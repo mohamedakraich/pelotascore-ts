@@ -43,64 +43,116 @@ export class StatisticsEntity {
   team_name: string;
 
   @Column()
-  GP: number;
+  overall_GP: number;
+  @Column()
+  home_GP: number;
+  @Column()
+  away_GP: number;
 
   @Column()
-  W: number;
+  overall_W: number;
+  @Column()
+  home_W: number;
+  @Column()
+  away_W: number;
 
   @Column()
-  D: number;
+  overall_D: number;
+  @Column()
+  home_D: number;
+  @Column()
+  away_D: number;
 
   @Column()
-  L: number;
+  overall_L: number;
+  @Column()
+  home_L: number;
+  @Column()
+  away_L: number;
 
   @Column()
-  GF: number;
+  overall_GF: number;
+  @Column()
+  home_GF: number;
+  @Column()
+  away_GF: number;
 
   @Column()
-  GA: number;
+  overall_GA: number;
+  @Column()
+  home_GA: number;
+  @Column()
+  away_GA: number;
 
   @Column()
-  GD: number;
+  overall_GD: number;
+  @Column()
+  home_GD: number;
+  @Column()
+  away_GD: number;
 
   @Column()
-  P: number;
+  overall_Pts: number;
+  @Column()
+  home_Pts: number;
+  @Column()
+  away_Pts: number;
 
   @Column()
-  S2G: number;
+  overall_S2G: number;
+  @Column()
+  home_S2G: number;
+  @Column()
+  away_S2G: number;
 
   @Column()
-  C2G: number;
+  overall_C2G: number;
+  @Column()
+  home_C2G: number;
+  @Column()
+  away_C2G: number;
 
   @Column()
-  S3G: number;
+  overall_S3G: number;
+  @Column()
+  home_S3G: number;
+  @Column()
+  away_S3G: number;
 
   @Column()
-  C3G: number;
+  overall_C3G: number;
+  @Column()
+  home_C3G: number;
+  @Column()
+  away_C3G: number;
 
   @Column()
-  FHS1G: number;
+  overall_P15: number;
+  @Column()
+  home_P15: number;
+  @Column()
+  away_P15: number;
 
   @Column()
-  FHC1G: number;
+  overall_P25: number;
+  @Column()
+  home_P25: number;
+  @Column()
+  away_P25: number;
 
   @Column()
-  FHS2G: number;
+  overall_P35: number;
+  @Column()
+  home_P35: number;
+  @Column()
+  away_P35: number;
 
   @Column()
-  FHC2G: number;
-
+  overall_P45: number;
   @Column()
-  FHP15: number;
-
+  home_P45: number;
   @Column()
-  P25: number;
-
-  @Column()
-  P35: number;
-
-  @Column()
-  P45: number;
+  away_P45: number;
 }
 
 @Entity({ name: 'teams' })
