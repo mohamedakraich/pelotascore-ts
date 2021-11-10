@@ -1,5 +1,4 @@
 import { initialStats } from '../utils/constants';
-import { StatsType } from './types';
 
 export const add_stats = (a: StatsType, b: StatsType): StatsType => {
   let addedStats = { ...initialStats };

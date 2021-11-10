@@ -2,7 +2,6 @@ import { match } from 'assert';
 import { initialStats } from '../utils/constants';
 import { add_stats } from './add_stats';
 import generate_match_stats from './generate_match_stats';
-import { StatsType } from './types';
 
 const generate_team_stats = (mode: MatchMode, matches: Match[]): StatsType => {
   let stats = { ...initialStats };

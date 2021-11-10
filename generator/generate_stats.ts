@@ -5,7 +5,6 @@ import { initialStatsMap } from '../utils/constants';
 import { matchEntityToMatchDTO } from '../utils/dtos';
 import { add_stats } from './add_stats';
 import generate_team_stats from './generate_team_stats';
-import { StatisticsMap } from './types';
 
 const generate_stats = async (league: League) => {
   let statistics: StatisticsMap = {};

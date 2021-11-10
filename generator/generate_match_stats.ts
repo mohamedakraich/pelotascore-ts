@@ -1,5 +1,4 @@
 import { initialStats } from '../utils/constants';
-import { StatsType } from './types';
 
 /*
 By default, it generates stats for Home Team.

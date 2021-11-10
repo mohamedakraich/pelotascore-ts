@@ -99,6 +99,27 @@ export class StatisticsEntity {
   away_Pts: number;
 
   @Column()
+  overall_FTS: number;
+  @Column()
+  home_FTS: number;
+  @Column()
+  away_FTS: number;
+
+  @Column()
+  overall_CS: number;
+  @Column()
+  home_CS: number;
+  @Column()
+  away_CS: number;
+
+  @Column()
+  overall_BTS: number;
+  @Column()
+  home_BTS: number;
+  @Column()
+  away_BTS: number;
+
+  @Column()
   overall_S2G: number;
   @Column()
   home_S2G: number;
@@ -127,6 +148,69 @@ export class StatisticsEntity {
   away_C3G: number;
 
   @Column()
+  overall_WW: number;
+  @Column()
+  home_WW: number;
+  @Column()
+  away_WW: number;
+
+  @Column()
+  overall_WD: number;
+  @Column()
+  home_WD: number;
+  @Column()
+  away_WD: number;
+
+  @Column()
+  overall_WL: number;
+  @Column()
+  home_WL: number;
+  @Column()
+  away_WL: number;
+
+  @Column()
+  overall_DW: number;
+  @Column()
+  home_DW: number;
+  @Column()
+  away_DW: number;
+
+  @Column()
+  overall_DD: number;
+  @Column()
+  home_DD: number;
+  @Column()
+  away_DD: number;
+
+  @Column()
+  overall_DL: number;
+  @Column()
+  home_DL: number;
+  @Column()
+  away_DL: number;
+
+  @Column()
+  overall_LW: number;
+  @Column()
+  home_LW: number;
+  @Column()
+  away_LW: number;
+
+  @Column()
+  overall_LD: number;
+  @Column()
+  home_LD: number;
+  @Column()
+  away_LD: number;
+
+  @Column()
+  overall_LL: number;
+  @Column()
+  home_LL: number;
+  @Column()
+  away_LL: number;
+
+  @Column()
   overall_P15: number;
   @Column()
   home_P15: number;
@@ -153,6 +237,223 @@ export class StatisticsEntity {
   home_P45: number;
   @Column()
   away_P45: number;
+
+  @Column()
+  overall_1HT_W: number;
+  @Column()
+  home_1HT_W: number;
+  @Column()
+  away_1HT_W: number;
+
+  @Column()
+  overall_1HT_D: number;
+  @Column()
+  home_1HT_D: number;
+  @Column()
+  away_1HT_D: number;
+
+  @Column()
+  overall_1HT_L: number;
+  @Column()
+  home_1HT_L: number;
+  @Column()
+  away_1HT_L: number;
+
+  @Column()
+  overall_1HT_FTS: number;
+  @Column()
+  home_1HT_FTS: number;
+  @Column()
+  away_1HT_FTS: number;
+
+  @Column()
+  overall_1HT_CS: number;
+  @Column()
+  home_1HT_CS: number;
+  @Column()
+  away_1HT_CS: number;
+
+  @Column()
+  overall_1HT_BTS: number;
+  @Column()
+  home_1HT_BTS: number;
+  @Column()
+  away_1HT_BTS: number;
+
+  @Column()
+  overall_1HT_S1G: number;
+  @Column()
+  home_1HT_S1G: number;
+  @Column()
+  away_1HT_S1G: number;
+
+  @Column()
+  overall_1HT_C1G: number;
+  @Column()
+  home_1HT_C1G: number;
+  @Column()
+  away_1HT_C1G: number;
+
+  @Column()
+  overall_1HT_S2G: number;
+  @Column()
+  home_1HT_S2G: number;
+  @Column()
+  away_1HT_S2G: number;
+
+  @Column()
+  overall_1HT_C2G: number;
+  @Column()
+  home_1HT_C2G: number;
+  @Column()
+  away_1HT_C2G: number;
+
+  @Column()
+  overall_1HT_P15: number;
+  @Column()
+  home_1HT_P15: number;
+  @Column()
+  away_1HT_P15: number;
+
+  @Column()
+  overall_2HT_W: number;
+  @Column()
+  home_2HT_W: number;
+  @Column()
+  away_2HT_W: number;
+
+  @Column()
+  overall_2HT_D: number;
+  @Column()
+  home_2HT_D: number;
+  @Column()
+  away_2HT_D: number;
+
+  @Column()
+  overall_2HT_L: number;
+  @Column()
+  home_2HT_L: number;
+  @Column()
+  away_2HT_L: number;
+
+  @Column()
+  overall_2HT_FTS: number;
+  @Column()
+  home_2HT_FTS: number;
+  @Column()
+  away_2HT_FTS: number;
+
+  @Column()
+  overall_2HT_CS: number;
+  @Column()
+  home_2HT_CS: number;
+  @Column()
+  away_2HT_CS: number;
+
+  @Column()
+  overall_2HT_BTS: number;
+  @Column()
+  home_2HT_BTS: number;
+  @Column()
+  away_2HT_BTS: number;
+
+  @Column()
+  overall_2HT_S1G: number;
+  @Column()
+  home_2HT_S1G: number;
+  @Column()
+  away_2HT_S1G: number;
+
+  @Column()
+  overall_2HT_C1G: number;
+  @Column()
+  home_2HT_C1G: number;
+  @Column()
+  away_2HT_C1G: number;
+
+  @Column()
+  overall_2HT_S2G: number;
+  @Column()
+  home_2HT_S2G: number;
+  @Column()
+  away_2HT_S2G: number;
+
+  @Column()
+  overall_2HT_C2G: number;
+  @Column()
+  home_2HT_C2G: number;
+  @Column()
+  away_2HT_C2G: number;
+
+  @Column()
+  overall_2HT_P15: number;
+  @Column()
+  home_2HT_P15: number;
+  @Column()
+  away_2HT_P15: number;
+
+  @Column()
+  overall_form_GP: number;
+  @Column()
+  home_form_GP: number;
+  @Column()
+  away_form_GP: number;
+
+  @Column()
+  overall_form_W: number;
+  @Column()
+  home_form_W: number;
+  @Column()
+  away_form_W: number;
+
+  @Column()
+  overall_form_D: number;
+  @Column()
+  home_form_D: number;
+  @Column()
+  away_form_D: number;
+
+  @Column()
+  overall_form_L: number;
+  @Column()
+  home_form_L: number;
+  @Column()
+  away_form_L: number;
+
+  @Column()
+  overall_form_GF: number;
+  @Column()
+  home_form_GF: number;
+  @Column()
+  away_form_GF: number;
+
+  @Column()
+  overall_form_GA: number;
+  @Column()
+  home_form_GA: number;
+  @Column()
+  away_form_GA: number;
+
+  @Column()
+  overall_form_GD: number;
+  @Column()
+  home_form_GD: number;
+  @Column()
+  away_form_GD: number;
+
+  @Column()
+  overall_form_Pts: number;
+  @Column()
+  home_form_Pts: number;
+  @Column()
+  away_form_Pts: number;
+
+  @Column()
+  overall_form_string: number;
+  @Column()
+  home_form_string: number;
+  @Column()
+  away_form_string: number;
 }
 
 @Entity({ name: 'teams' })
