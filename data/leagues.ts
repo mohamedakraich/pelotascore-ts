@@ -7,30 +7,6 @@ export const leagues: League[] = [
     country: 'England',
     link: 'https://www.soccerstats.com/results.asp?league=england&pmtype=bydate',
   },
-  {
-    id: 'england_2',
-    name: 'Championship',
-    country: 'England',
-    link: 'https://www.soccerstats.com/results.asp?league=england2&pmtype=bydate',
-  },
-  {
-    id: 'england_3',
-    name: 'League One',
-    country: 'England',
-    link: 'https://www.soccerstats.com/results.asp?league=england3&pmtype=bydate',
-  },
-  {
-    id: 'england_4',
-    name: 'League Two',
-    country: 'England',
-    link: 'https://www.soccerstats.com/results.asp?league=england4&pmtype=bydate',
-  },
-  {
-    id: 'england_5',
-    name: 'England - National League',
-    country: 'England',
-    link: 'https://www.soccerstats.com/results.asp?league=england5&pmtype=bydate',
-  },
 ];
 
 /*export const leagues: League[] = [

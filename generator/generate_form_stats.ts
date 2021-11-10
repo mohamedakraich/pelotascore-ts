@@ -1,4 +1,8 @@
+import { FormStatsType } from '../types/FormStatsType';
+import { Match } from '../types/Match';
 import { initialFormStats } from '../utils/constants';
+
+type FormMode = 'OVERALL' | 'HOME' | 'AWAY';
 
 /*
 This function generates home team form stats for a given match.

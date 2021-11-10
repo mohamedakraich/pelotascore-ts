@@ -1,3 +1,4 @@
+import { StatsType } from '../types/StatsType';
 import { initialStats } from '../utils/constants';
 
 /*
@@ -13,7 +14,8 @@ const generate_match_stats = (
   home_2HG: number,
   away_2HG: number
 ): StatsType => {
-  const stats = { ...initialStats };
+  let stats = { ...initialStats };
+  //console.log('generate_match_stats', stats);
   // Checking for GP, W, D, L, GF, GA, GD, Pts
   stats.GP += 1;
   stats.GF += home_FTG;

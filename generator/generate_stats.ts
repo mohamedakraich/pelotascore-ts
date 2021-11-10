@@ -1,5 +1,7 @@
 import { MatchEntity } from '../entities/all.entity';
 import { League } from '../scraper';
+import { Match } from '../types/Match';
+import { StatisticsMap } from '../types/StatisticsMap';
 import { getOrCreateConnection } from '../utils';
 import { initialStatsMap } from '../utils/constants';
 import { matchEntityToMatchDTO } from '../utils/dtos';
