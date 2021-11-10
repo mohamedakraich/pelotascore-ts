@@ -12,7 +12,7 @@ export const initialHTStats = {
   P15: 0,
 };
 
-export const intialFormStats = {
+export const initialFormStats = {
   GP: 0,
   W: 0,
   D: 0,
@@ -55,7 +55,7 @@ export const initialStats = {
   P45: 0,
   _1HT: { ...initialHTStats },
   _2HT: { ...initialHTStats },
-  FORM: { ...intialFormStats },
+  FORM: { ...initialFormStats },
 };
 
 export const initialPreStats = {

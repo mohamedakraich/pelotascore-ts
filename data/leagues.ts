@@ -2,6 +2,39 @@ import { League } from '../scraper';
 
 export const leagues: League[] = [
   {
+    id: 'england_1',
+    name: 'Premier League',
+    country: 'England',
+    link: 'https://www.soccerstats.com/results.asp?league=england&pmtype=bydate',
+  },
+  {
+    id: 'england_2',
+    name: 'Championship',
+    country: 'England',
+    link: 'https://www.soccerstats.com/results.asp?league=england2&pmtype=bydate',
+  },
+  {
+    id: 'england_3',
+    name: 'League One',
+    country: 'England',
+    link: 'https://www.soccerstats.com/results.asp?league=england3&pmtype=bydate',
+  },
+  {
+    id: 'england_4',
+    name: 'League Two',
+    country: 'England',
+    link: 'https://www.soccerstats.com/results.asp?league=england4&pmtype=bydate',
+  },
+  {
+    id: 'england_5',
+    name: 'England - National League',
+    country: 'England',
+    link: 'https://www.soccerstats.com/results.asp?league=england5&pmtype=bydate',
+  },
+];
+
+/*export const leagues: League[] = [
+  {
     id: 'argentina_1',
     name: 'Argentina - Liga Profesional',
     country: 'Argentina',
@@ -60,6 +93,24 @@ export const leagues: League[] = [
     name: 'Championship',
     country: 'England',
     link: 'https://www.soccerstats.com/results.asp?league=england2&pmtype=bydate',
+  },
+  {
+    id: 'england_3',
+    name: 'League One',
+    country: 'England',
+    link: 'https://www.soccerstats.com/results.asp?league=england3&pmtype=bydate',
+  },
+  {
+    id: 'england_4',
+    name: 'League Two',
+    country: 'England',
+    link: 'https://www.soccerstats.com/results.asp?league=england4&pmtype=bydate',
+  },
+  {
+    id: 'england_5',
+    name: 'England - National League',
+    country: 'England',
+    link: 'https://www.soccerstats.com/results.asp?league=england5&pmtype=bydate',
   },
   {
     id: 'france_1',
@@ -241,4 +292,4 @@ export const leagues: League[] = [
     country: 'Wales',
     link: 'https://www.soccerstats.com/results.asp?league=wales&pmtype=bydate',
   },
-];
+];*/

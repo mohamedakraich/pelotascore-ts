@@ -2,6 +2,8 @@ declare module 'react-country-flag';
 
 type MatchMode = 'HOME' | 'AWAY';
 
+type FormMode = 'OVERALL' | 'HOME' | 'AWAY';
+
 type Team = {
   name: string;
   GP: string;
@@ -118,7 +120,7 @@ type HTStatType = {
   P15: number;
 };
 
-type FormStatType = {
+type FormStatsType = {
   GP: number;
   W: number;
   D: number;
@@ -161,7 +163,7 @@ type StatsType = {
   P45: number;
   _1HT: HTStatType;
   _2HT: HTStatType;
-  FORM: FormStatType;
+  FORM: FormStatsType;
 };
 
 type PreStatsType = {

@@ -32,27 +32,27 @@ const generate_match_stats = (
   // Checking for W_W, W_D, W_L, D_W, D_D, D_L, L_W, L_D, L_L
   if (home_1HG > away_1HG) {
     if (home_2HG > away_2HG) {
-      stats.W_W += 1;
+      stats.WW += 1;
     } else if (home_2HG < away_2HG) {
-      stats.W_L += 1;
+      stats.WL += 1;
     } else {
-      stats.W_D += 1;
+      stats.WD += 1;
     }
   } else if (home_1HG < away_1HG) {
     if (home_2HG > away_2HG) {
-      stats.L_W += 1;
+      stats.LW += 1;
     } else if (home_2HG < away_2HG) {
-      stats.L_L += 1;
+      stats.LL += 1;
     } else {
-      stats.L_D += 1;
+      stats.LD += 1;
     }
   } else {
     if (home_2HG > away_2HG) {
-      stats.D_W += 1;
+      stats.DW += 1;
     } else if (home_2HG < away_2HG) {
-      stats.D_L += 1;
+      stats.DL += 1;
     } else {
-      stats.D_D += 1;
+      stats.DD += 1;
     }
   }
 
