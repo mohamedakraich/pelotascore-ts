@@ -21,7 +21,7 @@ export const intialFormStats = {
   GA: 0,
   GD: 0,
   Pts: 0,
-  FormString: '',
+  STR: '',
 };
 
 export const initialStats = {
@@ -40,22 +40,22 @@ export const initialStats = {
   C2G: 0,
   S3G: 0,
   C3G: 0,
-  W_W: 0,
-  W_D: 0,
-  W_L: 0,
-  D_W: 0,
-  D_D: 0,
-  D_L: 0,
-  L_W: 0,
-  L_D: 0,
-  L_L: 0,
+  WW: 0,
+  WD: 0,
+  WL: 0,
+  DW: 0,
+  DD: 0,
+  DL: 0,
+  LW: 0,
+  LD: 0,
+  LL: 0,
   P15: 0,
   P25: 0,
   P35: 0,
   P45: 0,
   _1HT: { ...initialHTStats },
   _2HT: { ...initialHTStats },
-  Form: { ...intialFormStats },
+  FORM: { ...intialFormStats },
 };
 
 export const initialPreStats = {

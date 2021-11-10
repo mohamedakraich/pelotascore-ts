@@ -20,15 +20,15 @@ export const add_stats = (a: StatsType, b: StatsType): StatsType => {
   addedStats.S3G = a.S3G + b.S3G;
   addedStats.C3G = a.C3G + b.C3G;
 
-  addedStats.W_W = a.W_W + b.W_W;
-  addedStats.W_D = a.W_D + b.W_D;
-  addedStats.W_L = a.W_L + b.W_L;
-  addedStats.D_W = a.D_W + b.D_W;
-  addedStats.D_D = a.D_D + b.D_D;
-  addedStats.D_L = a.D_L + b.D_L;
-  addedStats.L_W = a.L_W + b.L_W;
-  addedStats.L_D = a.L_D + b.L_D;
-  addedStats.L_L = a.L_L + b.L_L;
+  addedStats.WW = a.WW + b.WW;
+  addedStats.WD = a.WD + b.WD;
+  addedStats.WL = a.WL + b.WL;
+  addedStats.DW = a.DW + b.DW;
+  addedStats.DD = a.DD + b.DD;
+  addedStats.DL = a.DL + b.DL;
+  addedStats.LW = a.LW + b.LW;
+  addedStats.LD = a.LD + b.LD;
+  addedStats.LL = a.LL + b.LL;
 
   addedStats.P15 = a.P15 + b.P15;
   addedStats.P25 = a.P25 + b.P25;

@@ -449,11 +449,11 @@ export class StatisticsEntity {
   away_form_Pts: number;
 
   @Column()
-  overall_form_string: number;
+  overall_form_string: string;
   @Column()
-  home_form_string: number;
+  home_form_string: string;
   @Column()
-  away_form_string: number;
+  away_form_string: string;
 }
 
 @Entity({ name: 'teams' })

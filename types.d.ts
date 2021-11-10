@@ -127,7 +127,7 @@ type FormStatType = {
   GA: number;
   GD: number;
   Pts: number;
-  FormString: string;
+  STR: string;
 };
 
 type StatsType = {
@@ -146,22 +146,22 @@ type StatsType = {
   C2G: number;
   S3G: number;
   C3G: number;
-  W_W: number;
-  W_D: number;
-  W_L: number;
-  D_W: number;
-  D_D: number;
-  D_L: number;
-  L_W: number;
-  L_D: number;
-  L_L: number;
+  WW: number;
+  WD: number;
+  WL: number;
+  DW: number;
+  DD: number;
+  DL: number;
+  LW: number;
+  LD: number;
+  LL: number;
   P15: number;
   P25: number;
   P35: number;
   P45: number;
   _1HT: HTStatType;
   _2HT: HTStatType;
-  Form: FormStatType;
+  FORM: FormStatType;
 };
 
 type PreStatsType = {
