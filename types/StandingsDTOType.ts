@@ -1,3 +1,4 @@
+import { HTFTStandingsType } from './HTFTStandingsType';
 import { StandingsType } from './StandingsType';
 
 export interface StandingsDTOType {
@@ -10,5 +11,10 @@ export interface StandingsDTOType {
     overall: StandingsType[];
     home: StandingsType[];
     away: StandingsType[];
+  };
+  HTFT: {
+    overall: HTFTStandingsType[];
+    home: HTFTStandingsType[];
+    away: HTFTStandingsType[];
   };
 }

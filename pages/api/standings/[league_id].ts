@@ -1,7 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { StatisticsEntity } from '../../../entities/all.entity';
-import { StandingsDTOType } from '../../../types/StandingsType';
+import { StandingsDTOType } from '../../../types/StandingsDTOType';
 import { getOrCreateConnection } from '../../../utils';
+import compare_ht_ft_standings from '../../../utils/compare_ht_ft_standings';
 import compare_standings from '../../../utils/compare_standings';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -18,6 +19,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const standingsDto: StandingsDTOType = {
       normal: { overall: [], home: [], away: [] },
       form: { overall: [], home: [], away: [] },
+      HTFT: { overall: [], home: [], away: [] },
     };
 
     for (let i = 0; i < standings.length; i++) {
@@ -73,6 +75,33 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         away_form_GA,
         away_form_GD,
         away_form_Pts,
+        overall_WW,
+        overall_WD,
+        overall_WL,
+        overall_DW,
+        overall_DD,
+        overall_DL,
+        overall_LW,
+        overall_LD,
+        overall_LL,
+        home_WW,
+        home_WD,
+        home_WL,
+        home_DW,
+        home_DD,
+        home_DL,
+        home_LW,
+        home_LD,
+        home_LL,
+        away_WW,
+        away_WD,
+        away_WL,
+        away_DW,
+        away_DD,
+        away_DL,
+        away_LW,
+        away_LD,
+        away_LL,
       } = standings[i];
       standingsDto.normal.overall.push({
         id,
@@ -161,6 +190,65 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         Pts: away_form_Pts,
       });
       standingsDto.form.away.sort(compare_standings);
+
+      // HT/FT Standings
+
+      standingsDto.HTFT.overall.push({
+        id,
+        leagueId,
+        team_name,
+        GP: overall_GP,
+        WW: overall_WW,
+        WD: overall_WD,
+        WL: overall_WL,
+        DW: overall_DW,
+        DD: overall_DD,
+        DL: overall_DL,
+        LW: overall_LW,
+        LD: overall_LD,
+        LL: overall_LL,
+        GD: overall_GD,
+        Pts: overall_Pts,
+      });
+      standingsDto.HTFT.overall.sort(compare_ht_ft_standings);
+
+      standingsDto.HTFT.home.push({
+        id,
+        leagueId,
+        team_name,
+        GP: home_GP,
+        WW: home_WW,
+        WD: home_WD,
+        WL: home_WL,
+        DW: home_DW,
+        DD: home_DD,
+        DL: home_DL,
+        LW: home_LW,
+        LD: home_LD,
+        LL: home_LL,
+        GD: home_GD,
+        Pts: home_Pts,
+      });
+      standingsDto.HTFT.home.sort(compare_ht_ft_standings);
+
+      standingsDto.HTFT.away.push({
+        id,
+        leagueId,
+        team_name,
+        GP: away_GP,
+        WW: away_WW,
+        WD: away_WD,
+        WL: away_WL,
+        DW: away_DW,
+        DD: away_DD,
+        DL: away_DL,
+        LW: away_LW,
+        LD: away_LD,
+        LL: away_LL,
+        GD: away_GD,
+        Pts: away_Pts,
+      });
+      standingsDto.HTFT.away.sort(compare_ht_ft_standings);
     }
 
     res.status(200).json({ standings: standingsDto });

@@ -15,7 +15,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { styled } from '@mui/material/styles';
 import StandingsContainer from '../components/Standings/StandingsContainer';
-import { StandingsDTOType } from '../types/StandingsType';
+import { StandingsDTOType } from '../types/StandingsDTOType';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -75,6 +75,8 @@ const HomePage: NextPage = () => {
   const [fixtures, setFixtures] = React.useState<MatchesType>({});
   const [standings, setStandings] = React.useState<StandingsDTOType>({
     normal: { overall: [], home: [], away: [] },
+    form: { overall: [], home: [], away: [] },
+    HTFT: { overall: [], home: [], away: [] },
   });
   const { query } = useRouter();
   const [value, setValue] = React.useState(0);

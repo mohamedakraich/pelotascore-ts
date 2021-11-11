@@ -4,6 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import { StyledTab, TabPanel } from '../../pages/leagues';
 import NormalStandings from './NormalStandings';
 import { StandingsDTOType } from '../../types/StandingsDTOType';
+import HTFTStandings from './HTFTStandings';
 
 const a11yProps = (index: number) => {
   return {
@@ -49,6 +50,9 @@ const StandingsContainer: React.FC<StandingsContainerProps> = ({
       </TabPanel>
       <TabPanel value={value} index={1}>
         <NormalStandings standings={standings.form} />
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        <HTFTStandings standings={standings.HTFT} />
       </TabPanel>
     </Box>
   );
