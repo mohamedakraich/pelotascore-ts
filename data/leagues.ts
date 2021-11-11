@@ -2,15 +2,6 @@ import { League } from '../scraper';
 
 export const leagues: League[] = [
   {
-    id: 'england_1',
-    name: 'Premier League',
-    country: 'England',
-    link: 'https://www.soccerstats.com/results.asp?league=england&pmtype=bydate',
-  },
-];
-
-/*export const leagues: League[] = [
-  {
     id: 'argentina_1',
     name: 'Argentina - Liga Profesional',
     country: 'Argentina',
@@ -268,4 +259,4 @@ export const leagues: League[] = [
     country: 'Wales',
     link: 'https://www.soccerstats.com/results.asp?league=wales&pmtype=bydate',
   },
-];*/
+];

@@ -3,7 +3,7 @@ import { League } from '../scraper';
 import { Match } from '../types/Match';
 import { StatisticsMap } from '../types/StatisticsMap';
 import { getOrCreateConnection } from '../utils';
-import { initialStatsMap } from '../utils/constants';
+import { initialStats } from '../utils/constants';
 import { matchEntityToMatchDTO } from '../utils/dtos';
 import { add_stats } from './add_stats';
 import generate_form_stats from './generate_form_stats';
@@ -24,10 +24,60 @@ const generate_stats = async (league: League) => {
       .getMany();
     matches.forEach((match) => {
       if (!statistics[match.home_team.name]) {
-        statistics[match.home_team.name] = { ...initialStatsMap };
+        statistics[match.home_team.name] = {
+          overall: {
+            matches: [],
+            stats: {
+              ...initialStats,
+              _1HT: { ...initialStats._1HT },
+              _2HT: { ...initialStats._2HT },
+            },
+          },
+          home: {
+            matches: [],
+            stats: {
+              ...initialStats,
+              _1HT: { ...initialStats._1HT },
+              _2HT: { ...initialStats._2HT },
+            },
+          },
+          away: {
+            matches: [],
+            stats: {
+              ...initialStats,
+              _1HT: { ...initialStats._1HT },
+              _2HT: { ...initialStats._2HT },
+            },
+          },
+        };
       }
       if (!statistics[match.away_team.name]) {
-        statistics[match.away_team.name] = { ...initialStatsMap };
+        statistics[match.away_team.name] = {
+          overall: {
+            matches: [],
+            stats: {
+              ...initialStats,
+              _1HT: { ...initialStats._1HT },
+              _2HT: { ...initialStats._2HT },
+            },
+          },
+          home: {
+            matches: [],
+            stats: {
+              ...initialStats,
+              _1HT: { ...initialStats._1HT },
+              _2HT: { ...initialStats._2HT },
+            },
+          },
+          away: {
+            matches: [],
+            stats: {
+              ...initialStats,
+              _1HT: { ...initialStats._1HT },
+              _2HT: { ...initialStats._2HT },
+            },
+          },
+        };
       }
       statistics[match.home_team.name].overall.matches.push(
         matchEntityToMatchDTO(match)

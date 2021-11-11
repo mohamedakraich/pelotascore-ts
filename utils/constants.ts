@@ -58,13 +58,29 @@ export const initialStats = {
   FORM: { ...initialFormStats },
 };
 
-export const initialPreStats = {
-  matches: [],
-  stats: { ...initialStats },
-};
-
 export const initialStatsMap = {
-  overall: { ...initialPreStats },
-  home: { ...initialPreStats },
-  away: { ...initialPreStats },
+  overall: {
+    matches: [],
+    stats: {
+      ...initialStats,
+      _1HT: { ...initialStats._1HT },
+      _2HT: { ...initialStats._2HT },
+    },
+  },
+  home: {
+    matches: [],
+    stats: {
+      ...initialStats,
+      _1HT: { ...initialStats._1HT },
+      _2HT: { ...initialStats._2HT },
+    },
+  },
+  away: {
+    matches: [],
+    stats: {
+      ...initialStats,
+      _1HT: { ...initialStats._1HT },
+      _2HT: { ...initialStats._2HT },
+    },
+  },
 };
