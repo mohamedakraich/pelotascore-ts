@@ -7,8 +7,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { StandingsType } from '../../types/StandingsType';
-import { HTFTStandingsType } from '../../types/HTFTStandingsType';
+import { StandingsType } from '../../../types/StandingsType';
+import { GoalsStandingsType } from '../../../types/GoalsStandingsType';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -48,13 +48,11 @@ const rows = [
   createData('Gingerbread', 356, 16.0, 49, 3.9),
 ];
 
-interface HTFTStandingsTableProps {
-  standings: HTFTStandingsType[];
+interface StandingsTableProps {
+  standings: GoalsStandingsType[];
 }
 
-const HTFTStandingsTable: React.FC<HTFTStandingsTableProps> = ({
-  standings,
-}) => {
+const GoalsStandingsTable: React.FC<StandingsTableProps> = ({ standings }) => {
   return (
     <TableContainer>
       <Table size="small">
@@ -63,16 +61,13 @@ const HTFTStandingsTable: React.FC<HTFTStandingsTableProps> = ({
             <StyledTableCell align="center">#</StyledTableCell>
             <StyledTableCell align="left">Team</StyledTableCell>
             <StyledTableCell align="center">GP</StyledTableCell>
-            <StyledTableCell align="center">W/W</StyledTableCell>
-            <StyledTableCell align="center">W/D</StyledTableCell>
-            <StyledTableCell align="center">W/L</StyledTableCell>
-            <StyledTableCell align="center">D/W</StyledTableCell>
-            <StyledTableCell align="center">D/D</StyledTableCell>
-            <StyledTableCell align="center">D/L</StyledTableCell>
-            <StyledTableCell align="center">L/W</StyledTableCell>
-            <StyledTableCell align="center">L/D</StyledTableCell>
-            <StyledTableCell align="center">L/L</StyledTableCell>
-            <StyledTableCell align="center">Pts</StyledTableCell>
+            <StyledTableCell align="center">+1.5(1HT)</StyledTableCell>
+            <StyledTableCell align="center">+1.5(2HT)</StyledTableCell>
+            <StyledTableCell align="center">+1.5</StyledTableCell>
+            <StyledTableCell align="center">+2.5</StyledTableCell>
+            <StyledTableCell align="center">+3.5</StyledTableCell>
+            <StyledTableCell align="center">+4.5</StyledTableCell>
+            <StyledTableCell align="center">G</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -81,16 +76,15 @@ const HTFTStandingsTable: React.FC<HTFTStandingsTableProps> = ({
               <StyledTableCell align="center">{index + 1}</StyledTableCell>
               <StyledTableCell align="left">{team.team_name}</StyledTableCell>
               <StyledTableCell align="center">{team.GP}</StyledTableCell>
-              <StyledTableCell align="center">{team.WW}</StyledTableCell>
-              <StyledTableCell align="center">{team.WD}</StyledTableCell>
-              <StyledTableCell align="center">{team.WL}</StyledTableCell>
-              <StyledTableCell align="center">{team.DW}</StyledTableCell>
-              <StyledTableCell align="center">{team.DD}</StyledTableCell>
-              <StyledTableCell align="center">{team.DL}</StyledTableCell>
-              <StyledTableCell align="center">{team.LW}</StyledTableCell>
-              <StyledTableCell align="center">{team.LD}</StyledTableCell>
-              <StyledTableCell align="center">{team.LL}</StyledTableCell>
-              <StyledTableCell align="center">{team.Pts}</StyledTableCell>
+              <StyledTableCell align="center">{team._1HT_P15}</StyledTableCell>
+              <StyledTableCell align="center">{team._2HT_P15}</StyledTableCell>
+              <StyledTableCell align="center">{team.P15}</StyledTableCell>
+              <StyledTableCell align="center">{team.P25}</StyledTableCell>
+              <StyledTableCell align="center">{team.P35}</StyledTableCell>
+              <StyledTableCell align="center">{team.P45}</StyledTableCell>
+              <StyledTableCell align="center">
+                {team.GF + ':' + team.GA}
+              </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
@@ -99,4 +93,4 @@ const HTFTStandingsTable: React.FC<HTFTStandingsTableProps> = ({
   );
 };
 
-export default HTFTStandingsTable;
+export default GoalsStandingsTable;

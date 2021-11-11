@@ -1,12 +1,15 @@
 import * as React from 'react';
+import { styled } from '@mui/material/styles';
+
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import StandingsTable from './StandingsTable';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { styled } from '@mui/material/styles';
-import { StandingsType } from '../../types/StandingsType';
-import { TabPanel } from '../TabPanel';
+
+import { TabPanel } from '../../TabPanel';
+import GoalsStandingsTable from './GoalsStandingsTable';
+
+import { GoalsStandingsType } from '../../../types/GoalsStandingsType';
 
 interface StyledTabProps {
   label: string;
@@ -47,15 +50,15 @@ const a11yProps = (index: number) => {
   };
 };
 
-interface NormalStandingsProps {
+interface GoalsStandingsProps {
   standings: {
-    overall: StandingsType[];
-    home: StandingsType[];
-    away: StandingsType[];
+    overall: GoalsStandingsType[];
+    home: GoalsStandingsType[];
+    away: GoalsStandingsType[];
   };
 }
 
-const NormalStandings: React.FC<NormalStandingsProps> = ({ standings }) => {
+const GoalsStandings: React.FC<GoalsStandingsProps> = ({ standings }) => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -64,22 +67,28 @@ const NormalStandings: React.FC<NormalStandingsProps> = ({ standings }) => {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Box sx={{ backgroundColor: 'primary.main' }}>
+      <Box
+        sx={{
+          borderBottom: 1,
+          borderColor: 'white',
+          backgroundColor: 'primary.main',
+        }}
+      >
         <StyledTabs
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
         >
           <StyledTab label="Overall" {...a11yProps(0)} />
-          <StyledTab label="home" {...a11yProps(1)} />
-          <StyledTab label="Away" {...a11yProps(2)} />
+          <StyledTab label="Home" {...a11yProps(1)} />
+          <StyledTab label="Away" {...a11yProps(1)} />
         </StyledTabs>
       </Box>
       <TabPanel value={value} index={0}>
         <Grid container>
           <Grid item xs={12} md>
             {standings.overall.length > 0 && (
-              <StandingsTable standings={standings.overall} />
+              <GoalsStandingsTable standings={standings.overall} />
             )}
           </Grid>
         </Grid>
@@ -88,7 +97,7 @@ const NormalStandings: React.FC<NormalStandingsProps> = ({ standings }) => {
         <Grid container>
           <Grid item xs={12} md>
             {standings.home.length > 0 && (
-              <StandingsTable standings={standings.home} />
+              <GoalsStandingsTable standings={standings.home} />
             )}
           </Grid>
         </Grid>
@@ -97,7 +106,7 @@ const NormalStandings: React.FC<NormalStandingsProps> = ({ standings }) => {
         <Grid container>
           <Grid item xs={12} md>
             {standings.away.length > 0 && (
-              <StandingsTable standings={standings.away} />
+              <GoalsStandingsTable standings={standings.away} />
             )}
           </Grid>
         </Grid>
@@ -106,4 +115,4 @@ const NormalStandings: React.FC<NormalStandingsProps> = ({ standings }) => {
   );
 };
 
-export default NormalStandings;
+export default GoalsStandings;

@@ -1,11 +1,13 @@
 import * as React from 'react';
+import { styled } from '@mui/material/styles';
+
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { styled } from '@mui/material/styles';
-import { TabPanel } from '../../pages/leagues';
-import { HTFTStandingsType } from '../../types/HTFTStandingsType';
+
+import { TabPanel } from '../../TabPanel';
+import { HTFTStandingsType } from '../../../types/HTFTStandingsType';
 import HTFTStandingsTable from './HTFTStandingsTable';
 
 interface StyledTabProps {

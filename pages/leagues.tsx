@@ -16,12 +16,7 @@ import Tab from '@mui/material/Tab';
 import { styled } from '@mui/material/styles';
 import StandingsContainer from '../components/Standings/StandingsContainer';
 import { StandingsDTOType } from '../types/StandingsDTOType';
-
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-}
+import { TabPanel } from '../components/TabPanel';
 
 interface StyledTabProps {
   label: string;
@@ -43,26 +38,6 @@ const StyledBox = styled((props) => <Tab disableRipple {...props} />)(
   })
 );
 
-export const TabPanel = (props: TabPanelProps) => {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 0 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-};
-
 function a11yProps(index: number) {
   return {
     id: `simple-tab-${index}`,
@@ -76,6 +51,7 @@ const HomePage: NextPage = () => {
   const [standings, setStandings] = React.useState<StandingsDTOType>({
     normal: { overall: [], home: [], away: [] },
     form: { overall: [], home: [], away: [] },
+    goals: { overall: [], home: [], away: [] },
     HTFT: { overall: [], home: [], away: [] },
   });
   const { query } = useRouter();

@@ -1,3 +1,4 @@
+import { GoalsStandingsType } from './GoalsStandingsType';
 import { HTFTStandingsType } from './HTFTStandingsType';
 import { StandingsType } from './StandingsType';
 
@@ -11,6 +12,11 @@ export interface StandingsDTOType {
     overall: StandingsType[];
     home: StandingsType[];
     away: StandingsType[];
+  };
+  goals: {
+    overall: GoalsStandingsType[];
+    home: GoalsStandingsType[];
+    away: GoalsStandingsType[];
   };
   HTFT: {
     overall: HTFTStandingsType[];

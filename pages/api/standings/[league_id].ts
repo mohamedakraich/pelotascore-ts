@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { StatisticsEntity } from '../../../entities/all.entity';
 import { StandingsDTOType } from '../../../types/StandingsDTOType';
 import { getOrCreateConnection } from '../../../utils';
+import compare_goals_standings from '../../../utils/compare_goals_standings';
 import compare_ht_ft_standings from '../../../utils/compare_ht_ft_standings';
 import compare_standings from '../../../utils/compare_standings';
 
@@ -19,6 +20,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const standingsDto: StandingsDTOType = {
       normal: { overall: [], home: [], away: [] },
       form: { overall: [], home: [], away: [] },
+      goals: {
+        overall: [],
+        home: [],
+        away: [],
+      },
       HTFT: { overall: [], home: [], away: [] },
     };
 
@@ -102,6 +108,24 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         away_LW,
         away_LD,
         away_LL,
+        overall_P15,
+        overall_P25,
+        overall_P35,
+        overall_P45,
+        overall_1HT_P15,
+        overall_2HT_P15,
+        home_P15,
+        home_P25,
+        home_P35,
+        home_P45,
+        home_1HT_P15,
+        home_2HT_P15,
+        away_P15,
+        away_P25,
+        away_P35,
+        away_P45,
+        away_1HT_P15,
+        away_2HT_P15,
       } = standings[i];
       standingsDto.normal.overall.push({
         id,
@@ -131,6 +155,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         Pts: home_Pts,
       });
       standingsDto.normal.home.sort(compare_standings);
+
       standingsDto.normal.away.push({
         id,
         leagueId,
@@ -190,6 +215,59 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         Pts: away_form_Pts,
       });
       standingsDto.form.away.sort(compare_standings);
+
+      // Goals Standings
+
+      standingsDto.goals.overall.push({
+        id,
+        leagueId,
+        team_name,
+        GP: overall_GP,
+        P15: overall_P15,
+        P25: overall_P25,
+        P35: overall_P35,
+        P45: overall_P45,
+        _1HT_P15: overall_1HT_P15,
+        _2HT_P15: overall_2HT_P15,
+        GF: overall_GF,
+        GA: overall_GA,
+        GD: overall_GD,
+      });
+      standingsDto.goals.overall.sort(compare_goals_standings);
+
+      standingsDto.goals.home.push({
+        id,
+        leagueId,
+        team_name,
+        GP: home_GP,
+        P15: home_P15,
+        P25: home_P25,
+        P35: home_P35,
+        P45: home_P45,
+        _1HT_P15: home_1HT_P15,
+        _2HT_P15: home_2HT_P15,
+        GF: home_GF,
+        GA: home_GA,
+        GD: home_GD,
+      });
+      standingsDto.goals.home.sort(compare_goals_standings);
+
+      standingsDto.goals.away.push({
+        id,
+        leagueId,
+        team_name,
+        GP: away_GP,
+        P15: away_P15,
+        P25: away_P25,
+        P35: away_P35,
+        P45: away_P45,
+        _1HT_P15: away_1HT_P15,
+        _2HT_P15: away_2HT_P15,
+        GF: away_GF,
+        GA: away_GA,
+        GD: away_GD,
+      });
+      standingsDto.goals.away.sort(compare_goals_standings);
 
       // HT/FT Standings
 
