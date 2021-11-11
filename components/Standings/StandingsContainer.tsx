@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import { StyledTab, TabPanel } from '../../pages/leagues';
 import NormalStandings from './NormalStandings';
-import { StandingsDTOType, StandingsType } from '../../types/StandingsType';
+import { StandingsDTOType } from '../../types/StandingsDTOType';
 
 const a11yProps = (index: number) => {
   return {
@@ -12,11 +12,11 @@ const a11yProps = (index: number) => {
   };
 };
 
-interface StandingsComponentProps {
+interface StandingsContainerProps {
   standings: StandingsDTOType;
 }
 
-const StandingsComponent: React.FC<StandingsComponentProps> = ({
+const StandingsContainer: React.FC<StandingsContainerProps> = ({
   standings,
 }) => {
   const [value, setValue] = React.useState(0);
@@ -45,10 +45,13 @@ const StandingsComponent: React.FC<StandingsComponentProps> = ({
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <NormalStandings standings={standings} />
+        <NormalStandings standings={standings.normal} />
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        <NormalStandings standings={standings.form} />
       </TabPanel>
     </Box>
   );
 };
 
-export default StandingsComponent;
+export default StandingsContainer;

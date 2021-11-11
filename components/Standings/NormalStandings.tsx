@@ -6,7 +6,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { styled } from '@mui/material/styles';
 import { TabPanel } from '../../pages/leagues';
-import { StandingsDTOType, StandingsType } from '../../types/StandingsType';
+import { StandingsType } from '../../types/StandingsType';
 
 interface StyledTabProps {
   label: string;
@@ -48,7 +48,11 @@ const a11yProps = (index: number) => {
 };
 
 interface NormalStandingsProps {
-  standings: StandingsDTOType;
+  standings: {
+    overall: StandingsType[];
+    home: StandingsType[];
+    away: StandingsType[];
+  };
 }
 
 const NormalStandings: React.FC<NormalStandingsProps> = ({ standings }) => {
@@ -74,8 +78,8 @@ const NormalStandings: React.FC<NormalStandingsProps> = ({ standings }) => {
       <TabPanel value={value} index={0}>
         <Grid container>
           <Grid item xs={12} md>
-            {standings.normal.overall.length > 0 && (
-              <StandingsTable standings={standings.normal.overall} />
+            {standings.overall.length > 0 && (
+              <StandingsTable standings={standings.overall} />
             )}
           </Grid>
         </Grid>
@@ -83,8 +87,8 @@ const NormalStandings: React.FC<NormalStandingsProps> = ({ standings }) => {
       <TabPanel value={value} index={1}>
         <Grid container>
           <Grid item xs={12} md>
-            {standings.normal.home.length > 0 && (
-              <StandingsTable standings={standings.normal.home} />
+            {standings.home.length > 0 && (
+              <StandingsTable standings={standings.home} />
             )}
           </Grid>
         </Grid>
@@ -92,8 +96,8 @@ const NormalStandings: React.FC<NormalStandingsProps> = ({ standings }) => {
       <TabPanel value={value} index={2}>
         <Grid container>
           <Grid item xs={12} md>
-            {standings.normal.away.length > 0 && (
-              <StandingsTable standings={standings.normal.away} />
+            {standings.away.length > 0 && (
+              <StandingsTable standings={standings.away} />
             )}
           </Grid>
         </Grid>

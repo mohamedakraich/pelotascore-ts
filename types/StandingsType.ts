@@ -11,11 +11,3 @@ export interface StandingsType {
   GD: number;
   Pts: number;
 }
-
-export interface StandingsDTOType {
-  normal: {
-    overall: StandingsType[];
-    home: StandingsType[];
-    away: StandingsType[];
-  };
-}
