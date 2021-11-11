@@ -64,6 +64,59 @@ const homeMatches: Match[] = [
   },
 ];
 
+const awayMatches: Match[] = [
+  {
+    home_name: 'Arsenal',
+    away_name: 'Chelsea',
+    home_FullTimeGoals: 0,
+    away_FullTimeGoals: 2,
+    home_FirstHalfGoals: 0,
+    away_FirstHalfGoals: 2,
+    home_SecondHalfGoals: 0,
+    away_SecondHalfGoals: 0,
+  },
+  {
+    home_name: 'Liverpool',
+    away_name: 'Chelsea',
+    home_FullTimeGoals: 1,
+    away_FullTimeGoals: 1,
+    home_FirstHalfGoals: 1,
+    away_FirstHalfGoals: 1,
+    home_SecondHalfGoals: 0,
+    away_SecondHalfGoals: 0,
+  },
+  {
+    home_name: 'Tottenham',
+    away_name: 'Chelsea',
+    home_FullTimeGoals: 0,
+    away_FullTimeGoals: 3,
+    home_FirstHalfGoals: 0,
+    away_FirstHalfGoals: 0,
+    home_SecondHalfGoals: 0,
+    away_SecondHalfGoals: 3,
+  },
+  {
+    home_name: 'Brentford',
+    away_name: 'Chelsea',
+    home_FullTimeGoals: 0,
+    away_FullTimeGoals: 1,
+    home_FirstHalfGoals: 0,
+    away_FirstHalfGoals: 1,
+    home_SecondHalfGoals: 0,
+    away_SecondHalfGoals: 0,
+  },
+  {
+    home_name: 'Newcastle Utd',
+    away_name: 'Chelsea',
+    home_FullTimeGoals: 0,
+    away_FullTimeGoals: 3,
+    home_FirstHalfGoals: 0,
+    away_FirstHalfGoals: 0,
+    home_SecondHalfGoals: 0,
+    away_SecondHalfGoals: 3,
+  },
+];
+
 const homeTeamStats = {
   GP: 6,
   W: 4,
@@ -132,8 +185,78 @@ const homeTeamStats = {
   },
 };
 
-const awayTeamStats = {};
+const awayTeamStats = {
+  GP: 5,
+  W: 4,
+  D: 1,
+  L: 0,
+  GF: 10,
+  GA: 1,
+  GD: 9,
+  Pts: 13,
+  FTS: 0,
+  CS: 4,
+  BTS: 1,
+  S2G: 3,
+  C2G: 0,
+  S3G: 2,
+  C3G: 0,
+  WW: 2,
+  WD: 0,
+  WL: 0,
+  DW: 2,
+  DD: 1,
+  DL: 0,
+  LW: 0,
+  LD: 0,
+  LL: 0,
+  P15: 4,
+  P25: 2,
+  P35: 0,
+  P45: 0,
+  _1HT: {
+    W: 2,
+    D: 3,
+    L: 0,
+    FTS: 2,
+    CS: 4,
+    BTS: 1,
+    S1G: 3,
+    C1G: 1,
+    S2G: 1,
+    C2G: 0,
+    P15: 2,
+  },
+  _2HT: {
+    W: 2,
+    D: 3,
+    L: 0,
+    FTS: 3,
+    CS: 5,
+    BTS: 0,
+    S1G: 2,
+    C1G: 0,
+    S2G: 2,
+    C2G: 0,
+    P15: 2,
+  },
+  FORM: {
+    GP: 5,
+    W: 4,
+    D: 1,
+    L: 0,
+    GF: 10,
+    GA: 1,
+    GD: 9,
+    Pts: 13,
+    STR: ',W,W,W,D,W',
+  },
+};
 
 test('It generates HOME team stats correctly', () => {
   expect(generate_team_stats('HOME', homeMatches)).toEqual(homeTeamStats);
+});
+
+test('It generates AWAY team stats correctly', () => {
+  expect(generate_team_stats('AWAY', awayMatches)).toEqual(awayTeamStats);
 });
