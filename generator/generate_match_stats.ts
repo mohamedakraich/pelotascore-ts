@@ -74,25 +74,25 @@ const generate_match_stats = (
 
   // Checking for W_W, W_D, W_L, D_W, D_D, D_L, L_W, L_D, L_L
   if (home_1HG > away_1HG) {
-    if (home_2HG > away_2HG) {
+    if (home_FTG > away_FTG) {
       stats.WW += 1;
-    } else if (home_2HG < away_2HG) {
+    } else if (home_FTG < away_FTG) {
       stats.WL += 1;
     } else {
       stats.WD += 1;
     }
   } else if (home_1HG < away_1HG) {
-    if (home_2HG > away_2HG) {
+    if (home_FTG > away_FTG) {
       stats.LW += 1;
-    } else if (home_2HG < away_2HG) {
+    } else if (home_FTG < away_FTG) {
       stats.LL += 1;
     } else {
       stats.LD += 1;
     }
   } else {
-    if (home_2HG > away_2HG) {
+    if (home_FTG > away_FTG) {
       stats.DW += 1;
-    } else if (home_2HG < away_2HG) {
+    } else if (home_FTG < away_FTG) {
       stats.DL += 1;
     } else {
       stats.DD += 1;
@@ -123,7 +123,7 @@ const generate_match_stats = (
     stats._1HT.C1G += 1;
   }
   if (home_1HG >= 2) {
-    stats._1HT.S2G += 2;
+    stats._1HT.S2G += 1;
   }
   if (away_1HG >= 2) {
     stats._1HT.C2G += 1;

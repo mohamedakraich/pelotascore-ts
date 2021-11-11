@@ -116,10 +116,10 @@ const _02MatchStats = {
   FORM: { GP: 0, W: 0, D: 0, L: 0, GF: 0, GA: 0, GD: 0, Pts: 0, STR: '' },
 };
 
-test('generate 0-2(0-2) match stats correctly', () => {
+test('generate 0-2(0-0) match stats correctly', () => {
   expect(generate_match_stats(0, 2, 0, 0, 0, 2)).toEqual(_02MatchStats);
 });
 
-test('generate 5-2(4-1) match stats correctly', () => {
+test('generate 5-2(1-1) match stats correctly', () => {
   expect(generate_match_stats(5, 2, 1, 1, 4, 1)).toEqual(_52MatchStats);
 });

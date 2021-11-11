@@ -2,7 +2,12 @@ import { StatsType } from '../types/StatsType';
 import { initialStats } from '../utils/constants';
 
 export const add_stats = (a: StatsType, b: StatsType): StatsType => {
-  let addedStats = { ...initialStats };
+  let addedStats = {
+    ...initialStats,
+    _1HT: { ...initialStats._1HT },
+    _2HT: { ...initialStats._2HT },
+    FORM: { ...initialStats.FORM },
+  };
 
   addedStats.GP = a.GP + b.GP;
   addedStats.W = a.W + b.W;

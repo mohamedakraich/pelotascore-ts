@@ -115,8 +115,8 @@ const homeTeamStats = {
     BTS: 1,
     S1G: 4,
     C1G: 3,
-    C2G: 0,
     S2G: 3,
+    C2G: 0,
     P15: 3,
   },
   FORM: {
@@ -134,10 +134,6 @@ const homeTeamStats = {
 
 const awayTeamStats = {};
 
-/*test('It generates HOME team stats correctly', () => {
-  expect(generate_team_stats('HOME', homeMatches)).toEqual(homeTeamStats);
-});*/
-
 test('It generates HOME team stats correctly', () => {
-  expect(1 + 2).toBe(3);
+  expect(generate_team_stats('HOME', homeMatches)).toEqual(homeTeamStats);
 });
