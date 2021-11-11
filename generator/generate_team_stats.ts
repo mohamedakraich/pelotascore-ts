@@ -8,9 +8,12 @@ import generate_match_stats from './generate_match_stats';
 type MatchMode = 'HOME' | 'AWAY';
 
 const generate_team_stats = (mode: MatchMode, matches: Match[]): StatsType => {
-  let stats = { ...initialStats };
-
-  console.log('generate_team_stats', stats);
+  let stats = {
+    ...initialStats,
+    _1HT: { ...initialStats._1HT },
+    _2HT: { ...initialStats._2HT },
+    FORM: { ...initialStats.FORM },
+  };
 
   let formMatches: Match[] = [];
   if (matches.length < 5) {
