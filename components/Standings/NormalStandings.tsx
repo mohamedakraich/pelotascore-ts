@@ -1,21 +1,12 @@
 import * as React from 'react';
-import type { NextPage } from 'next';
-import Head from 'next/head';
 import Box from '@mui/material/Box';
-import axios from 'axios';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableContainer from '@mui/material/TableContainer';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
-import MatchesTable from '../MatchesTable';
 import StandingsTable from './StandingsTable';
-import { useRouter } from 'next/router';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { styled } from '@mui/material/styles';
 import { TabPanel } from '../../pages/leagues';
+import { StandingsDTOType, StandingsType } from '../../types/StandingsType';
 
 interface StyledTabProps {
   label: string;
@@ -57,7 +48,7 @@ const a11yProps = (index: number) => {
 };
 
 interface NormalStandingsProps {
-  standings: StandingsType[];
+  standings: StandingsDTOType;
 }
 
 const NormalStandings: React.FC<NormalStandingsProps> = ({ standings }) => {
@@ -81,9 +72,29 @@ const NormalStandings: React.FC<NormalStandingsProps> = ({ standings }) => {
         </StyledTabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <Grid container p={3}>
+        <Grid container>
           <Grid item xs={12} md>
-            {standings.length > 0 && <StandingsTable standings={standings} />}
+            {standings.normal.overall.length > 0 && (
+              <StandingsTable standings={standings.normal.overall} />
+            )}
+          </Grid>
+        </Grid>
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        <Grid container>
+          <Grid item xs={12} md>
+            {standings.normal.home.length > 0 && (
+              <StandingsTable standings={standings.normal.home} />
+            )}
+          </Grid>
+        </Grid>
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <Grid container>
+          <Grid item xs={12} md>
+            {standings.normal.away.length > 0 && (
+              <StandingsTable standings={standings.normal.away} />
+            )}
           </Grid>
         </Grid>
       </TabPanel>

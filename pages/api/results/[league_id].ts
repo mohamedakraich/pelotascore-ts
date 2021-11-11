@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { MatchEntity } from '../../../entities/all.entity';
+import { Match } from '../../../types/Match';
 
 import { getOrCreateConnection } from '../../../utils';
 import { matchEntityToMatchDTO } from '../../../utils/dtos';

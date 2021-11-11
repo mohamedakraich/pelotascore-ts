@@ -38,22 +38,6 @@ type MatchesType = {
   [key: string]: Match[];
 };
 
-type StandingsType = {
-  team_name: string;
-  GP: number;
-  W: number;
-  D: number;
-  L: number;
-  GF: number;
-  GA: number;
-  GD: number;
-  P: number;
-  LP15: number;
-  VP15: number;
-  id: number;
-  league_id: string;
-};
-
 /*
 type HTStatType = {
   W: number;

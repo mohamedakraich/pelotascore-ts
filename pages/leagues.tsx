@@ -10,12 +10,12 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import MatchesTable from '../components/MatchesTable';
-import StandingsTable from '../components/Standings/StandingsTable';
 import { useRouter } from 'next/router';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import { styled } from '@mui/material/styles';
-import StandingsComponent from '../components/Standings/StandingsContainer';
+import StandingsContainer from '../components/Standings/StandingsContainer';
+import { StandingsDTOType } from '../types/StandingsType';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -30,7 +30,7 @@ interface StyledTabProps {
 export const StyledTab = styled((props: StyledTabProps) => (
   <Tab disableRipple {...props} />
 ))(({ theme }) => ({
-  backgroundColor: theme.palette.grey[200],
+  backgroundColor: theme.palette.grey[300],
   '&.Mui-selected': {
     backgroundColor: theme.palette.primary.main,
     color: '#fff',
@@ -73,15 +73,15 @@ function a11yProps(index: number) {
 const HomePage: NextPage = () => {
   const [results, setResults] = React.useState<MatchesType>({});
   const [fixtures, setFixtures] = React.useState<MatchesType>({});
-  const [standings, setStandings] = React.useState<StandingsType[]>([]);
+  const [standings, setStandings] = React.useState<StandingsDTOType>({
+    normal: { overall: [], home: [], away: [] },
+  });
   const { query } = useRouter();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
-
-  console.log(query);
 
   const [count, setCount] = React.useState<number>(-1);
 
@@ -109,7 +109,6 @@ const HomePage: NextPage = () => {
         const fixturesCount = response.data?.count as unknown as number;
         setCount(fixturesCount);
         setFixtures(fixturesResponse);
-        console.log('fixturesResponse', fixturesResponse);
       })
       .catch((error) => {
         console.log(error);
@@ -121,9 +120,8 @@ const HomePage: NextPage = () => {
       .get(`/api/standings/${query.id}`)
       .then((response) => {
         const standings = response.data
-          ?.standings as unknown as StandingsType[];
+          ?.standings as unknown as StandingsDTOType;
         setStandings(standings);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -185,7 +183,7 @@ const HomePage: NextPage = () => {
           </Grid>
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <StandingsComponent standings={standings} />
+          <StandingsContainer standings={standings} />
         </TabPanel>
       </Box>
     </React.Fragment>

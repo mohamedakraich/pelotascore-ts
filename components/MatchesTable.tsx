@@ -3,6 +3,7 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import { styled } from '@mui/material/styles';
 import { Typography } from '@mui/material';
+import { Match } from '../types/Match';
 
 interface MatchDayTableProps {
   matches: Match[];
@@ -13,13 +14,12 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const MatchesTable: React.FC<MatchDayTableProps> = ({ matches }) => {
-  console.log(matches);
   return (
     <React.Fragment>
       <StyledTableRow>
         <TableCell component="th" scope="row" colSpan={4}>
           <Typography variant="subtitle2" color="white">
-            {matches[0].date.split('#')[0]}
+            {matches[0].date?.split('#')[0]}
           </Typography>
         </TableCell>
       </StyledTableRow>
@@ -73,7 +73,7 @@ const MatchesTable: React.FC<MatchDayTableProps> = ({ matches }) => {
             </TableCell>
             <TableCell align="center">
               <Typography variant="body2" color="black">
-                {match.date.split('#')[1]}
+                {match.date?.split('#')[1]}
               </Typography>
             </TableCell>
             <TableCell align="left">

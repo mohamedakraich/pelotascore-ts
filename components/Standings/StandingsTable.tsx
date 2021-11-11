@@ -7,11 +7,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { StandingsType } from '../../types/StandingsType';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.common.white,
+    backgroundColor: theme.palette.grey[300],
+    color: theme.palette.common.black,
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
@@ -23,9 +24,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     backgroundColor: theme.palette.action.hover,
   },
   // hide last border
-  '&:last-child td, &:last-child th': {
+  /*'&:last-child td, &:last-child th': {
     border: 0,
-  },
+  },*/
 }));
 
 function createData(
@@ -52,12 +53,12 @@ interface StandingsTableProps {
 
 const StandingsTable: React.FC<StandingsTableProps> = ({ standings }) => {
   return (
-    <TableContainer component={Paper} elevation={5}>
+    <TableContainer>
       <Table size="small">
         <TableHead>
           <TableRow>
-            <StyledTableCell align="center"></StyledTableCell>
-            <StyledTableCell align="left"></StyledTableCell>
+            <StyledTableCell align="center">#</StyledTableCell>
+            <StyledTableCell align="left">Team</StyledTableCell>
             <StyledTableCell align="center">GP</StyledTableCell>
             <StyledTableCell align="center">W</StyledTableCell>
             <StyledTableCell align="center">D</StyledTableCell>
@@ -80,7 +81,7 @@ const StandingsTable: React.FC<StandingsTableProps> = ({ standings }) => {
               <StyledTableCell align="center">{team.GF}</StyledTableCell>
               <StyledTableCell align="center">{team.GA}</StyledTableCell>
               <StyledTableCell align="center">{team.GD}</StyledTableCell>
-              <StyledTableCell align="center">{team.P}</StyledTableCell>
+              <StyledTableCell align="center">{team.Pts}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

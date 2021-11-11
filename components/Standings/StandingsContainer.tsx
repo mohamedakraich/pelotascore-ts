@@ -1,22 +1,9 @@
 import * as React from 'react';
-import type { NextPage } from 'next';
-import Head from 'next/head';
 import Box from '@mui/material/Box';
-import axios from 'axios';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableContainer from '@mui/material/TableContainer';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
-import MatchesTable from '../MatchesTable';
-import StandingsTable from './StandingsTable';
-import { useRouter } from 'next/router';
 import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import { styled } from '@mui/material/styles';
 import { StyledTab, TabPanel } from '../../pages/leagues';
 import NormalStandings from './NormalStandings';
+import { StandingsDTOType, StandingsType } from '../../types/StandingsType';
 
 const a11yProps = (index: number) => {
   return {
@@ -26,7 +13,7 @@ const a11yProps = (index: number) => {
 };
 
 interface StandingsComponentProps {
-  standings: StandingsType[];
+  standings: StandingsDTOType;
 }
 
 const StandingsComponent: React.FC<StandingsComponentProps> = ({
