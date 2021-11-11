@@ -8,7 +8,7 @@ type FormMode = 'OVERALL' | 'HOME' | 'AWAY';
 This function generates home team form stats for a given match.
 For away team form stats you just have to switch home_FTG and away_FTG
 */
-const generate_match_form_stats = (
+export const generate_match_form_stats = (
   home_FTG: number,
   away_FTG: number
 ): FormStatsType => {
@@ -18,14 +18,14 @@ const generate_match_form_stats = (
   matchFormStats.GA += away_FTG;
   matchFormStats.GD += home_FTG - away_FTG;
   if (home_FTG > away_FTG) {
-    matchFormStats.STR = ',W' + matchFormStats.STR;
+    matchFormStats.STR = matchFormStats.STR + ',W';
     matchFormStats.W += 1;
     matchFormStats.Pts += 3;
   } else if (home_FTG < away_FTG) {
-    matchFormStats.STR = ',L' + matchFormStats.STR;
+    matchFormStats.STR = matchFormStats.STR + ',L';
     matchFormStats.L += 1;
   } else {
-    matchFormStats.STR = ',D' + matchFormStats.STR;
+    matchFormStats.STR = matchFormStats.STR + ',D';
     matchFormStats.D += 1;
     matchFormStats.Pts += 1;
   }
@@ -52,7 +52,7 @@ const generate_form_stats = (
       formStats.GA += tmpMatchFormStats.GA;
       formStats.GD += tmpMatchFormStats.GD;
       formStats.Pts += tmpMatchFormStats.Pts;
-      formStats.STR += tmpMatchFormStats.STR;
+      formStats.STR = tmpMatchFormStats.STR + formStats.STR;
     });
   } else if (mode === 'AWAY') {
     formMatches.map((match) => {
@@ -68,7 +68,7 @@ const generate_form_stats = (
       formStats.GA += tmpMatchFormStats.GA;
       formStats.GD += tmpMatchFormStats.GD;
       formStats.Pts += tmpMatchFormStats.Pts;
-      formStats.STR += tmpMatchFormStats.STR;
+      formStats.STR = tmpMatchFormStats.STR + formStats.STR;
     });
   } else {
     formMatches.map((match) => {
@@ -92,7 +92,7 @@ const generate_form_stats = (
       formStats.GA += tmpMatchFormStats.GA;
       formStats.GD += tmpMatchFormStats.GD;
       formStats.Pts += tmpMatchFormStats.Pts;
-      formStats.STR += tmpMatchFormStats.STR;
+      formStats.STR = tmpMatchFormStats.STR + formStats.STR;
     });
   }
 

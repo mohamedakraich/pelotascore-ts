@@ -99,8 +99,6 @@ const generate_match_stats = (
     }
   }
 
-  console.log(stats._1HT);
-
   // Checking for _1H :   W, D, L, FTS, CS, BTS, S1G, S2G, C1G, C2G, P15,
   if (home_1HG > away_1HG) {
     stats._1HT.W += 1;

@@ -1,7 +1,7 @@
 export interface Match {
-  id: number;
-  status: number;
-  date: string;
+  id?: number;
+  status?: number;
+  date?: string;
   home_name: string;
   home_FullTimeGoals: number;
   home_FirstHalfGoals: number;
