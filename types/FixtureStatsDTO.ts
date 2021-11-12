@@ -16,3 +16,14 @@ export interface FixtureStatsDTO {
     away: TeamStatsType;
   };
 }
+
+export interface FixtureStatsType {
+  id: number;
+  status: number;
+  date: string;
+  league_name: string;
+  home_name: string;
+  away_name: string;
+  home_stats: TeamStatsType;
+  away_stats: TeamStatsType;
+}
