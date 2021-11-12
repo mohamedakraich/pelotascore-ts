@@ -1,21 +1,18 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { MatchEntity } from '../../entities/all.entity';
+import { FixtureStatsMap } from '../../types/FixtureStatsMap';
 import { getOrCreateConnection } from '../../utils';
-import { matchEntityToMatchStatsDTO } from '../../utils/dtos';
-
-export interface matchesType {
-  [key: string]: MatchStatsDTO[];
-}
+import { matchEntityToFixtureStatsDTO } from '../../utils/dtos';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const connection = await getOrCreateConnection();
 
-    const matches = await connection
+    const fixtures = await connection
       .getRepository<MatchEntity>('MatchEntity')
       .createQueryBuilder('match')
       .where('extract(month from match.date) = :m', { m: 11 })
-      .andWhere('extract(day from match.date) = :d', { d: 5 })
+      .andWhere('extract(day from match.date) = :d', { d: 13 })
       .leftJoinAndSelect('match.league', 'league')
       .leftJoinAndSelect('match.home_team', 'home_team')
       .leftJoinAndSelect('home_team.stats', 'home_team_stats')
@@ -24,18 +21,22 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       .orderBy('match.date', 'ASC')
       .getMany();
 
-    console.log(matches);
-
-    const matchesResponse: matchesType = {};
-    matches.forEach((match) => {
-      if (!matchesResponse[match.leagueId]) {
-        matchesResponse[match.leagueId] = [matchEntityToMatchStatsDTO(match)];
+    const fixturesResponse: FixtureStatsMap = {};
+    fixtures.forEach((fixture) => {
+      if (!fixturesResponse[fixture.leagueId]) {
+        fixturesResponse[fixture.leagueId] = [
+          matchEntityToFixtureStatsDTO(fixture),
+        ];
       } else {
-        matchesResponse[match.leagueId].push(matchEntityToMatchStatsDTO(match));
+        fixturesResponse[fixture.leagueId].push(
+          matchEntityToFixtureStatsDTO(fixture)
+        );
       }
     });
 
-    res.status(200).json({ count: matches.length, matches: matchesResponse });
+    res
+      .status(200)
+      .json({ count: fixtures.length, fixtures: fixturesResponse });
   } catch (e) {
     console.error(e);
     return res.status(500).end();

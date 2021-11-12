@@ -15,9 +15,10 @@ import { useRouter } from 'next/router';
 import LeagueMatchTable from '../components/LeagueMatchTable';
 import { styled } from '@mui/material/styles';
 import Layout from '../components/Layout';
+import { FixtureStatsMap } from '../types/FixtureStatsMap';
 
-const MatchesPage: NextPage = () => {
-  const [matches, setMatches] = React.useState<MatchStatsType>({});
+const HomePage: NextPage = () => {
+  const [fixtures, setFixtures] = React.useState<FixtureStatsMap>({});
   const { query } = useRouter();
 
   console.log(query);
@@ -28,11 +29,11 @@ const MatchesPage: NextPage = () => {
     axios
       .get(`/api/matches`)
       .then((response) => {
-        const matches = response.data?.matches as unknown as MatchStatsType;
+        const fixturesMap = response.data
+          ?.fixtures as unknown as FixtureStatsMap;
         const count = response.data?.count as unknown as number;
         setCount(count);
-        setMatches(matches);
-        console.log(matches);
+        setFixtures(fixturesMap);
       })
       .catch((error) => {
         console.log(error);
@@ -52,8 +53,8 @@ const MatchesPage: NextPage = () => {
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            {Object.keys(matches).map((key) => (
-              <LeagueMatchTable key={key} matches={matches[key]} />
+            {Object.keys(fixtures).map((key) => (
+              <LeagueMatchTable key={key} fixtures={fixtures[key]} />
             ))}
           </Grid>
         </Grid>
@@ -62,4 +63,4 @@ const MatchesPage: NextPage = () => {
   );
 };
 
-export default MatchesPage;
+export default HomePage;

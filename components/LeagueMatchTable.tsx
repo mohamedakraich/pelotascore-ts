@@ -9,6 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Grid, gridClasses, Typography } from '@mui/material';
+import { FixtureStatsDTO } from '../types/FixtureStatsDTO';
 
 const calculatePercentage = (value: number, total: number) => {
   return Math.floor((value / total) * 100) + '%';
@@ -32,7 +33,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 interface LeagueMatchTableProps {
-  matches: MatchStatsDTO[];
+  fixtures: FixtureStatsDTO[];
 }
 
 export const StyledGrid = styled(Grid)(({ theme }) => ({
@@ -44,7 +45,7 @@ export const StyledGrid = styled(Grid)(({ theme }) => ({
   padding: theme.spacing(1),
 }));
 
-const LeagueMatchTable: React.FC<LeagueMatchTableProps> = ({ matches }) => {
+const LeagueMatchTable: React.FC<LeagueMatchTableProps> = ({ fixtures }) => {
   return (
     <Box mt={2} component={Paper} elevation={10}>
       <Grid container direction="column">
@@ -52,7 +53,7 @@ const LeagueMatchTable: React.FC<LeagueMatchTableProps> = ({ matches }) => {
           <StyledGrid container alignItems="center" direction="row">
             <Grid item>
               <Typography variant="h6" color="white">
-                {matches[0].league_name || ''}
+                {fixtures[0].league_name || ''}
               </Typography>
             </Grid>
           </StyledGrid>
@@ -71,195 +72,183 @@ const LeagueMatchTable: React.FC<LeagueMatchTableProps> = ({ matches }) => {
                   <StyledTableCell></StyledTableCell>
                   <StyledTableCell align="left">GP</StyledTableCell>
                   <StyledTableCell align="left">W</StyledTableCell>
+                  <StyledTableCell align="left">FTS</StyledTableCell>
+                  <StyledTableCell align="left">CS</StyledTableCell>
+                  <StyledTableCell align="left">BTS</StyledTableCell>
+                  <StyledTableCell align="left">+1.5 (1HT)</StyledTableCell>
+                  <StyledTableCell align="left">+1.5 (2HT)</StyledTableCell>
                   <StyledTableCell align="left">S2G</StyledTableCell>
                   <StyledTableCell align="left">C2G</StyledTableCell>
                   <StyledTableCell align="left">S3G</StyledTableCell>
                   <StyledTableCell align="left">C3G</StyledTableCell>
-                  <StyledTableCell align="left">FHS1G</StyledTableCell>
-                  <StyledTableCell align="left">FHC1G</StyledTableCell>
-                  <StyledTableCell align="left">FHS2G</StyledTableCell>
-                  <StyledTableCell align="left">FHC2G</StyledTableCell>
-                  <StyledTableCell align="left">FHP15</StyledTableCell>
                   <StyledTableCell align="left">P25</StyledTableCell>
                   <StyledTableCell align="left">P35</StyledTableCell>
-                  <StyledTableCell align="left">P45</StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {matches.map((match) => (
-                  <React.Fragment key={match.id}>
+                {fixtures.map((fixture) => (
+                  <React.Fragment key={fixture.id}>
                     <StyledTableRow>
-                      <StyledTableCell>{match.home_name}</StyledTableCell>
+                      <StyledTableCell>{fixture.home_name}</StyledTableCell>
                       <StyledTableCell rowSpan={2} align="center">
-                        {match.date.split('T')[1]?.split(':')[0] +
+                        {fixture.date.split('T')[1]?.split(':')[0] +
                           ':' +
-                          match.date.split('T')[1]?.split(':')[1]}
+                          fixture.date.split('T')[1]?.split(':')[1]}
                       </StyledTableCell>
                       <StyledTableCell align="left">
-                        {match.home_stats.GP}
+                        {fixture.overall.home.GP}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.home_stats.W,
-                          match.home_stats.GP
+                          fixture.overall.home.W,
+                          fixture.overall.home.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.home_stats.S2G,
-                          match.home_stats.GP
+                          fixture.overall.home.FTS,
+                          fixture.overall.home.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.home_stats.C2G,
-                          match.home_stats.GP
+                          fixture.overall.home.CS,
+                          fixture.overall.home.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.home_stats.S3G,
-                          match.home_stats.GP
+                          fixture.overall.home.BTS,
+                          fixture.overall.home.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.home_stats.C3G,
-                          match.home_stats.GP
+                          fixture.overall.home._1HT_P15,
+                          fixture.overall.home.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.home_stats.FHS1G,
-                          match.home_stats.GP
+                          fixture.overall.home._2HT_P15,
+                          fixture.overall.home.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.home_stats.FHC1G,
-                          match.home_stats.GP
+                          fixture.overall.home.S2G,
+                          fixture.overall.home.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.home_stats.FHS2G,
-                          match.home_stats.GP
+                          fixture.overall.home.C2G,
+                          fixture.overall.home.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.home_stats.FHC2G,
-                          match.home_stats.GP
+                          fixture.overall.home.S3G,
+                          fixture.overall.home.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.home_stats.FHP15,
-                          match.home_stats.GP
+                          fixture.overall.home.C3G,
+                          fixture.overall.home.GP
+                        )}
+                      </StyledTableCell>
+
+                      <StyledTableCell align="left">
+                        {calculatePercentage(
+                          fixture.overall.home.P25,
+                          fixture.overall.home.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.home_stats.P25,
-                          match.home_stats.GP
-                        )}
-                      </StyledTableCell>
-                      <StyledTableCell align="left">
-                        {calculatePercentage(
-                          match.home_stats.P35,
-                          match.home_stats.GP
-                        )}
-                      </StyledTableCell>
-                      <StyledTableCell align="left">
-                        {calculatePercentage(
-                          match.home_stats.P45,
-                          match.home_stats.GP
+                          fixture.overall.home.P35,
+                          fixture.overall.home.GP
                         )}
                       </StyledTableCell>
                     </StyledTableRow>
                     <StyledTableRow>
                       <StyledTableCell component="th" scope="row">
-                        {match.away_name}
+                        {fixture.away_name}
                       </StyledTableCell>
                       <StyledTableCell align="left">
-                        {match.away_stats.GP}
+                        {fixture.overall.away.GP}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.away_stats.W,
-                          match.away_stats.GP
+                          fixture.overall.away.W,
+                          fixture.overall.away.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.away_stats.S2G,
-                          match.away_stats.GP
+                          fixture.overall.away.FTS,
+                          fixture.overall.away.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.away_stats.C2G,
-                          match.away_stats.GP
+                          fixture.overall.away.CS,
+                          fixture.overall.away.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.away_stats.S3G,
-                          match.away_stats.GP
+                          fixture.overall.away.BTS,
+                          fixture.overall.away.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.away_stats.C3G,
-                          match.away_stats.GP
+                          fixture.overall.away._1HT_P15,
+                          fixture.overall.away.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.away_stats.FHS1G,
-                          match.away_stats.GP
+                          fixture.overall.away._2HT_P15,
+                          fixture.overall.away.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.away_stats.FHC1G,
-                          match.away_stats.GP
+                          fixture.overall.away.S2G,
+                          fixture.overall.away.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.away_stats.FHS2G,
-                          match.away_stats.GP
+                          fixture.overall.away.C2G,
+                          fixture.overall.away.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.away_stats.FHC2G,
-                          match.away_stats.GP
+                          fixture.overall.away.S3G,
+                          fixture.overall.away.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.away_stats.FHP15,
-                          match.away_stats.GP
+                          fixture.overall.away.C3G,
+                          fixture.overall.away.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.away_stats.P25,
-                          match.away_stats.GP
+                          fixture.overall.away.P25,
+                          fixture.overall.away.GP
                         )}
                       </StyledTableCell>
                       <StyledTableCell align="left">
                         {calculatePercentage(
-                          match.away_stats.P35,
-                          match.away_stats.GP
-                        )}
-                      </StyledTableCell>
-                      <StyledTableCell align="left">
-                        {calculatePercentage(
-                          match.away_stats.P45,
-                          match.away_stats.GP
+                          fixture.overall.away.P35,
+                          fixture.overall.away.GP
                         )}
                       </StyledTableCell>
                     </StyledTableRow>
