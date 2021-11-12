@@ -64,6 +64,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 interface LeagueMatchTableProps {
+  code?: string;
   fixtures: FixtureStatsDTO[];
 }
 
@@ -90,9 +91,11 @@ const FixtureStatsTableBody: React.FC<FixtureStatsTableBodyProps> = ({
           <StyledTableRow>
             <StyledTableCell>{fixture.home_name}</StyledTableCell>
             <StyledTableCell rowSpan={2} align="center">
-              {fixture.date.split('T')[1]?.split(':')[0] +
-                ':' +
-                fixture.date.split('T')[1]?.split(':')[1]}
+              {fixture.status === 99
+                ? 'pp.'
+                : fixture.date.split('T')[1]?.split(':')[0] +
+                  ':' +
+                  fixture.date.split('T')[1]?.split(':')[1]}
             </StyledTableCell>
             <StyledTableCell align="center">
               {fixture.home_stats.GP}
@@ -254,7 +257,10 @@ const FixtureStatsTableBody: React.FC<FixtureStatsTableBodyProps> = ({
   );
 };
 
-const LeagueMatchTable: React.FC<LeagueMatchTableProps> = ({ fixtures }) => {
+const LeagueMatchTable: React.FC<LeagueMatchTableProps> = ({
+  code,
+  fixtures,
+}) => {
   const [statsMode, setStatsMode] = useState<StatsMode>('Home/Away');
 
   const homeAwayfixturesStats: FixtureStatsType[] = fixtures.map((fixture) => ({
@@ -289,9 +295,19 @@ const LeagueMatchTable: React.FC<LeagueMatchTableProps> = ({ fixtures }) => {
         <Grid item>
           <StyledGrid container alignItems="center" direction="row">
             <Grid item sx={{ marginRight: 'auto' }}>
-              <Typography variant="h6" color="white">
-                {fixtures[0].league_name || ''}
-              </Typography>
+              <Grid container alignItems="center" direction="row">
+                <Grid item>
+                  <span
+                    className={'flag-icon flag-icon-' + code}
+                    style={{ width: '3em', height: '1.5em' }}
+                  ></span>
+                </Grid>
+                <Grid item>
+                  <Typography variant="h6" color="white">
+                    {fixtures[0].league_name || ''}
+                  </Typography>
+                </Grid>
+              </Grid>
             </Grid>
             {statsMode === 'Overall' ? (
               <>

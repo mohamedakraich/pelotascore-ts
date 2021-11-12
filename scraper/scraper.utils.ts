@@ -131,8 +131,10 @@ export const getMatchFixture = async (
     const timeMinutes = parseInt(fixtureTime.split(':')[1]);
     matchModel.date.setHours(timeHours);
     matchModel.date.setMinutes(timeMinutes);
+    matchModel.status = 0;
+  } else {
+    matchModel.status = 99;
   }
-  matchModel.status = 0;
   matchModel.home_team = home_team;
   matchModel.away_team = away_team;
   return matchModel;
