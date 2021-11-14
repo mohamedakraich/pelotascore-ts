@@ -2,10 +2,22 @@ import { League } from '../scraper';
 
 export const leagues: League[] = [
   {
+    id: 'algeria_1',
+    name: 'Algeria - Ligue 1',
+    country: 'Algeria',
+    link: 'https://www.soccerstats.com/results.asp?league=algeria&pmtype=bydate',
+  },
+  {
     id: 'argentina_1',
     name: 'Argentina - Liga Profesional',
     country: 'Argentina',
     link: 'https://www.soccerstats.com/results.asp?league=argentina&pmtype=bydate',
+  },
+  {
+    id: 'australia_1',
+    name: 'Australia - A-League',
+    country: 'Australia',
+    link: 'https://www.soccerstats.com/results.asp?league=australia&pmtype=bydate',
   },
   {
     id: 'austria_1',
@@ -44,6 +56,18 @@ export const leagues: League[] = [
     link: 'https://www.soccerstats.com/results.asp?league=brazil2&pmtype=bydate',
   },
   {
+    id: 'czechrepublic_1',
+    name: 'CzechRepublic - 1. Liga',
+    country: 'Czech Republic',
+    link: 'https://www.soccerstats.com/results.asp?league=czechrepublic&pmtype=bydate',
+  },
+  {
+    id: 'czechrepublic_2',
+    name: 'CzechRepublic - FNL',
+    country: 'Czech Republic',
+    link: 'https://www.soccerstats.com/results.asp?league=czechrepublic2&pmtype=bydate',
+  },
+  {
     id: 'denmark_1',
     name: 'Denmark - Superligaen',
     country: 'Denmark',
@@ -78,6 +102,18 @@ export const leagues: League[] = [
     name: 'England - National League',
     country: 'England',
     link: 'https://www.soccerstats.com/results.asp?league=england5&pmtype=bydate',
+  },
+  {
+    id: 'england_6',
+    name: 'England - National L. North',
+    country: 'England',
+    link: 'https://www.soccerstats.com/results.asp?league=england6&pmtype=bydate',
+  },
+  {
+    id: 'england_7',
+    name: 'England - National L. South',
+    country: 'England',
+    link: 'https://www.soccerstats.com/results.asp?league=england7&pmtype=bydate',
   },
   {
     id: 'france_1',
@@ -116,6 +152,12 @@ export const leagues: League[] = [
     link: 'https://www.soccerstats.com/results.asp?league=germany2&pmtype=bydate',
   },
   {
+    id: 'germany_3',
+    name: 'Germany - 3. Liga',
+    country: 'Germany',
+    link: 'https://www.soccerstats.com/results.asp?league=germany3&pmtype=bydate',
+  },
+  {
     id: 'italy_1',
     name: 'Italy - Serie A',
     country: 'Italy',
@@ -128,10 +170,40 @@ export const leagues: League[] = [
     link: 'https://www.soccerstats.com/results.asp?league=italy2&pmtype=bydate',
   },
   {
+    id: 'italy_3',
+    name: 'Italy - Serie C - Group A',
+    country: 'Italy',
+    link: 'https://www.soccerstats.com/results.asp?league=italy3&pmtype=bydate',
+  },
+  {
+    id: 'italy_4',
+    name: 'Italy - Serie C - Group B',
+    country: 'Italy',
+    link: 'https://www.soccerstats.com/results.asp?league=italy4&pmtype=bydate',
+  },
+  {
+    id: 'italy_5',
+    name: 'Italy - Serie C - Group C',
+    country: 'Italy',
+    link: 'https://www.soccerstats.com/results.asp?league=italy5&pmtype=bydate',
+  },
+  {
     id: 'ireland_1',
     name: 'Ireland - Premier Division',
     country: 'Ireland',
     link: 'https://www.soccerstats.com/results.asp?league=ireland&pmtype=bydate',
+  },
+  {
+    id: 'japan_1',
+    name: 'Japan - J1 League',
+    country: 'Japan',
+    link: 'https://www.soccerstats.com/results.asp?league=japan&pmtype=bydate',
+  },
+  {
+    id: 'japan_2',
+    name: 'Japan - J2 League',
+    country: 'Japan',
+    link: 'https://www.soccerstats.com/results.asp?league=japan2&pmtype=bydate',
   },
   {
     id: 'morocco_1',
@@ -164,6 +236,18 @@ export const leagues: League[] = [
     link: 'https://www.soccerstats.com/results.asp?league=norway2&pmtype=bydate',
   },
   {
+    id: 'norway_3',
+    name: 'Norway - Division 2 - Gr. 1',
+    country: 'Norway',
+    link: 'https://www.soccerstats.com/results.asp?league=norway3&pmtype=bydate',
+  },
+  {
+    id: 'norway_4',
+    name: 'Norway - Division 2 - Gr. 2',
+    country: 'Norway',
+    link: 'https://www.soccerstats.com/results.asp?league=norway4&pmtype=bydate',
+  },
+  {
     id: 'poland_1',
     name: 'Poland - Ekstraklasa',
     country: 'Poland',
@@ -182,6 +266,12 @@ export const leagues: League[] = [
     link: 'https://www.soccerstats.com/results.asp?league=portugal&pmtype=bydate',
   },
   {
+    id: 'portugal_2',
+    name: 'Portugal - Segunda Liga',
+    country: 'Portugal',
+    link: 'https://www.soccerstats.com/results.asp?league=portugal2&pmtype=bydate',
+  },
+  {
     id: 'romania_1',
     name: 'Romania - Liga 1',
     country: 'Romania',
@@ -198,6 +288,48 @@ export const leagues: League[] = [
     name: 'Russia - FNL',
     country: 'Russia',
     link: 'https://www.soccerstats.com/results.asp?league=russia2&pmtype=bydate',
+  },
+  {
+    id: 'spain_1',
+    name: 'La Liga',
+    country: 'Spain',
+    link: 'https://www.soccerstats.com/results.asp?league=spain&pmtype=bydate',
+  },
+  {
+    id: 'spain_2',
+    name: 'Spain - La Liga 2',
+    country: 'Spain',
+    link: 'https://www.soccerstats.com/results.asp?league=spain2&pmtype=bydate',
+  },
+  {
+    id: 'scotland_1',
+    name: 'Scotland - Premiership',
+    country: 'Scotland',
+    link: 'https://www.soccerstats.com/results.asp?league=scotland&pmtype=bydate',
+  },
+  {
+    id: 'scotland_2',
+    name: 'Scotland - Championship',
+    country: 'Scotland',
+    link: 'https://www.soccerstats.com/results.asp?league=scotland2&pmtype=bydate',
+  },
+  {
+    id: 'scotland_3',
+    name: 'Scotland - League One',
+    country: 'Scotland',
+    link: 'https://www.soccerstats.com/results.asp?league=scotland3&pmtype=bydate',
+  },
+  {
+    id: 'scotland_4',
+    name: 'Scotland - League Two',
+    country: 'Scotland',
+    link: 'https://www.soccerstats.com/results.asp?league=scotland4&pmtype=bydate',
+  },
+  {
+    id: 'southkorea_1',
+    name: 'South Korea - K League 1',
+    country: 'South Korea',
+    link: 'https://www.soccerstats.com/results.asp?league=southkorea&pmtype=bydate',
   },
   {
     id: 'sweden_1',
@@ -236,22 +368,28 @@ export const leagues: League[] = [
     link: 'https://www.soccerstats.com/results.asp?league=switzerland2&pmtype=bydate',
   },
   {
-    id: 'spain_1',
-    name: 'La Liga',
-    country: 'Spain',
-    link: 'https://www.soccerstats.com/results.asp?league=spain&pmtype=bydate',
-  },
-  {
-    id: 'spain_2',
-    name: 'Spain - La Liga 2',
-    country: 'Spain',
-    link: 'https://www.soccerstats.com/results.asp?league=spain2&pmtype=bydate',
+    id: 'tunisia_1',
+    name: 'Tunisia - Ligue Professionnelle 1',
+    country: 'Tunisia',
+    link: 'https://www.soccerstats.com/results.asp?league=tunisia&pmtype=bydate',
   },
   {
     id: 'turkey_1',
     name: 'Turkey - Super Lig',
     country: 'Turkey',
     link: 'https://www.soccerstats.com/results.asp?league=turkey&pmtype=bydate',
+  },
+  {
+    id: 'usa_1',
+    name: 'USA - MLS',
+    country: 'USA',
+    link: 'https://www.soccerstats.com/results.asp?league=usa&pmtype=bydate',
+  },
+  {
+    id: 'usa_2',
+    name: 'USA - USL Championship',
+    country: 'USA',
+    link: 'https://www.soccerstats.com/results.asp?league=usa2&pmtype=bydate',
   },
   {
     id: 'wales_1',

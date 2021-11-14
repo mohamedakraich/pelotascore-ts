@@ -123,18 +123,6 @@ const FixtureStatsTableBody: React.FC<FixtureStatsTableBodyProps> = ({
             </StyledTableCell>
             <StyledTableCell align="center">
               {calculatePercentage(
-                fixture.home_stats._1HT_P15,
-                fixture.home_stats.GP
-              )}
-            </StyledTableCell>
-            <StyledTableCell align="center">
-              {calculatePercentage(
-                fixture.home_stats._2HT_P15,
-                fixture.home_stats.GP
-              )}
-            </StyledTableCell>
-            <StyledTableCell align="center">
-              {calculatePercentage(
                 fixture.home_stats.S2G,
                 fixture.home_stats.GP
               )}
@@ -196,18 +184,6 @@ const FixtureStatsTableBody: React.FC<FixtureStatsTableBodyProps> = ({
             <StyledTableCell align="center">
               {calculatePercentage(
                 fixture.away_stats.BTS,
-                fixture.away_stats.GP
-              )}
-            </StyledTableCell>
-            <StyledTableCell align="center">
-              {calculatePercentage(
-                fixture.away_stats._1HT_P15,
-                fixture.away_stats.GP
-              )}
-            </StyledTableCell>
-            <StyledTableCell align="center">
-              {calculatePercentage(
-                fixture.away_stats._2HT_P15,
                 fixture.away_stats.GP
               )}
             </StyledTableCell>
@@ -366,8 +342,6 @@ const LeagueMatchTable: React.FC<LeagueMatchTableProps> = ({
                   <StyledTableCell align="center">FTS</StyledTableCell>
                   <StyledTableCell align="center">CS</StyledTableCell>
                   <StyledTableCell align="center">BTS</StyledTableCell>
-                  <StyledTableCell align="center">+1.5 (1HT)</StyledTableCell>
-                  <StyledTableCell align="center">+1.5 (2HT)</StyledTableCell>
                   <StyledTableCell align="center">S2G</StyledTableCell>
                   <StyledTableCell align="center">C2G</StyledTableCell>
                   <StyledTableCell align="center">S3G</StyledTableCell>

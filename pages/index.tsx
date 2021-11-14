@@ -65,7 +65,7 @@ const HomePage: NextPage = () => {
               <LeagueMatchTable code="fr" fixtures={fixtures['france_1']} />
             )}
             {fixtures['germany_1'] && (
-              <LeagueMatchTable fixtures={fixtures['germany_1']} />
+              <LeagueMatchTable code="de" fixtures={fixtures['germany_1']} />
             )}
             {fixtures['italy_1'] && (
               <LeagueMatchTable code="it" fixtures={fixtures['italy_1']} />
@@ -82,8 +82,27 @@ const HomePage: NextPage = () => {
                 fixtures={fixtures['netherlands_1']}
               />
             )}
+            {fixtures['norway_1'] && (
+              <LeagueMatchTable code="no" fixtures={fixtures['norway_1']} />
+            )}
+            {fixtures['belarus_1'] && (
+              <LeagueMatchTable code="by" fixtures={fixtures['belarus_1']} />
+            )}
             {fixtures['brazil_1'] && (
               <LeagueMatchTable code="br" fixtures={fixtures['brazil_1']} />
+            )}
+
+            {fixtures['scotland_1'] && (
+              <LeagueMatchTable
+                code="gb-sct"
+                fixtures={fixtures['scotland_1']}
+              />
+            )}
+            {fixtures['japan_1'] && (
+              <LeagueMatchTable code="jp" fixtures={fixtures['japan_1']} />
+            )}
+            {fixtures['poland_1'] && (
+              <LeagueMatchTable code="pl" fixtures={fixtures['poland_1']} />
             )}
             {fixtures['england_2'] && (
               <LeagueMatchTable
@@ -109,6 +128,18 @@ const HomePage: NextPage = () => {
                 fixtures={fixtures['england_5']}
               />
             )}
+            {fixtures['england_6'] && (
+              <LeagueMatchTable
+                code="gb-eng"
+                fixtures={fixtures['england_6']}
+              />
+            )}
+            {fixtures['england_7'] && (
+              <LeagueMatchTable
+                code="gb-eng"
+                fixtures={fixtures['england_7']}
+              />
+            )}
             {fixtures['france_2'] && (
               <LeagueMatchTable fixtures={fixtures['france_2']} />
             )}
@@ -116,7 +147,22 @@ const HomePage: NextPage = () => {
               <LeagueMatchTable fixtures={fixtures['france_3']} />
             )}
             {fixtures['germany_2'] && (
-              <LeagueMatchTable fixtures={fixtures['germany_2']} />
+              <LeagueMatchTable code="de" fixtures={fixtures['germany_2']} />
+            )}
+            {fixtures['germany_3'] && (
+              <LeagueMatchTable code="de" fixtures={fixtures['germany_3']} />
+            )}
+            {fixtures['italy_2'] && (
+              <LeagueMatchTable code="it" fixtures={fixtures['italy_2']} />
+            )}
+            {fixtures['italy_3'] && (
+              <LeagueMatchTable code="it" fixtures={fixtures['italy_3']} />
+            )}
+            {fixtures['italy_4'] && (
+              <LeagueMatchTable code="it" fixtures={fixtures['italy_4']} />
+            )}
+            {fixtures['italy_5'] && (
+              <LeagueMatchTable code="it" fixtures={fixtures['italy_5']} />
             )}
             {fixtures['spain_2'] && (
               <LeagueMatchTable code="es" fixtures={fixtures['spain_2']} />
@@ -127,8 +173,53 @@ const HomePage: NextPage = () => {
                 fixtures={fixtures['netherlands_2']}
               />
             )}
+            {fixtures['norway_2'] && (
+              <LeagueMatchTable code="no" fixtures={fixtures['norway_2']} />
+            )}
+            {fixtures['norway_3'] && (
+              <LeagueMatchTable code="no" fixtures={fixtures['norway_3']} />
+            )}
+            {fixtures['norway_4'] && (
+              <LeagueMatchTable code="no" fixtures={fixtures['norway_4']} />
+            )}
+            {fixtures['sweden_2'] && (
+              <LeagueMatchTable code="se" fixtures={fixtures['sweden_2']} />
+            )}
+            {fixtures['sweden_3'] && (
+              <LeagueMatchTable code="se" fixtures={fixtures['sweden_3']} />
+            )}
+            {fixtures['sweden_4'] && (
+              <LeagueMatchTable code="se" fixtures={fixtures['sweden_4']} />
+            )}
             {fixtures['brazil_2'] && (
               <LeagueMatchTable code="br" fixtures={fixtures['brazil_2']} />
+            )}
+            {fixtures['scotland_2'] && (
+              <LeagueMatchTable
+                code="gb-sct"
+                fixtures={fixtures['scotland_2']}
+              />
+            )}
+            {fixtures['scotland_3'] && (
+              <LeagueMatchTable
+                code="gb-sct"
+                fixtures={fixtures['scotland_3']}
+              />
+            )}
+            {fixtures['scotland_4'] && (
+              <LeagueMatchTable
+                code="gb-sct"
+                fixtures={fixtures['scotland_4']}
+              />
+            )}
+            {fixtures['poland_2'] && (
+              <LeagueMatchTable code="pl" fixtures={fixtures['poland_2']} />
+            )}
+            {fixtures['russia_2'] && (
+              <LeagueMatchTable code="ru" fixtures={fixtures['russia_2']} />
+            )}
+            {fixtures['japan_2'] && (
+              <LeagueMatchTable code="jp" fixtures={fixtures['japan_2']} />
             )}
           </Grid>
         </Grid>
