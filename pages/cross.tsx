@@ -79,8 +79,8 @@ const CrossPage: NextPage = () => {
             onChange={handleChange}
             aria-label="basic tabs example"
           >
-            <StyledTab label="Leagues" {...a11yProps(0)} />
-            <StyledTab label="Teams" {...a11yProps(1)} />
+            <StyledTab label="Leagues (All)" {...a11yProps(0)} />
+            <StyledTab label="Teams (Top 50)" {...a11yProps(1)} />
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
