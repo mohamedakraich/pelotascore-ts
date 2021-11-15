@@ -54,7 +54,7 @@ const Layout: React.FC = ({ children }) => {
             <List>
               <ListSubheader>{country.countryName}</ListSubheader>
               {country.leagues.map((league, index) => (
-                <Link key={index} href={'?id=' + league.id} passHref>
+                <Link key={index} href={'/leagues?id=' + league.id} passHref>
                   <ListItem button key={index}>
                     <ListItemIcon>
                       <span
