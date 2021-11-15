@@ -8,6 +8,7 @@ import { StandingsType } from '../../types/StandingsType';
 import { TabPanel } from '../TabPanel';
 import StandingsTable from '../Standings/StandingsTable';
 import { CrossLeaguesStats } from '../../types/StandingsDTOType';
+import LeaguesStatsTable from './LeaguesStatsTable';
 
 interface StyledTabProps {
   label: string;
@@ -77,27 +78,21 @@ const LeaguesStatsContainer: React.FC<LeaguesStatsContainerProps> = ({
       <TabPanel value={value} index={0}>
         <Grid container>
           <Grid item xs={12} md>
-            {standings.FT.length > 0 && (
-              <StandingsTable standings={standings.FT} />
-            )}
+            <LeaguesStatsTable />
           </Grid>
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Grid container>
           <Grid item xs={12} md>
-            {standings._1HT.length > 0 && (
-              <StandingsTable standings={standings.FT} />
-            )}
+            <LeaguesStatsTable />
           </Grid>
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Grid container>
           <Grid item xs={12} md>
-            {standings._2HT.length > 0 && (
-              <StandingsTable standings={standings.FT} />
-            )}
+            <LeaguesStatsTable />
           </Grid>
         </Grid>
       </TabPanel>
