@@ -10,4 +10,5 @@ export interface HTStatsType {
   C2G: number;
   S2G: number;
   P15: number;
+  P25: number;
 }

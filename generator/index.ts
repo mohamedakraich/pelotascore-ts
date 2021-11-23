@@ -1,12 +1,12 @@
-import 'reflect-metadata';
-import path from 'path';
-import * as dotenv from 'dotenv';
-import { getOrCreateConnection } from '../utils';
-import { leagues } from '../data/leagues';
-import generate_stats from './generate_stats';
-import { StatisticsEntity, TeamEntity } from '../entities/all.entity';
+import "reflect-metadata";
+import path from "path";
+import * as dotenv from "dotenv";
+import { getOrCreateConnection } from "../utils";
+import { leagues } from "../data/leagues";
+import generate_stats from "./generate_stats";
+import { StatisticsEntity, TeamEntity } from "../entities/all.entity";
 
-dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
+dotenv.config({ path: path.resolve(__dirname, "../.env.local") });
 
 getOrCreateConnection().then(async (connection) => {
   for (let l = 0; l < leagues.length; l++) {
@@ -174,6 +174,10 @@ getOrCreateConnection().then(async (connection) => {
       statsEntity.home_1HT_P15 = statistics[key].home.stats._1HT.P15;
       statsEntity.away_1HT_P15 = statistics[key].away.stats._1HT.P15;
 
+      statsEntity.overall_1HT_P25 = statistics[key].overall.stats._1HT.P25;
+      statsEntity.home_1HT_P25 = statistics[key].home.stats._1HT.P25;
+      statsEntity.away_1HT_P25 = statistics[key].away.stats._1HT.P25;
+
       statsEntity.overall_2HT_W = statistics[key].overall.stats._2HT.W;
       statsEntity.home_2HT_W = statistics[key].home.stats._2HT.W;
       statsEntity.away_2HT_W = statistics[key].away.stats._2HT.W;
@@ -218,6 +222,10 @@ getOrCreateConnection().then(async (connection) => {
       statsEntity.home_2HT_P15 = statistics[key].home.stats._2HT.P15;
       statsEntity.away_2HT_P15 = statistics[key].away.stats._2HT.P15;
 
+      statsEntity.overall_2HT_P25 = statistics[key].overall.stats._2HT.P25;
+      statsEntity.home_2HT_P25 = statistics[key].home.stats._2HT.P25;
+      statsEntity.away_2HT_P25 = statistics[key].away.stats._2HT.P25;
+
       statsEntity.overall_form_GP = statistics[key].overall.stats.FORM.GP;
       statsEntity.home_form_GP = statistics[key].home.stats.FORM.GP;
       statsEntity.away_form_GP = statistics[key].away.stats.FORM.GP;
@@ -256,19 +264,19 @@ getOrCreateConnection().then(async (connection) => {
 
       try {
         const foundTeam = await connection
-          .getRepository<TeamEntity>('TeamEntity')
+          .getRepository<TeamEntity>("TeamEntity")
           .findOne({ name: key });
         if (foundTeam) {
           const insertedStats = await connection
-            .getRepository<StatisticsEntity>('StatisticsEntity')
+            .getRepository<StatisticsEntity>("StatisticsEntity")
             .save(statsEntity);
           foundTeam.stats = insertedStats;
           await connection
-            .getRepository<TeamEntity>('TeamEntity')
+            .getRepository<TeamEntity>("TeamEntity")
             .save(foundTeam);
         }
       } catch (e) {
-        console.error('foundTeam', e);
+        console.error("foundTeam", e);
       }
     });
   }

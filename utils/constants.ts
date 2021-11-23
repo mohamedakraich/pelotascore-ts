@@ -10,6 +10,7 @@ export const initialHTStats = {
   C2G: 0,
   S2G: 0,
   P15: 0,
+  P25: 0,
 };
 
 export const initialFormStats = {
@@ -21,7 +22,7 @@ export const initialFormStats = {
   GA: 0,
   GD: 0,
   Pts: 0,
-  STR: '',
+  STR: "",
 };
 
 export const initialStats = {

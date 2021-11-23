@@ -1,5 +1,5 @@
-import { StatsType } from '../types/StatsType';
-import { initialStats } from '../utils/constants';
+import { StatsType } from "../types/StatsType";
+import { initialStats } from "../utils/constants";
 
 /*
 By default, it generates stats for Home Team.
@@ -99,7 +99,7 @@ const generate_match_stats = (
     }
   }
 
-  // Checking for _1H :   W, D, L, FTS, CS, BTS, S1G, S2G, C1G, C2G, P15,
+  // Checking for _1H :   W, D, L, FTS, CS, BTS, S1G, S2G, C1G, C2G, P15, P25,
   if (home_1HG > away_1HG) {
     stats._1HT.W += 1;
   } else if (home_1HG < away_1HG) {
@@ -131,8 +131,11 @@ const generate_match_stats = (
   if (home_1HG + away_1HG >= 2) {
     stats._1HT.P15 += 1;
   }
+  if (home_1HG + away_1HG >= 3) {
+    stats._1HT.P25 += 1;
+  }
 
-  // Checking for _2H :   W, D, L, FTS, CS, BTS, S1G, S2G, C1G, C2G, P15,
+  // Checking for _2H :   W, D, L, FTS, CS, BTS, S1G, S2G, C1G, C2G, P15,P25
   if (home_2HG > away_2HG) {
     stats._2HT.W += 1;
   } else if (home_2HG < away_2HG) {
@@ -163,6 +166,9 @@ const generate_match_stats = (
   }
   if (home_2HG + away_2HG >= 2) {
     stats._2HT.P15 += 1;
+  }
+  if (home_2HG + away_2HG >= 3) {
+    stats._2HT.P25 += 1;
   }
 
   return stats;

@@ -7,9 +7,9 @@ import {
   OneToOne,
   PrimaryColumn,
   PrimaryGeneratedColumn,
-} from 'typeorm';
+} from "typeorm";
 
-@Entity({ name: 'leagues' })
+@Entity({ name: "leagues" })
 export class LeagueEntity {
   @PrimaryColumn()
   id: string;
@@ -27,7 +27,7 @@ export class LeagueEntity {
   stats: StatisticsEntity[];
 }
 
-@Entity({ name: 'statistics' })
+@Entity({ name: "statistics" })
 export class StatisticsEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -36,7 +36,7 @@ export class StatisticsEntity {
   leagueId: string;
 
   @ManyToOne(() => LeagueEntity, (league) => league.stats)
-  @JoinColumn({ name: 'leagueId' })
+  @JoinColumn({ name: "leagueId" })
   league: LeagueEntity;
 
   @Column()
@@ -316,6 +316,13 @@ export class StatisticsEntity {
   away_1HT_P15: number;
 
   @Column()
+  overall_1HT_P25: number;
+  @Column()
+  home_1HT_P25: number;
+  @Column()
+  away_1HT_P25: number;
+
+  @Column()
   overall_2HT_W: number;
   @Column()
   home_2HT_W: number;
@@ -393,6 +400,13 @@ export class StatisticsEntity {
   away_2HT_P15: number;
 
   @Column()
+  overall_2HT_P25: number;
+  @Column()
+  home_2HT_P25: number;
+  @Column()
+  away_2HT_P25: number;
+
+  @Column()
   overall_form_GP: number;
   @Column()
   home_form_GP: number;
@@ -456,7 +470,7 @@ export class StatisticsEntity {
   away_form_string: string;
 }
 
-@Entity({ name: 'teams' })
+@Entity({ name: "teams" })
 export class TeamEntity {
   @PrimaryColumn()
   name: string;
@@ -472,7 +486,7 @@ export class TeamEntity {
   away_matches: MatchEntity[];
 }
 
-@Entity({ name: 'matches' })
+@Entity({ name: "matches" })
 export class MatchEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -487,11 +501,11 @@ export class MatchEntity {
   date: Date;
 
   @ManyToOne(() => TeamEntity, (team) => team.home_matches)
-  @JoinColumn({ name: 'home_team_name' })
+  @JoinColumn({ name: "home_team_name" })
   home_team: TeamEntity;
 
   @ManyToOne(() => TeamEntity, (team) => team.away_matches)
-  @JoinColumn({ name: 'away_team_name' })
+  @JoinColumn({ name: "away_team_name" })
   away_team: TeamEntity;
 
   @Column({ default: -1 })
@@ -513,6 +527,6 @@ export class MatchEntity {
   away_SecondHalfGoals: number;
 
   @ManyToOne(() => LeagueEntity, (league) => league.matches)
-  @JoinColumn({ name: 'leagueId' })
+  @JoinColumn({ name: "leagueId" })
   league: LeagueEntity;
 }

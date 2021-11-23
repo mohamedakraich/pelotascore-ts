@@ -1,5 +1,5 @@
-import { StatsType } from '../types/StatsType';
-import { initialStats } from '../utils/constants';
+import { StatsType } from "../types/StatsType";
+import { initialStats } from "../utils/constants";
 
 export const add_stats = (a: StatsType, b: StatsType): StatsType => {
   let addedStats = {
@@ -52,6 +52,7 @@ export const add_stats = (a: StatsType, b: StatsType): StatsType => {
   addedStats._1HT.S2G = a._1HT.S2G + b._1HT.S2G;
   addedStats._1HT.C2G = a._1HT.C2G + b._1HT.C2G;
   addedStats._1HT.P15 = a._1HT.P15 + b._1HT.P15;
+  addedStats._1HT.P25 = a._1HT.P25 + b._1HT.P25;
 
   addedStats._2HT.W = a._2HT.W + b._2HT.W;
   addedStats._2HT.D = a._2HT.D + b._2HT.D;
@@ -64,6 +65,7 @@ export const add_stats = (a: StatsType, b: StatsType): StatsType => {
   addedStats._2HT.S2G = a._2HT.S2G + b._2HT.S2G;
   addedStats._2HT.C2G = a._2HT.C2G + b._2HT.C2G;
   addedStats._2HT.P15 = a._2HT.P15 + b._2HT.P15;
+  addedStats._2HT.P25 = a._2HT.P25 + b._2HT.P25;
 
   return addedStats;
 };

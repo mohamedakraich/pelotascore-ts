@@ -1,7 +1,7 @@
-import { MatchEntity } from '../entities/all.entity';
-import { FixtureStatsDTO } from '../types/FixtureStatsDTO';
-import { MatchDTO } from '../types/MatchDTO';
-import { MatchStatsDTO } from '../types/MatchStatsDTO';
+import { MatchEntity } from "../entities/all.entity";
+import { FixtureStatsDTO } from "../types/FixtureStatsDTO";
+import { MatchDTO } from "../types/MatchDTO";
+import { MatchStatsDTO } from "../types/MatchStatsDTO";
 
 export const matchEntityToMatchDTO = (matchEntity: MatchEntity): MatchDTO => {
   const {
@@ -23,10 +23,10 @@ export const matchEntityToMatchDTO = (matchEntity: MatchEntity): MatchDTO => {
     status,
     date:
       date.toDateString() +
-      '#' +
-      ('0' + date.getHours()).slice(-2) +
-      ':' +
-      ('0' + date.getMinutes()).slice(-2),
+      "#" +
+      ("0" + date.getHours()).slice(-2) +
+      ":" +
+      ("0" + date.getMinutes()).slice(-2),
     home_name,
     home_FullTimeGoals,
     home_FirstHalfGoals,
@@ -117,47 +117,13 @@ export const matchEntityToFixtureStatsDTO = (
     league_name,
     home_name,
     away_name,
-    overall: {
-      home: {
-        GP: home_stats.overall_GP,
-        W: home_stats.overall_W,
-        FTS: home_stats.overall_FTS,
-        CS: home_stats.overall_CS,
-        BTS: home_stats.overall_BTS,
-        _1HT_P15: home_stats.overall_1HT_P15,
-        _2HT_P15: home_stats.overall_2HT_P15,
-        S2G: home_stats.overall_S2G,
-        C2G: home_stats.overall_C2G,
-        S3G: home_stats.overall_S3G,
-        C3G: home_stats.overall_C3G,
-        P25: home_stats.overall_P25,
-        P35: home_stats.overall_P35,
-      },
-      away: {
-        GP: away_stats.overall_GP,
-        W: away_stats.overall_W,
-        FTS: away_stats.overall_FTS,
-        CS: away_stats.overall_CS,
-        BTS: away_stats.overall_BTS,
-        _1HT_P15: away_stats.overall_1HT_P15,
-        _2HT_P15: away_stats.overall_2HT_P15,
-        S2G: away_stats.overall_S2G,
-        C2G: away_stats.overall_C2G,
-        S3G: away_stats.overall_S3G,
-        C3G: away_stats.overall_C3G,
-        P25: away_stats.overall_P25,
-        P35: away_stats.overall_P35,
-      },
-    },
-    home_away: {
+    FT: {
       home: {
         GP: home_stats.home_GP,
         W: home_stats.home_W,
         FTS: home_stats.home_FTS,
         CS: home_stats.home_CS,
         BTS: home_stats.home_BTS,
-        _1HT_P15: home_stats.home_1HT_P15,
-        _2HT_P15: home_stats.home_2HT_P15,
         S2G: home_stats.home_S2G,
         C2G: home_stats.home_C2G,
         S3G: home_stats.home_S3G,
@@ -171,14 +137,68 @@ export const matchEntityToFixtureStatsDTO = (
         FTS: away_stats.away_FTS,
         CS: away_stats.away_CS,
         BTS: away_stats.away_BTS,
-        _1HT_P15: away_stats.away_1HT_P15,
-        _2HT_P15: away_stats.away_2HT_P15,
         S2G: away_stats.away_S2G,
         C2G: away_stats.away_C2G,
         S3G: away_stats.away_S3G,
         C3G: away_stats.away_C3G,
         P25: away_stats.away_P25,
         P35: away_stats.away_P35,
+      },
+    },
+    _1HT: {
+      home: {
+        GP: home_stats.home_GP,
+        W: home_stats.home_1HT_W,
+        FTS: home_stats.home_1HT_FTS,
+        CS: home_stats.home_1HT_CS,
+        BTS: home_stats.home_1HT_BTS,
+        S1G: home_stats.home_1HT_S1G,
+        C1G: home_stats.home_1HT_C1G,
+        S2G: home_stats.home_1HT_S2G,
+        C2G: home_stats.home_1HT_C2G,
+        P15: home_stats.home_1HT_P15,
+        P25: home_stats.home_1HT_P25,
+      },
+      away: {
+        GP: away_stats.away_GP,
+        W: away_stats.away_1HT_W,
+        FTS: away_stats.away_1HT_FTS,
+        CS: away_stats.away_1HT_CS,
+        BTS: away_stats.away_1HT_BTS,
+        S1G: away_stats.away_1HT_S1G,
+        C1G: away_stats.away_1HT_C1G,
+        S2G: away_stats.away_1HT_S2G,
+        C2G: away_stats.away_1HT_C2G,
+        P15: away_stats.away_1HT_P15,
+        P25: away_stats.away_1HT_P25,
+      },
+    },
+    _2HT: {
+      home: {
+        GP: home_stats.home_GP,
+        W: home_stats.home_2HT_W,
+        FTS: home_stats.home_2HT_FTS,
+        CS: home_stats.home_2HT_CS,
+        BTS: home_stats.home_2HT_BTS,
+        S1G: home_stats.home_2HT_S1G,
+        C1G: home_stats.home_2HT_C1G,
+        S2G: home_stats.home_2HT_S2G,
+        C2G: home_stats.home_2HT_C2G,
+        P15: home_stats.home_2HT_P15,
+        P25: home_stats.home_2HT_P25,
+      },
+      away: {
+        GP: away_stats.away_GP,
+        W: away_stats.away_2HT_W,
+        FTS: away_stats.away_2HT_FTS,
+        CS: away_stats.away_2HT_CS,
+        BTS: away_stats.away_2HT_BTS,
+        S1G: away_stats.away_2HT_S1G,
+        C1G: away_stats.away_2HT_C1G,
+        S2G: away_stats.away_2HT_S2G,
+        C2G: away_stats.away_2HT_C2G,
+        P15: away_stats.away_2HT_P15,
+        P25: away_stats.away_2HT_P25,
       },
     },
   };
