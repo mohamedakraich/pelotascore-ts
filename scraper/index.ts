@@ -1,19 +1,19 @@
-import 'reflect-metadata';
-import path from 'path';
-import * as dotenv from 'dotenv';
-import axios from 'axios';
-import * as cheerio from 'cheerio';
-import cliProgress from 'cli-progress';
+import "reflect-metadata";
+import path from "path";
+import * as dotenv from "dotenv";
+import axios from "axios";
+import * as cheerio from "cheerio";
+import cliProgress from "cli-progress";
 
-import { exit } from 'process';
-import { Connection } from 'typeorm';
-import { getOrCreateConnection } from '../utils';
-import { leagues } from '../data/leagues';
+import { exit } from "process";
+import { Connection } from "typeorm";
+import { getOrCreateConnection } from "../utils";
+import { leagues } from "../data/leagues";
 
-import { getLeagueStartingMonth, getMatch } from './scraper.utils';
-import { LeagueEntity } from '../entities/all.entity';
+import { getLeagueStartingMonth, getMatch } from "./scraper.utils";
+import { LeagueEntity } from "../entities/all.entity";
 
-dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
+dotenv.config({ path: path.resolve(__dirname, "../.env.local") });
 
 export const LEAGUES_LENGTH = leagues.length;
 
@@ -23,18 +23,19 @@ export type League = {
   id: string;
   name: string;
   country: string;
+  countryCode: string;
   link: string;
 };
 
 const saveLeague = async (connection: Connection, league: League) => {
   try {
     const response = await axios.get(league.link, {
-      responseType: 'text',
+      responseType: "text",
     });
     const html = response.data as string;
     let $ = cheerio.load(html);
     let leagueStartingMonth = -1;
-    let matches = $('#btable').first().find('tr.odd[height="28"]');
+    let matches = $("#btable").first().find('tr.odd[height="28"]');
     const leagueEntity = new LeagueEntity();
     leagueEntity.id = league.id;
     leagueEntity.name = league.name;

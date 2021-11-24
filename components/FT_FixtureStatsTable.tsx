@@ -57,7 +57,7 @@ const FT_FixtureStatsTableBody: React.FC<FixtureStatsTableBodyProps> = ({
 }) => {
   return (
     <TableBody>
-      {fixtures.map((fixture) => (
+      {fixtures.map((fixture, index) => (
         <React.Fragment key={fixture.id}>
           <StyledTableRow>
             <StyledTableCell>{fixture.home_name}</StyledTableCell>
@@ -195,9 +195,11 @@ const FT_FixtureStatsTableBody: React.FC<FixtureStatsTableBodyProps> = ({
               )}
             </StyledTableCell>
           </StyledTableRow>
-          <TableRow>
-            <TableCell colSpan={14} sx={{ height: 10 }} />
-          </TableRow>
+          {index != fixtures.length - 1 && (
+            <TableRow>
+              <TableCell colSpan={14} sx={{ height: 10 }} />
+            </TableRow>
+          )}
         </React.Fragment>
       ))}
     </TableBody>
