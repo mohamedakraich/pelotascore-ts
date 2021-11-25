@@ -1,14 +1,14 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import { styled } from '@mui/material/styles';
-import { StandingsType } from '../../types/StandingsType';
-import { TabPanel } from '../TabPanel';
-import StandingsTable from '../Standings/StandingsTable';
-import { CrossLeaguesStats } from '../../types/StandingsDTOType';
-import LeaguesStatsTable from './LeaguesStatsTable';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import { styled } from "@mui/material/styles";
+import { StandingsType } from "../../types/StandingsType";
+import { TabPanel } from "../TabPanel";
+import StandingsTable from "../Standings/StandingsTable";
+import LeaguesStatsTable from "./LeaguesStatsTable";
+import CrossLeaguesStatsDTO from "../../types/CrossLeaguesStatsDTO";
 
 interface StyledTabProps {
   label: string;
@@ -24,9 +24,9 @@ const StyledTabs = styled((props: StyledTabsProps) => <Tabs {...props} />)(
   ({ theme }) => ({
     padding: 5,
     backgroundColor: theme.palette.primary.main,
-    '& .MuiTabs-indicator': {
-      height: '100%',
-      backgroundColor: 'rgba(255, 255, 255, .2)',
+    "& .MuiTabs-indicator": {
+      height: "100%",
+      backgroundColor: "rgba(255, 255, 255, .2)",
       borderRadius: theme.spacing(1),
     },
   })
@@ -35,26 +35,26 @@ const StyledTabs = styled((props: StyledTabsProps) => <Tabs {...props} />)(
 const StyledTab = styled((props: StyledTabProps) => (
   <Tab disableRipple {...props} />
 ))(({ theme }) => ({
-  backgroundColor: 'transparent',
-  color: '#fff',
-  '&.Mui-selected': {
-    color: '#fff',
+  backgroundColor: "transparent",
+  color: "#fff",
+  "&.Mui-selected": {
+    color: "#fff",
   },
 }));
 
 const a11yProps = (index: number) => {
   return {
     id: `standings-tab-${index}`,
-    'aria-controls': `standings-tabpanel-${index}`,
+    "aria-controls": `standings-tabpanel-${index}`,
   };
 };
 
 interface LeaguesStatsContainerProps {
-  standings: CrossLeaguesStats;
+  stats: CrossLeaguesStatsDTO;
 }
 
 const LeaguesStatsContainer: React.FC<LeaguesStatsContainerProps> = ({
-  standings,
+  stats,
 }) => {
   const [value, setValue] = React.useState(0);
 
@@ -63,8 +63,8 @@ const LeaguesStatsContainer: React.FC<LeaguesStatsContainerProps> = ({
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Box sx={{ backgroundColor: 'primary.main' }}>
+    <Box sx={{ width: "100%" }}>
+      <Box sx={{ backgroundColor: "primary.main" }}>
         <StyledTabs
           value={value}
           onChange={handleChange}

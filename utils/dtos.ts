@@ -1,5 +1,6 @@
-import { MatchEntity } from "../entities/all.entity";
+import { LeagueEntity, MatchEntity } from "../entities/all.entity";
 import { FixtureStatsDTO } from "../types/FixtureStatsDTO";
+import { LeagueStatsDTO } from "../types/LeagueStatsDTO";
 import { MatchDTO } from "../types/MatchDTO";
 import { MatchStatsDTO } from "../types/MatchStatsDTO";
 
@@ -204,4 +205,89 @@ export const matchEntityToFixtureStatsDTO = (
   };
 
   return fixtureStatsDTO;
+};
+
+export const leagueEntityToLeagueStatsDTO = (
+  leagueEntity: LeagueEntity
+): LeagueStatsDTO => {
+  const {
+    id,
+    name,
+    country,
+    country_code,
+    GP,
+    FT_home_w,
+    FT_draws,
+    FT_away_w,
+    FT_P15,
+    FT_P25,
+    FT_P35,
+    FT_BTS,
+    FT_CS,
+    FT_FTS,
+    _1HT_home_w,
+    _1HT_draws,
+    _1HT_away_w,
+    _1HT_P15,
+    _1HT_P25,
+    _1HT_BTS,
+    _1HT_CS,
+    _1HT_FTS,
+    _2HT_home_w,
+    _2HT_draws,
+    _2HT_away_w,
+    _2HT_P15,
+    _2HT_P25,
+    _2HT_BTS,
+    _2HT_CS,
+    _2HT_FTS,
+  } = leagueEntity;
+  return {
+    FT: {
+      id,
+      name,
+      country,
+      country_code,
+      GP: GP,
+      home_w: FT_home_w,
+      draws: FT_draws,
+      away_w: FT_away_w,
+      P15: FT_P15,
+      P25: FT_P25,
+      P35: FT_P35,
+      BTS: FT_BTS,
+      CS: FT_CS,
+      FTS: FT_FTS,
+    },
+    _1HT: {
+      id,
+      name,
+      country,
+      country_code,
+      GP: GP,
+      home_w: _1HT_home_w,
+      draws: _1HT_draws,
+      away_w: _1HT_away_w,
+      P15: _1HT_P15,
+      P25: _1HT_P25,
+      BTS: _1HT_BTS,
+      CS: _1HT_CS,
+      FTS: _1HT_FTS,
+    },
+    _2HT: {
+      id,
+      name,
+      country,
+      country_code,
+      GP: GP,
+      home_w: _2HT_home_w,
+      draws: _2HT_draws,
+      away_w: _2HT_away_w,
+      P15: _2HT_P15,
+      P25: _2HT_P25,
+      BTS: _2HT_BTS,
+      CS: _2HT_CS,
+      FTS: _2HT_FTS,
+    },
+  };
 };

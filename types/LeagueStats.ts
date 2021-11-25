@@ -1,10 +1,6 @@
-export interface LeagueStatsDTO {
+export interface LeagueStats {
+  GP: number;
   FT: {
-    id: string;
-    name: string;
-    country: string;
-    country_code: string;
-    GP: number;
     home_w: number;
     draws: number;
     away_w: number;
@@ -16,11 +12,6 @@ export interface LeagueStatsDTO {
     FTS: number;
   };
   _1HT: {
-    id: string;
-    name: string;
-    country: string;
-    country_code: string;
-    GP: number;
     home_w: number;
     draws: number;
     away_w: number;
@@ -31,11 +22,6 @@ export interface LeagueStatsDTO {
     FTS: number;
   };
   _2HT: {
-    id: string;
-    name: string;
-    country: string;
-    country_code: string;
-    GP: number;
     home_w: number;
     draws: number;
     away_w: number;

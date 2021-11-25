@@ -1,12 +1,6 @@
-import { GoalsStandingsType } from './GoalsStandingsType';
-import { HTFTStandingsType } from './HTFTStandingsType';
-import { StandingsType } from './StandingsType';
-
-export interface CrossLeaguesStats {
-  FT: StandingsType[];
-  _1HT: StandingsType[];
-  _2HT: StandingsType[];
-}
+import { GoalsStandingsType } from "./GoalsStandingsType";
+import { HTFTStandingsType } from "./HTFTStandingsType";
+import { StandingsType } from "./StandingsType";
 
 export interface StandingsDTOType {
   normal: {

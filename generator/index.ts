@@ -10,13 +10,13 @@ import {
   TeamEntity,
 } from "../entities/all.entity";
 import { initialLeagueStats } from "../utils/constants";
-import { LeagueStatsDTO } from "../types/LeagueStatsDTO";
+import { LeagueStats } from "../types/LeagueStats";
 
 dotenv.config({ path: path.resolve(__dirname, "../.env.local") });
 
 getOrCreateConnection().then(async (connection) => {
   for (let l = 0; l < leagues.length; l++) {
-    let leagueStats: LeagueStatsDTO = {
+    let leagueStats: LeagueStats = {
       GP: initialLeagueStats.GP,
       FT: { ...initialLeagueStats.FT },
       _1HT: { ...initialLeagueStats._1HT },
