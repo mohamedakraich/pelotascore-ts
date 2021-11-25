@@ -65,6 +65,27 @@ export const leagues: League[] = [
     link: "https://www.soccerstats.com/results.asp?league=brazil2&pmtype=bydate",
   },
   {
+    id: "bulgaria_1",
+    name: "Bulgaria - First league",
+    country: "Bulgaria",
+    countryCode: "bg",
+    link: "https://www.soccerstats.com/results.asp?league=bulgaria&pmtype=bydate",
+  },
+  {
+    id: "croatia_1",
+    name: "Croatia - 1. HNL",
+    country: "Croatia",
+    countryCode: "hr",
+    link: "https://www.soccerstats.com/results.asp?league=croatia&pmtype=bydate",
+  },
+  {
+    id: "cyprus_1",
+    name: "Cyprus - Division 1",
+    country: "Cyprus",
+    countryCode: "cy",
+    link: "https://www.soccerstats.com/results.asp?league=cyprus&pmtype=bydate",
+  },
+  {
     id: "czechrepublic_1",
     name: "CzechRepublic - 1. Liga",
     country: "Czech Republic",
@@ -84,6 +105,13 @@ export const leagues: League[] = [
     country: "Denmark",
     countryCode: "dk",
     link: "https://www.soccerstats.com/results.asp?league=denmark&pmtype=bydate",
+  },
+  {
+    id: "denmark_2",
+    name: "Denmark - 1st Division",
+    country: "Denmark",
+    countryCode: "dk",
+    link: "https://www.soccerstats.com/results.asp?league=denmark2&pmtype=bydate",
   },
   {
     id: "england_1",
@@ -338,6 +366,13 @@ export const leagues: League[] = [
     link: "https://www.soccerstats.com/results.asp?league=russia2&pmtype=bydate",
   },
   {
+    id: "saudiarabia_1",
+    name: "Saudi Arabia - Professional League",
+    country: "Saudi Arabia",
+    countryCode: "sa",
+    link: "https://www.soccerstats.com/results.asp?league=saudiarabia&pmtype=bydate",
+  },
+  {
     id: "spain_1",
     name: "La Liga",
     country: "Spain",
@@ -441,6 +476,13 @@ export const leagues: League[] = [
     country: "Turkey",
     countryCode: "tr",
     link: "https://www.soccerstats.com/results.asp?league=turkey&pmtype=bydate",
+  },
+  {
+    id: "turkey_2",
+    name: "Turkey - 1. Lig",
+    country: "Turkey",
+    countryCode: "tr",
+    link: "https://www.soccerstats.com/results.asp?league=turkey2&pmtype=bydate",
   },
   {
     id: "usa_1",
