@@ -25,6 +25,71 @@ export class LeagueEntity {
 
   @OneToMany(() => StatisticsEntity, (stats) => stats.league)
   stats: StatisticsEntity[];
+
+  @Column({ default: "xx" })
+  country_code: string;
+
+  @Column({ default: -1 })
+  GP: number;
+
+  @Column({ default: -1 })
+  overall_home_w: number;
+  @Column({ default: -1 })
+  _1HT_home_w: number;
+  @Column({ default: -1 })
+  _2HT_home_w: number;
+
+  @Column({ default: -1 })
+  overall_draws: number;
+  @Column({ default: -1 })
+  _1HT_draws: number;
+  @Column({ default: -1 })
+  _2HT_draws: number;
+
+  @Column({ default: -1 })
+  overall_away_w: number;
+  @Column({ default: -1 })
+  _1HT_away_w: number;
+  @Column({ default: -1 })
+  _2HT_away_w: number;
+
+  @Column({ default: -1 })
+  overall_P15: number;
+  @Column({ default: -1 })
+  _1HT__P15: number;
+  @Column({ default: -1 })
+  _2HT_P15: number;
+
+  @Column({ default: -1 })
+  overall_P25: number;
+  @Column({ default: -1 })
+  _1HT_P25: number;
+  @Column({ default: -1 })
+  _2HT_P25: number;
+
+  @Column({ default: -1 })
+  overall_P35: number;
+
+  @Column({ default: -1 })
+  overall_BTS: number;
+  @Column({ default: -1 })
+  _1HT_BTS: number;
+  @Column({ default: -1 })
+  _2HT_BTS: number;
+
+  @Column({ default: -1 })
+  overall_CS: number;
+  @Column({ default: -1 })
+  _1HT_CS: number;
+  @Column({ default: -1 })
+  _2HT_CS: number;
+
+  @Column({ default: -1 })
+  overall_FTS: number;
+  @Column({ default: -1 })
+  _1HT_FTS: number;
+  @Column({ default: -1 })
+  _2HT_FTS: number;
 }
 
 @Entity({ name: "statistics" })

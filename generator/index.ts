@@ -5,11 +5,19 @@ import { getOrCreateConnection } from "../utils";
 import { leagues } from "../data/leagues";
 import generate_stats from "./generate_stats";
 import { StatisticsEntity, TeamEntity } from "../entities/all.entity";
+import { initialLeagueStats } from "../utils/constants";
+import { LeagueStatsDTO } from "../types/LeagueStatsDTO";
 
 dotenv.config({ path: path.resolve(__dirname, "../.env.local") });
 
 getOrCreateConnection().then(async (connection) => {
   for (let l = 0; l < leagues.length; l++) {
+    const leagueStats: LeagueStatsDTO = {
+      GP: initialLeagueStats.GP,
+      FT: { ...initialLeagueStats.FT },
+      _1HT: { ...initialLeagueStats._1HT },
+      _2HT: { ...initialLeagueStats._2HT },
+    };
     const statistics = await generate_stats(leagues[l]);
     Object.keys(statistics).forEach(async (key) => {
       const statsEntity = new StatisticsEntity();
@@ -261,6 +269,37 @@ getOrCreateConnection().then(async (connection) => {
       statsEntity.overall_form_string = statistics[key].overall.stats.FORM.STR;
       statsEntity.home_form_string = statistics[key].home.stats.FORM.STR;
       statsEntity.away_form_string = statistics[key].away.stats.FORM.STR;
+
+      // League Stats
+      leagueStats.GP += statistics[key].home.stats.GP;
+
+      leagueStats.FT.home_w += statistics[key].home.stats.W;
+      leagueStats.FT.draws += statistics[key].home.stats.D;
+      leagueStats.FT.away_w += statistics[key].away.stats.W;
+      leagueStats.FT.P15 += statistics[key].home.stats.P15;
+      leagueStats.FT.P25 += statistics[key].home.stats.P25;
+      leagueStats.FT.P35 += statistics[key].home.stats.P35;
+      leagueStats.FT.BTS += statistics[key].home.stats.BTS;
+      leagueStats.FT.CS += statistics[key].home.stats.CS;
+      leagueStats.FT.FTS += statistics[key].home.stats.FTS;
+
+      leagueStats._1HT.home_w += statistics[key].home.stats._1HT.W;
+      leagueStats._1HT.draws += statistics[key].home.stats._1HT.D;
+      leagueStats._1HT.away_w += statistics[key].away.stats._1HT.W;
+      leagueStats._1HT.P15 += statistics[key].home.stats._1HT.P15;
+      leagueStats._1HT.P25 += statistics[key].home.stats._1HT.P25;
+      leagueStats._1HT.BTS += statistics[key].home.stats._1HT.BTS;
+      leagueStats._1HT.CS += statistics[key].home.stats._1HT.CS;
+      leagueStats._1HT.FTS += statistics[key].home.stats._1HT.FTS;
+
+      leagueStats._2HT.home_w += statistics[key].home.stats._2HT.W;
+      leagueStats._2HT.draws += statistics[key].home.stats._2HT.D;
+      leagueStats._2HT.away_w += statistics[key].away.stats._2HT.W;
+      leagueStats._2HT.P15 += statistics[key].home.stats._2HT.P15;
+      leagueStats._2HT.P25 += statistics[key].home.stats._2HT.P25;
+      leagueStats._2HT.BTS += statistics[key].home.stats._2HT.BTS;
+      leagueStats._2HT.CS += statistics[key].home.stats._2HT.CS;
+      leagueStats._2HT.FTS += statistics[key].home.stats._2HT.FTS;
 
       try {
         const foundTeam = await connection

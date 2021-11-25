@@ -1,26 +1,26 @@
-import * as React from 'react';
-import { alpha } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TablePagination from '@mui/material/TablePagination';
-import TableRow from '@mui/material/TableRow';
-import TableSortLabel from '@mui/material/TableSortLabel';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
-import Checkbox from '@mui/material/Checkbox';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
-import DeleteIcon from '@mui/icons-material/Delete';
-import FilterListIcon from '@mui/icons-material/FilterList';
-import { visuallyHidden } from '@mui/utils';
-import { styled } from '@mui/material/styles';
+import * as React from "react";
+import { alpha } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TablePagination from "@mui/material/TablePagination";
+import TableRow from "@mui/material/TableRow";
+import TableSortLabel from "@mui/material/TableSortLabel";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Paper from "@mui/material/Paper";
+import Checkbox from "@mui/material/Checkbox";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
+import DeleteIcon from "@mui/icons-material/Delete";
+import FilterListIcon from "@mui/icons-material/FilterList";
+import { visuallyHidden } from "@mui/utils";
+import { styled } from "@mui/material/styles";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -75,19 +75,19 @@ function createData(
 }
 
 const rows = [
-  createData('Cupcake', 305, 3.7, 67, 4.3, 4, 4, 4, 4, 4, 4),
-  createData('Donut', 452, 25.0, 51, 4.9, 4, 4, 4, 4, 4, 4),
-  createData('Eclair', 262, 16.0, 24, 6.0, 4, 4, 4, 4, 4, 4),
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0, 4, 4, 4, 4, 4, 4),
-  createData('Gingerbread', 356, 16.0, 49, 3.9, 4, 4, 4, 4, 4, 4),
-  createData('Honeycomb', 408, 3.2, 87, 6.5, 4, 4, 4, 4, 4, 4),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3, 4, 4, 4, 4, 4, 4),
-  createData('Jelly Bean', 375, 0.0, 94, 0.0, 4, 4, 4, 4, 4, 4),
-  createData('KitKat', 518, 26.0, 65, 7.0, 4, 4, 4, 4, 4, 4),
-  createData('Lollipop', 392, 0.2, 98, 0.0, 4, 4, 4, 4, 4, 4),
-  createData('Marshmallow', 318, 0, 81, 2.0, 4, 4, 4, 4, 4, 4),
-  createData('Nougat', 360, 19.0, 9, 37.0, 4, 4, 4, 4, 4, 4),
-  createData('Oreo', 437, 18.0, 63, 4.0, 4, 4, 4, 4, 4, 4),
+  createData("Cupcake", 305, 3.7, 67, 4.3, 4, 4, 4, 4, 4, 4),
+  createData("Donut", 452, 25.0, 51, 4.9, 4, 4, 4, 4, 4, 4),
+  createData("Eclair", 262, 16.0, 24, 6.0, 4, 4, 4, 4, 4, 4),
+  createData("Frozen yoghurt", 159, 6.0, 24, 4.0, 4, 4, 4, 4, 4, 4),
+  createData("Gingerbread", 356, 16.0, 49, 3.9, 4, 4, 4, 4, 4, 4),
+  createData("Honeycomb", 408, 3.2, 87, 6.5, 4, 4, 4, 4, 4, 4),
+  createData("Ice cream sandwich", 237, 9.0, 37, 4.3, 4, 4, 4, 4, 4, 4),
+  createData("Jelly Bean", 375, 0.0, 94, 0.0, 4, 4, 4, 4, 4, 4),
+  createData("KitKat", 518, 26.0, 65, 7.0, 4, 4, 4, 4, 4, 4),
+  createData("Lollipop", 392, 0.2, 98, 0.0, 4, 4, 4, 4, 4, 4),
+  createData("Marshmallow", 318, 0, 81, 2.0, 4, 4, 4, 4, 4, 4),
+  createData("Nougat", 360, 19.0, 9, 37.0, 4, 4, 4, 4, 4, 4),
+  createData("Oreo", 437, 18.0, 63, 4.0, 4, 4, 4, 4, 4, 4),
 ];
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
@@ -100,7 +100,7 @@ function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   return 0;
 }
 
-type Order = 'asc' | 'desc';
+type Order = "asc" | "desc";
 
 function getComparator<Key extends keyof any>(
   order: Order,
@@ -109,7 +109,7 @@ function getComparator<Key extends keyof any>(
   a: { [key in Key]: number | string },
   b: { [key in Key]: number | string }
 ) => number {
-  return order === 'desc'
+  return order === "desc"
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
@@ -140,70 +140,70 @@ interface HeadCell {
 
 const headCells: readonly HeadCell[] = [
   {
-    id: 'league',
+    id: "league",
     numeric: false,
     disablePadding: false,
-    label: 'Leagues',
+    label: "Leagues",
   },
   {
-    id: 'gp',
+    id: "gp",
     numeric: true,
     disablePadding: false,
-    label: 'GP',
+    label: "GP",
   },
   {
-    id: 'home_w',
+    id: "home_w",
     numeric: true,
     disablePadding: false,
-    label: 'Home W.',
+    label: "Home W.",
   },
   {
-    id: 'draws',
+    id: "draws",
     numeric: true,
     disablePadding: false,
-    label: 'Draws',
+    label: "Draws",
   },
   {
-    id: 'away_w',
+    id: "away_w",
     numeric: true,
     disablePadding: false,
-    label: 'Away W.',
+    label: "Away W.",
   },
   {
-    id: 'p15',
+    id: "p15",
     numeric: true,
     disablePadding: false,
-    label: '1.5+',
+    label: "P15",
   },
   {
-    id: 'p25',
+    id: "p25",
     numeric: true,
     disablePadding: false,
-    label: '2.5+',
+    label: "P25",
   },
   {
-    id: 'p35',
+    id: "p35",
     numeric: true,
     disablePadding: false,
-    label: '3.5+',
+    label: "P35",
   },
   {
-    id: 'bts',
+    id: "bts",
     numeric: true,
     disablePadding: false,
-    label: 'BTS',
+    label: "BTS",
   },
   {
-    id: 'cs',
+    id: "cs",
     numeric: true,
     disablePadding: false,
-    label: 'CS',
+    label: "CS",
   },
   {
-    id: 'fts',
+    id: "fts",
     numeric: true,
     disablePadding: false,
-    label: 'FTS',
+    label: "FTS",
   },
 ];
 
@@ -239,19 +239,19 @@ function EnhancedTableHead(props: EnhancedTableProps) {
         {headCells.map((headCell) => (
           <StyledTableCell
             key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
-            padding={headCell.disablePadding ? 'none' : 'normal'}
+            align={headCell.numeric ? "right" : "left"}
+            padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
             <TableSortLabel
               active={orderBy === headCell.id}
-              direction={orderBy === headCell.id ? order : 'asc'}
+              direction={orderBy === headCell.id ? order : "asc"}
               onClick={createSortHandler(headCell.id)}
             >
               {headCell.label}
               {orderBy === headCell.id ? (
                 <Box component="span" sx={visuallyHidden}>
-                  {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                  {order === "desc" ? "sorted descending" : "sorted ascending"}
                 </Box>
               ) : null}
             </TableSortLabel>
@@ -285,7 +285,7 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
     >
       {numSelected > 0 ? (
         <Typography
-          sx={{ flex: '1 1 100%' }}
+          sx={{ flex: "1 1 100%" }}
           color="inherit"
           variant="subtitle1"
           component="div"
@@ -294,7 +294,7 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
         </Typography>
       ) : (
         <Typography
-          sx={{ flex: '1 1 100%' }}
+          sx={{ flex: "1 1 100%" }}
           variant="h6"
           id="tableTitle"
           component="div"
@@ -320,8 +320,8 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
 };
 
 const LeaguesStatsTable = () => {
-  const [order, setOrder] = React.useState<Order>('asc');
-  const [orderBy, setOrderBy] = React.useState<keyof Data>('league');
+  const [order, setOrder] = React.useState<Order>("asc");
+  const [orderBy, setOrderBy] = React.useState<keyof Data>("league");
   const [selected, setSelected] = React.useState<readonly string[]>([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
@@ -331,8 +331,8 @@ const LeaguesStatsTable = () => {
     event: React.MouseEvent<unknown>,
     property: keyof Data
   ) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
+    const isAsc = orderBy === property && order === "asc";
+    setOrder(isAsc ? "desc" : "asc");
     setOrderBy(property);
   };
 
@@ -387,8 +387,8 @@ const LeaguesStatsTable = () => {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Paper sx={{ width: '100%', mb: 2 }}>
+    <Box sx={{ width: "100%" }}>
+      <Paper sx={{ width: "100%", mb: 2 }}>
         <TableContainer>
           <Table
             sx={{ minWidth: 750 }}

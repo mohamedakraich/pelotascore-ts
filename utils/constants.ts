@@ -85,3 +85,38 @@ export const initialStatsMap = {
     },
   },
 };
+
+export const initialLeagueStats = {
+  GP: 0,
+  FT: {
+    home_w: 0,
+    draws: 0,
+    away_w: 0,
+    P15: 0,
+    P25: 0,
+    P35: 0,
+    BTS: 0,
+    CS: 0,
+    FTS: 0,
+  },
+  _1HT: {
+    home_w: 0,
+    draws: 0,
+    away_w: 0,
+    P15: 0,
+    P25: 0,
+    BTS: 0,
+    CS: 0,
+    FTS: 0,
+  },
+  _2HT: {
+    home_w: 0,
+    draws: 0,
+    away_w: 0,
+    P15: 0,
+    P25: 0,
+    BTS: 0,
+    CS: 0,
+    FTS: 0,
+  },
+};
