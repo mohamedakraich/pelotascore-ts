@@ -40,6 +40,7 @@ const saveLeague = async (connection: Connection, league: League) => {
     leagueEntity.id = league.id;
     leagueEntity.name = league.name;
     leagueEntity.country = league.country;
+    leagueEntity.country_code = league.countryCode;
     const insertedLeague = await connection.manager.save(leagueEntity);
     for (let m = 0; m < matches.length; m++) {
       let match: any = matches[m];

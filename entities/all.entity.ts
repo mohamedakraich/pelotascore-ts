@@ -33,59 +33,59 @@ export class LeagueEntity {
   GP: number;
 
   @Column({ default: -1 })
-  overall_home_w: number;
+  FT_home_w: number;
   @Column({ default: -1 })
   _1HT_home_w: number;
   @Column({ default: -1 })
   _2HT_home_w: number;
 
   @Column({ default: -1 })
-  overall_draws: number;
+  FT_draws: number;
   @Column({ default: -1 })
   _1HT_draws: number;
   @Column({ default: -1 })
   _2HT_draws: number;
 
   @Column({ default: -1 })
-  overall_away_w: number;
+  FT_away_w: number;
   @Column({ default: -1 })
   _1HT_away_w: number;
   @Column({ default: -1 })
   _2HT_away_w: number;
 
   @Column({ default: -1 })
-  overall_P15: number;
+  FT_P15: number;
   @Column({ default: -1 })
-  _1HT__P15: number;
+  _1HT_P15: number;
   @Column({ default: -1 })
   _2HT_P15: number;
 
   @Column({ default: -1 })
-  overall_P25: number;
+  FT_P25: number;
   @Column({ default: -1 })
   _1HT_P25: number;
   @Column({ default: -1 })
   _2HT_P25: number;
 
   @Column({ default: -1 })
-  overall_P35: number;
+  FT_P35: number;
 
   @Column({ default: -1 })
-  overall_BTS: number;
+  FT_BTS: number;
   @Column({ default: -1 })
   _1HT_BTS: number;
   @Column({ default: -1 })
   _2HT_BTS: number;
 
   @Column({ default: -1 })
-  overall_CS: number;
+  FT_CS: number;
   @Column({ default: -1 })
   _1HT_CS: number;
   @Column({ default: -1 })
   _2HT_CS: number;
 
   @Column({ default: -1 })
-  overall_FTS: number;
+  FT_FTS: number;
   @Column({ default: -1 })
   _1HT_FTS: number;
   @Column({ default: -1 })

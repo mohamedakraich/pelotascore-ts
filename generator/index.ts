@@ -4,7 +4,11 @@ import * as dotenv from "dotenv";
 import { getOrCreateConnection } from "../utils";
 import { leagues } from "../data/leagues";
 import generate_stats from "./generate_stats";
-import { StatisticsEntity, TeamEntity } from "../entities/all.entity";
+import {
+  LeagueEntity,
+  StatisticsEntity,
+  TeamEntity,
+} from "../entities/all.entity";
 import { initialLeagueStats } from "../utils/constants";
 import { LeagueStatsDTO } from "../types/LeagueStatsDTO";
 
@@ -12,7 +16,7 @@ dotenv.config({ path: path.resolve(__dirname, "../.env.local") });
 
 getOrCreateConnection().then(async (connection) => {
   for (let l = 0; l < leagues.length; l++) {
-    const leagueStats: LeagueStatsDTO = {
+    let leagueStats: LeagueStatsDTO = {
       GP: initialLeagueStats.GP,
       FT: { ...initialLeagueStats.FT },
       _1HT: { ...initialLeagueStats._1HT },
@@ -318,5 +322,48 @@ getOrCreateConnection().then(async (connection) => {
         console.error("foundTeam", e);
       }
     });
+
+    try {
+      const foundLeague = await connection
+        .getRepository<LeagueEntity>("LeagueEntity")
+        .findOne({ id: leagues[l].id });
+      if (foundLeague) {
+        foundLeague.GP = leagueStats.GP;
+
+        foundLeague.FT_home_w = leagueStats.FT.home_w;
+        foundLeague.FT_draws = leagueStats.FT.draws;
+        foundLeague.FT_away_w = leagueStats.FT.away_w;
+        foundLeague.FT_P15 = leagueStats.FT.P15;
+        foundLeague.FT_P25 = leagueStats.FT.P25;
+        foundLeague.FT_P35 = leagueStats.FT.P35;
+        foundLeague.FT_BTS = leagueStats.FT.BTS;
+        foundLeague.FT_CS = leagueStats.FT.CS;
+        foundLeague.FT_FTS = leagueStats.FT.FTS;
+
+        foundLeague._1HT_home_w = leagueStats._1HT.home_w;
+        foundLeague._1HT_draws = leagueStats._1HT.draws;
+        foundLeague._1HT_away_w = leagueStats._1HT.away_w;
+        foundLeague._1HT_P15 = leagueStats._1HT.P15;
+        foundLeague._1HT_P25 = leagueStats._1HT.P25;
+        foundLeague._1HT_BTS = leagueStats._1HT.BTS;
+        foundLeague._1HT_CS = leagueStats._1HT.CS;
+        foundLeague._1HT_FTS = leagueStats._1HT.FTS;
+
+        foundLeague._2HT_home_w = leagueStats._2HT.home_w;
+        foundLeague._2HT_draws = leagueStats._2HT.draws;
+        foundLeague._2HT_away_w = leagueStats._2HT.away_w;
+        foundLeague._2HT_P15 = leagueStats._2HT.P15;
+        foundLeague._2HT_P25 = leagueStats._2HT.P25;
+        foundLeague._2HT_BTS = leagueStats._2HT.BTS;
+        foundLeague._2HT_CS = leagueStats._2HT.CS;
+        foundLeague._2HT_FTS = leagueStats._2HT.FTS;
+
+        await connection
+          .getRepository<LeagueEntity>("LeagueEntity")
+          .save(foundLeague);
+      }
+    } catch (e) {
+      console.error("foundLeague", e);
+    }
   }
 });
