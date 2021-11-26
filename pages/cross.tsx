@@ -19,6 +19,7 @@ import { TabPanel } from "../components/TabPanel";
 import LeaguesStatsContainer from "../components/CrossStats/LeaguesStatsContainer";
 import TeamsStatsContainer from "../components/CrossStats/TeamsStatsContainer";
 import CrossLeaguesStatsDTO from "../types/CrossLeaguesStatsDTO";
+import CrossTeamStatsDTO from "../types/CrossTeamStatsDTO";
 
 interface StyledTabProps {
   label: string;
@@ -50,6 +51,9 @@ function a11yProps(index: number) {
 const CrossPage: NextPage = () => {
   const [crossLeagueStats, setCrossLeagueStats] =
     React.useState<CrossLeaguesStatsDTO>({ FT: [], _1HT: [], _2HT: [] });
+  const [crossTeamStats, setCrossTeamStats] = React.useState<CrossTeamStatsDTO>(
+    { P15: [], P25: [], P35: [], _1HT_P15: [], _2HT_P15: [] }
+  );
   const { query } = useRouter();
   const [value, setValue] = React.useState(0);
 
@@ -95,9 +99,9 @@ const CrossPage: NextPage = () => {
         <TabPanel value={value} index={0}>
           <LeaguesStatsContainer stats={crossLeagueStats} />
         </TabPanel>
-        {/*<TabPanel value={value} index={1}>
-          <TeamsStatsContainer standings={standings} />
-          </TabPanel>*/}
+        <TabPanel value={value} index={1}>
+          <TeamsStatsContainer stats={crossTeamStats} />
+        </TabPanel>
       </Box>
     </React.Fragment>
   );

@@ -12,7 +12,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       .getRepository<MatchEntity>("MatchEntity")
       .createQueryBuilder("match")
       .where("extract(month from match.date) = :m", { m: 11 })
-      .andWhere("extract(day from match.date) = :d", { d: 27 })
+      .andWhere("extract(day from match.date) = :d", { d: 26 })
       .andWhere("match.status = :status", { status: 0 })
       .leftJoinAndSelect("match.league", "league")
       .leftJoinAndSelect("match.home_team", "home_team")
