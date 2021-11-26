@@ -9,6 +9,8 @@ import { TabPanel } from "../TabPanel";
 import StandingsTable from "../Standings/StandingsTable";
 import LeaguesStatsTable from "./LeaguesStatsTable";
 import CrossLeaguesStatsDTO from "../../types/CrossLeaguesStatsDTO";
+import FTLeaguesStatsTable from "./FTLeaguesStatsTable";
+import HTLeaguesStatsTable from "./HTLeaguesStatsTable";
 
 interface StyledTabProps {
   label: string;
@@ -78,21 +80,21 @@ const LeaguesStatsContainer: React.FC<LeaguesStatsContainerProps> = ({
       <TabPanel value={value} index={0}>
         <Grid container>
           <Grid item xs={12} md>
-            <LeaguesStatsTable />
+            <FTLeaguesStatsTable stats={stats.FT} />
           </Grid>
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <Grid container>
           <Grid item xs={12} md>
-            <LeaguesStatsTable />
+            <HTLeaguesStatsTable stats={stats._1HT} />
           </Grid>
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Grid container>
           <Grid item xs={12} md>
-            <LeaguesStatsTable />
+            <HTLeaguesStatsTable stats={stats._2HT} />
           </Grid>
         </Grid>
       </TabPanel>
