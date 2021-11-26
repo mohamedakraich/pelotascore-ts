@@ -53,6 +53,11 @@ export const all_leagues: CountryLeagues[] = [
     leagues: [{ id: "belarus_1", name: "Premier League" }],
   },
   {
+    countryName: "Bosnia and Herzegovina",
+    countryCode: "ba",
+    leagues: [{ id: "bosnia_1", name: "Premier Liga" }],
+  },
+  {
     countryName: "Brazil",
     countryCode: "br",
     leagues: [
@@ -114,7 +119,6 @@ export const all_leagues: CountryLeagues[] = [
       { id: "france_3", name: "National" },
     ],
   },
-
   {
     countryName: "Egypt",
     countryCode: "eg",
@@ -128,6 +132,11 @@ export const all_leagues: CountryLeagues[] = [
       { id: "germany_2", name: "2. Bundesliga" },
       { id: "germany_3", name: "3. Liga" },
     ],
+  },
+  {
+    countryName: "Hungaru",
+    countryCode: "hu",
+    leagues: [{ id: "hungary_1", name: "NB I" }],
   },
   {
     countryName: "Italy",
@@ -166,6 +175,11 @@ export const all_leagues: CountryLeagues[] = [
       { id: "netherlands_1", name: "Eredivisie" },
       { id: "netherlands_2", name: "Eerste Divisie" },
     ],
+  },
+  {
+    countryName: "Northern Ireland",
+    countryCode: "gb-nir",
+    leagues: [{ id: "northernireland_1", name: "NIFL Premiership" }],
   },
   {
     countryName: "Norway",
@@ -212,14 +226,6 @@ export const all_leagues: CountryLeagues[] = [
     leagues: [{ id: "saudiarabia_1", name: "Professional League" }],
   },
   {
-    countryName: "Spain",
-    countryCode: "es",
-    leagues: [
-      { id: "spain_1", name: "La Liga" },
-      { id: "spain_2", name: "La Liga 2" },
-    ],
-  },
-  {
     countryName: "Scotland",
     countryCode: "gb-sct",
     leagues: [
@@ -229,11 +235,28 @@ export const all_leagues: CountryLeagues[] = [
       { id: "scotland_4", name: "League Two" },
     ],
   },
-
+  {
+    countryName: "Slovakia",
+    countryCode: "sk",
+    leagues: [{ id: "slovakia_1", name: "Fortuna Liga" }],
+  },
+  {
+    countryName: "Slovenia",
+    countryCode: "si",
+    leagues: [{ id: "slovenia_1", name: "PrvaLiga" }],
+  },
   {
     countryName: "South Korea",
     countryCode: "kr",
     leagues: [{ id: "southkorea_1", name: "K League 1" }],
+  },
+  {
+    countryName: "Spain",
+    countryCode: "es",
+    leagues: [
+      { id: "spain_1", name: "La Liga" },
+      { id: "spain_2", name: "La Liga 2" },
+    ],
   },
   {
     countryName: "Sweden",
@@ -265,6 +288,11 @@ export const all_leagues: CountryLeagues[] = [
       { id: "turkey_1", name: "Super Lig" },
       { id: "turkey_2", name: "1. Lig" },
     ],
+  },
+  {
+    countryName: "Ukraine",
+    countryCode: "ua",
+    leagues: [{ id: "ukraine_1", name: "Premier League" }],
   },
   {
     countryName: "USA",
