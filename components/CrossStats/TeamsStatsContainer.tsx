@@ -100,7 +100,7 @@ const TeamsStatsContainer: React.FC<TeamsStatsContainerProps> = ({ stats }) => {
           </Grid>
         </Grid>
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      <TabPanel value={value} index={3}>
         <Grid container>
           <Grid item xs={12} md>
             {stats._1HT_P15.length > 0 && (
@@ -109,7 +109,7 @@ const TeamsStatsContainer: React.FC<TeamsStatsContainerProps> = ({ stats }) => {
           </Grid>
         </Grid>
       </TabPanel>
-      <TabPanel value={value} index={2}>
+      <TabPanel value={value} index={4}>
         <Grid container>
           <Grid item xs={12} md>
             {stats._2HT_P15.length > 0 && (

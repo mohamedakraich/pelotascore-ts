@@ -1,4 +1,4 @@
-import { StandingsType } from '../types/StandingsType';
+import { StandingsType } from "../types/StandingsType";
 
 const compare_standings = (a: StandingsType, b: StandingsType) => {
   if (b.Pts > a.Pts) return 1;

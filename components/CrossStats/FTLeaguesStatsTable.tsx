@@ -61,7 +61,7 @@ function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
 
 type Order = "asc" | "desc";
 
-const calculatePercentage = (value: number, total: number): number => {
+export const calculatePercentage = (value: number, total: number): number => {
   const exactVal = (value / total) * 100;
   const floorVal = Math.floor(exactVal);
   const ceilVal = Math.ceil(exactVal);

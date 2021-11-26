@@ -44,7 +44,7 @@ const TeamStatsStandingsTable: React.FC<StandingsTableProps> = ({
           <TableRow>
             <StyledTableCell align="center">#</StyledTableCell>
             <StyledTableCell align="left">Team</StyledTableCell>
-            <StyledTableCell align="left">Country</StyledTableCell>
+            <StyledTableCell align="left">League</StyledTableCell>
             <StyledTableCell align="center">GP</StyledTableCell>
             <StyledTableCell align="center">%</StyledTableCell>
           </TableRow>
@@ -53,8 +53,16 @@ const TeamStatsStandingsTable: React.FC<StandingsTableProps> = ({
           {standings.map((team, index) => (
             <StyledTableRow key={team.id}>
               <StyledTableCell align="center">{index + 1}</StyledTableCell>
-              <StyledTableCell align="left">{team.team_name}</StyledTableCell>
-              <StyledTableCell align="left">{team.country}</StyledTableCell>
+              <StyledTableCell align="left">
+                <span
+                  className={"flag-icon flag-icon-" + team.country_code}
+                  style={{ width: "3em", height: "1.5em" }}
+                ></span>
+                {team.team_name}
+              </StyledTableCell>
+              <StyledTableCell align="left">
+                {team.country + " - " + team.league_name}
+              </StyledTableCell>
               <StyledTableCell align="center">{team.GP}</StyledTableCell>
               <StyledTableCell align="center">
                 {team.percentage}

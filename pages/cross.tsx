@@ -75,6 +75,19 @@ const CrossPage: NextPage = () => {
       });
   }, [query]);
 
+  React.useEffect(() => {
+    axios
+      .get(`/api/teams`)
+      .then((response) => {
+        const teamsResponse = response.data
+          ?.teams as unknown as CrossTeamStatsDTO;
+        setCrossTeamStats(teamsResponse);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [query]);
+
   return (
     <React.Fragment>
       <Head>

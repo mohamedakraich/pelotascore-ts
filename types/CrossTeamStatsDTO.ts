@@ -1,8 +1,9 @@
 export interface TeamStatsDTO {
   id: number;
-  leagueId: string;
   country: string;
   country_code: string;
+  leagueId: string;
+  league_name: string;
   team_name: string;
   GP: number;
   percentage: number;
