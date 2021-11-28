@@ -1,8 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { MatchEntity } from "../../entities/all.entity";
+import { FixtureStatsDTO } from "../../types/FixtureStatsDTO";
 import { FixtureStatsMap } from "../../types/FixtureStatsMap";
+import { PredictionsDTO } from "../../types/PreditionsDTO";
 import { getOrCreateConnection } from "../../utils";
-import { matchEntityToFixtureStatsDTO } from "../../utils/dtos";
+import compare_predictions from "../../utils/compare_predictions";
+import {
+  matchEntityToFixtureStatsDTO,
+  matchEntityToPredictionsDTO,
+} from "../../utils/dtos";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -22,22 +28,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       .orderBy("match.date", "ASC")
       .getMany();
 
-    const fixturesResponse: FixtureStatsMap = {};
+    const predictionsResponse: PredictionsDTO[] = [];
     fixtures.forEach((fixture) => {
-      if (!fixturesResponse[fixture.leagueId]) {
-        fixturesResponse[fixture.leagueId] = [
-          matchEntityToFixtureStatsDTO(fixture),
-        ];
-      } else {
-        fixturesResponse[fixture.leagueId].push(
-          matchEntityToFixtureStatsDTO(fixture)
-        );
-      }
+      predictionsResponse.push(matchEntityToPredictionsDTO(fixture));
     });
+
+    predictionsResponse.sort(compare_predictions);
 
     res
       .status(200)
-      .json({ count: fixtures.length, fixtures: fixturesResponse });
+      .json({ count: fixtures.length, predictions: predictionsResponse });
   } catch (e) {
     console.error(e);
     return res.status(500).end();

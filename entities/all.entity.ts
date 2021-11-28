@@ -185,6 +185,20 @@ export class StatisticsEntity {
   away_BTS: number;
 
   @Column()
+  overall_S1G: number;
+  @Column()
+  home_S1G: number;
+  @Column()
+  away_S1G: number;
+
+  @Column()
+  overall_C1G: number;
+  @Column()
+  home_C1G: number;
+  @Column()
+  away_C1G: number;
+
+  @Column()
   overall_S2G: number;
   @Column()
   home_S2G: number;

@@ -152,7 +152,7 @@ export const all_leagues: CountryLeagues[] = [
   {
     countryName: "Ireland",
     countryCode: "ie",
-    leagues: [{ id: "ireland_1", name: "Ireland - Premier Division" }],
+    leagues: [{ id: "ireland_1", name: "Premier Division" }],
   },
   {
     countryName: "Japan",

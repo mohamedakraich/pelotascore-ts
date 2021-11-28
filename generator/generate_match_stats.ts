@@ -45,6 +45,12 @@ const generate_match_stats = (
   if (home_FTG * away_FTG > 0) {
     stats.BTS += 1;
   }
+  if (home_FTG >= 1) {
+    stats.S1G += 1;
+  }
+  if (away_FTG >= 1) {
+    stats.C1G += 1;
+  }
   if (home_FTG >= 2) {
     stats.S2G += 1;
   }

@@ -3,6 +3,15 @@ import { FixtureStatsDTO } from "../types/FixtureStatsDTO";
 import { LeagueStatsDTO } from "../types/LeagueStatsDTO";
 import { MatchDTO } from "../types/MatchDTO";
 import { MatchStatsDTO } from "../types/MatchStatsDTO";
+import { PredictionsDTO } from "../types/PreditionsDTO";
+
+const calculateP = (value: number): number => {
+  const floorVal = Math.floor(value);
+  const ceilVal = Math.ceil(value);
+  return Math.abs(value - ceilVal) < Math.abs(value - floorVal)
+    ? ceilVal
+    : floorVal;
+};
 
 export const matchEntityToMatchDTO = (matchEntity: MatchEntity): MatchDTO => {
   const {
@@ -290,4 +299,52 @@ export const leagueEntityToLeagueStatsDTO = (
       FTS: _2HT_FTS,
     },
   };
+};
+
+export const matchEntityToPredictionsDTO = (
+  matchEntity: MatchEntity
+): PredictionsDTO => {
+  const {
+    id,
+    status,
+    date,
+    league: { name: league_name },
+    home_team: { name: home_name, stats: home_stats },
+    away_team: { name: away_name, stats: away_stats },
+  } = matchEntity;
+
+  const ACEP = calculateP(
+    (home_stats.home_S2G / home_stats.home_GP) *
+      (away_stats.away_C2G / away_stats.away_GP) *
+      100
+  );
+  const DOSP = calculateP(
+    (home_stats.home_C2G / home_stats.home_GP) *
+      (away_stats.away_S2G / away_stats.away_GP) *
+      100
+  );
+  const ACEP25 = calculateP(
+    (home_stats.home_S3G / home_stats.home_GP) *
+      (away_stats.away_C3G / away_stats.away_GP) *
+      100
+  );
+  const DOSP25 = calculateP(
+    (home_stats.home_C3G / home_stats.home_GP) *
+      (away_stats.away_S3G / away_stats.away_GP) *
+      100
+  );
+  const predictionsDTO: PredictionsDTO = {
+    id: matchEntity.id,
+    status,
+    date: date.toISOString(),
+    league_name,
+    home_name,
+    away_name,
+    ACEP,
+    DOSP,
+    ACEP25,
+    DOSP25,
+  };
+
+  return predictionsDTO;
 };

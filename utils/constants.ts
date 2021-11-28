@@ -37,6 +37,8 @@ export const initialStats = {
   FTS: 0,
   CS: 0,
   BTS: 0,
+  S1G: 0,
+  C1G: 0,
   S2G: 0,
   C2G: 0,
   S3G: 0,

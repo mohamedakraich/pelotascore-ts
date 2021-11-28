@@ -1,5 +1,5 @@
-import { FormStatsType } from './FormStatsType';
-import { HTStatsType } from './HTStatsType';
+import { FormStatsType } from "./FormStatsType";
+import { HTStatsType } from "./HTStatsType";
 
 export interface StatsType {
   GP: number;
@@ -13,6 +13,8 @@ export interface StatsType {
   FTS: number;
   CS: number;
   BTS: number;
+  S1G: number;
+  C1G: number;
   S2G: number;
   C2G: number;
   S3G: number;

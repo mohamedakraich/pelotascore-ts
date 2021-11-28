@@ -21,6 +21,8 @@ export const add_stats = (a: StatsType, b: StatsType): StatsType => {
   addedStats.FTS = a.FTS + b.FTS;
   addedStats.CS = a.CS + b.CS;
   addedStats.BTS = a.BTS + b.BTS;
+  addedStats.S1G = a.S1G + b.S1G;
+  addedStats.C1G = a.C1G + b.C1G;
   addedStats.S2G = a.S2G + b.S2G;
   addedStats.C2G = a.C2G + b.C2G;
   addedStats.S3G = a.S3G + b.S3G;

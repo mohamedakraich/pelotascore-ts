@@ -92,7 +92,7 @@ const LeagueFixtureStatsTable: React.FC<LeagueMatchTableProps> = ({
   code,
   fixtures,
 }) => {
-  const [statsMode, setStatsMode] = useState<StatsMode>("FT");
+  const [statsMode, setStatsMode] = useState<StatsMode>("2HT");
 
   const FT_FixturesStats: FT_FixtureStatsType[] = fixtures.map((fixture) => ({
     id: fixture.id,
