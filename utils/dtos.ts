@@ -313,26 +313,70 @@ export const matchEntityToPredictionsDTO = (
     away_team: { name: away_name, stats: away_stats },
   } = matchEntity;
 
+  const hGP = home_stats.home_GP;
+  const aGP = away_stats.away_GP;
+
   const ACEP = calculateP(
-    (home_stats.home_S2G / home_stats.home_GP) *
-      (away_stats.away_C2G / away_stats.away_GP) *
-      100
+    (home_stats.home_S2G / hGP) * (away_stats.away_C2G / aGP) * 100
   );
   const DOSP = calculateP(
-    (home_stats.home_C2G / home_stats.home_GP) *
-      (away_stats.away_S2G / away_stats.away_GP) *
-      100
+    (home_stats.home_C2G / hGP) * (away_stats.away_S2G / aGP) * 100
   );
   const ACEP25 = calculateP(
-    (home_stats.home_S3G / home_stats.home_GP) *
-      (away_stats.away_C3G / away_stats.away_GP) *
-      100
+    (home_stats.home_S3G / hGP) * (away_stats.away_C3G / aGP) * 100
   );
   const DOSP25 = calculateP(
-    (home_stats.home_C3G / home_stats.home_GP) *
-      (away_stats.away_S3G / away_stats.away_GP) *
+    (home_stats.home_C3G / hGP) * (away_stats.away_S3G / aGP) * 100
+  );
+
+  const BTS = calculateP(
+    (home_stats.home_S1G / hGP) *
+      (home_stats.home_C1G / hGP) *
+      (away_stats.away_S1G / aGP) *
+      (away_stats.away_C1G / aGP) *
       100
   );
+
+  const score30Odd = (home_stats.home_S3G / hGP) * (away_stats.away_C3G / aGP);
+  const score03Odd = (home_stats.home_C3G / hGP) * (away_stats.away_S3G / aGP);
+  const score21Odd =
+    (home_stats.home_S2G / hGP) *
+    (home_stats.home_C1G / hGP) *
+    (away_stats.away_C2G / aGP) *
+    (away_stats.away_S1G / aGP);
+  const score12Odd =
+    (home_stats.home_S1G / hGP) *
+    (home_stats.home_C2G / hGP) *
+    (away_stats.away_C1G / aGP) *
+    (away_stats.away_S2G / aGP);
+
+  const P25 = calculateP(
+    (score30Odd + score03Odd + score21Odd + score12Odd) * 25
+  );
+
+  // Calculating P35
+  const score40Odd = (home_stats.home_S4G / hGP) * (away_stats.away_C4G / aGP);
+  const score04Odd = (home_stats.home_C4G / hGP) * (away_stats.away_S4G / aGP);
+  const score31Odd =
+    (home_stats.home_S3G / hGP) *
+    (home_stats.home_C1G / hGP) *
+    (away_stats.away_C3G / aGP) *
+    (away_stats.away_S1G / aGP);
+  const score13Odd =
+    (home_stats.home_S1G / hGP) *
+    (home_stats.home_C3G / hGP) *
+    (away_stats.away_C1G / aGP) *
+    (away_stats.away_S3G / aGP);
+  const score22Odd =
+    (home_stats.home_S2G / hGP) *
+    (home_stats.home_C2G / hGP) *
+    (away_stats.away_C2G / aGP) *
+    (away_stats.away_S2G / aGP);
+
+  const P35 = calculateP(
+    (score40Odd + score04Odd + score31Odd + score13Odd + score22Odd) * 20
+  );
+
   const predictionsDTO: PredictionsDTO = {
     id: matchEntity.id,
     status,
@@ -344,6 +388,11 @@ export const matchEntityToPredictionsDTO = (
     DOSP,
     ACEP25,
     DOSP25,
+    BTS,
+    P25,
+    P35,
+    // home_P35: calculateP((home_stats.home_P35 / hGP) * 100),
+    // away_p35: calculateP((away_stats.away_P35 / aGP) * 100),
   };
 
   return predictionsDTO;

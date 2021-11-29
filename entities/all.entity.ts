@@ -227,6 +227,20 @@ export class StatisticsEntity {
   away_C3G: number;
 
   @Column()
+  overall_S4G: number;
+  @Column()
+  home_S4G: number;
+  @Column()
+  away_S4G: number;
+
+  @Column()
+  overall_C4G: number;
+  @Column()
+  home_C4G: number;
+  @Column()
+  away_C4G: number;
+
+  @Column()
   overall_WW: number;
   @Column()
   home_WW: number;

@@ -9,4 +9,9 @@ export interface PredictionsDTO {
   DOSP: number;
   ACEP25: number;
   DOSP25: number;
+  BTS: number;
+  P25: number;
+  P35: number;
+  //home_P35: number;
+  //away_p35: number;
 }

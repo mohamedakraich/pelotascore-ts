@@ -63,6 +63,12 @@ const generate_match_stats = (
   if (away_FTG >= 3) {
     stats.C3G += 1;
   }
+  if (home_FTG >= 4) {
+    stats.S4G += 1;
+  }
+  if (away_FTG >= 4) {
+    stats.C4G += 1;
+  }
 
   // Checking for P15, P25, P35, P45
   if (home_FTG + away_FTG >= 2) {

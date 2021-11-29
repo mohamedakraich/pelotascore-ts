@@ -19,6 +19,8 @@ export interface StatsType {
   C2G: number;
   S3G: number;
   C3G: number;
+  S4G: number;
+  C4G: number;
   WW: number;
   WD: number;
   WL: number;

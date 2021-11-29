@@ -98,6 +98,14 @@ getOrCreateConnection().then(async (connection) => {
       statsEntity.home_C3G = statistics[key].home.stats.C3G;
       statsEntity.away_C3G = statistics[key].away.stats.C3G;
 
+      statsEntity.overall_S4G = statistics[key].overall.stats.S4G;
+      statsEntity.home_S4G = statistics[key].home.stats.S4G;
+      statsEntity.away_S4G = statistics[key].away.stats.S4G;
+
+      statsEntity.overall_C4G = statistics[key].overall.stats.C4G;
+      statsEntity.home_C4G = statistics[key].home.stats.C4G;
+      statsEntity.away_C4G = statistics[key].away.stats.C4G;
+
       statsEntity.overall_WW = statistics[key].overall.stats.WW;
       statsEntity.home_WW = statistics[key].home.stats.WW;
       statsEntity.away_WW = statistics[key].away.stats.WW;

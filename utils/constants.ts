@@ -43,6 +43,8 @@ export const initialStats = {
   C2G: 0,
   S3G: 0,
   C3G: 0,
+  S4G: 0,
+  C4G: 0,
   WW: 0,
   WD: 0,
   WL: 0,
