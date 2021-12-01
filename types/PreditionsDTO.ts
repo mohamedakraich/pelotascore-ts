@@ -3,15 +3,21 @@ export interface PredictionsDTO {
   status: number;
   date: string;
   league_name: string;
+  country: string;
+  country_code: string;
   home_name: string;
   away_name: string;
+  ACE: number;
+  DOS: number;
   ACEP: number;
   DOSP: number;
   ACEP25: number;
+  ACEPGOD: number;
+  DOSPGOD: number;
   DOSP25: number;
   BTS: number;
+  P15: number;
   P25: number;
   P35: number;
-  //home_P35: number;
-  //away_p35: number;
+  P35_2: number;
 }

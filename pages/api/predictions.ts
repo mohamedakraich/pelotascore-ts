@@ -14,11 +14,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const connection = await getOrCreateConnection();
 
-    /*const fixtures = await connection
+    const fixtures = await connection
       .getRepository<MatchEntity>("MatchEntity")
       .createQueryBuilder("match")
-      .where("extract(month from match.date) = :m", { m: 12 })
-      .andWhere("extract(day from match.date) = :d", { d: 2 })
+      .where("extract(month from match.date) = :m", { m: 11 })
+      .andWhere("extract(day from match.date) = :d", { d: 30 })
       .andWhere("match.status = :status", { status: 0 })
       .leftJoinAndSelect("match.league", "league")
       .leftJoinAndSelect("match.home_team", "home_team")
@@ -26,9 +26,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       .leftJoinAndSelect("match.away_team", "away_team")
       .leftJoinAndSelect("away_team.stats", "away_team_stats")
       .orderBy("match.date", "ASC")
-      .getMany();*/
+      .getMany();
 
-    const fixtures = await connection
+    /*const fixtures = await connection
       .getRepository<MatchEntity>("MatchEntity")
       .createQueryBuilder("match")
       .where(
@@ -46,7 +46,27 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       .leftJoinAndSelect("match.away_team", "away_team")
       .leftJoinAndSelect("away_team.stats", "away_team_stats")
       .orderBy("match.date", "ASC")
-      .getMany();
+      .getMany();*/
+
+    /*const fixtures = await connection
+      .getRepository<MatchEntity>("MatchEntity")
+      .createQueryBuilder("match")
+      .where(
+        `extract(month from match.date) = :m AND extract(day from match.date) = :d
+        OR (extract(month from match.date) = :m2 AND extract(day from match.date) = :d2)
+        OR (extract(month from match.date) = :m3 AND extract(day from match.date) = :d3)
+        `,
+
+        { m: 12, d: 3, m2: 12, d2: 4, m3: 12, d3: 5 }
+      )
+      .andWhere("match.status = :status", { status: 0 })
+      .leftJoinAndSelect("match.league", "league")
+      .leftJoinAndSelect("match.home_team", "home_team")
+      .leftJoinAndSelect("home_team.stats", "home_team_stats")
+      .leftJoinAndSelect("match.away_team", "away_team")
+      .leftJoinAndSelect("away_team.stats", "away_team_stats")
+      .orderBy("match.date", "ASC")
+      .getMany();*/
 
     const predictionsResponse: PredictionsDTO[] = [];
     fixtures.forEach((fixture) => {

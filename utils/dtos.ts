@@ -308,13 +308,20 @@ export const matchEntityToPredictionsDTO = (
     id,
     status,
     date,
-    league: { name: league_name },
+    league: { name: league_name, country, country_code },
     home_team: { name: home_name, stats: home_stats },
     away_team: { name: away_name, stats: away_stats },
   } = matchEntity;
 
   const hGP = home_stats.home_GP;
   const aGP = away_stats.away_GP;
+
+  const ACE = calculateP(
+    (home_stats.home_W / hGP) * (away_stats.away_L / aGP) * 100
+  );
+  const DOS = calculateP(
+    (home_stats.home_L / hGP) * (away_stats.away_W / aGP) * 100
+  );
 
   const ACEP = calculateP(
     (home_stats.home_S2G / hGP) * (away_stats.away_C2G / aGP) * 100
@@ -329,12 +336,73 @@ export const matchEntityToPredictionsDTO = (
     (home_stats.home_C3G / hGP) * (away_stats.away_S3G / aGP) * 100
   );
 
+  /*const ACEPGOD = calculateP(
+    ((home_stats.home_W / hGP) * (away_stats.away_L / aGP) +
+      (home_stats.home_S2G / hGP) * (away_stats.away_C2G / aGP) +
+      (home_stats.home_S3G / hGP) * (away_stats.away_C3G / aGP)) *
+      (100 / 3)
+  );
+
+  const DOSPGOD = calculateP(
+    ((home_stats.home_L / hGP) * (away_stats.away_W / aGP) +
+      (home_stats.home_C2G / hGP) * (away_stats.away_S2G / aGP) +
+      (home_stats.home_C3G / hGP) * (away_stats.away_S3G / aGP)) *
+      (100 / 3)
+  );*/
+  const ACEPGOD = calculateP(
+    (home_stats.home_W / hGP) *
+      (away_stats.away_L / aGP) *
+      (home_stats.home_S2G / hGP) *
+      (away_stats.away_C2G / aGP) *
+      (home_stats.home_S3G / hGP) *
+      (away_stats.away_C3G / aGP) *
+      100
+  );
+
+  const DOSPGOD = calculateP(
+    (home_stats.home_L / hGP) *
+      (away_stats.away_W / aGP) *
+      (home_stats.home_C2G / hGP) *
+      (away_stats.away_S2G / aGP) *
+      (home_stats.home_C3G / hGP) *
+      (away_stats.away_S3G / aGP) *
+      100
+  );
+
   const BTS = calculateP(
     (home_stats.home_S1G / hGP) *
       (home_stats.home_C1G / hGP) *
       (away_stats.away_S1G / aGP) *
       (away_stats.away_C1G / aGP) *
       100
+  );
+
+  const score11Odd =
+    (home_stats.home_S1G / hGP) *
+    (home_stats.home_C1G / hGP) *
+    (away_stats.away_S1G / aGP) *
+    (away_stats.away_C1G / aGP);
+  const score20Odd = (home_stats.home_S2G / hGP) * (away_stats.away_C2G / aGP);
+  const score02Odd = (home_stats.home_C2G / hGP) * (away_stats.away_S2G / aGP);
+
+  const P15 = calculateP((score11Odd + score20Odd + score02Odd) * (100 / 3));
+
+  const _1HT_score11Odd =
+    (home_stats.home_1HT_S1G / hGP) *
+    (home_stats.home_1HT_C1G / hGP) *
+    (away_stats.away_1HT_S1G / aGP) *
+    (away_stats.away_1HT_C1G / aGP);
+  const _1HT_score20Odd =
+    (home_stats.home_1HT_S2G / hGP) * (away_stats.away_1HT_C2G / aGP);
+  const _1HT_score02Odd =
+    (home_stats.home_1HT_C2G / hGP) * (away_stats.away_1HT_S2G / aGP);
+
+  const _1HT_P15 = calculateP(
+    (_1HT_score11Odd + _1HT_score20Odd + _1HT_score02Odd) * (100 / 3)
+  );
+
+  const _1HT_P15_2 = calculateP(
+    (home_stats.home_1HT_P15 / hGP + away_stats.away_1HT_P15 / aGP) * 50
   );
 
   const score30Odd = (home_stats.home_S3G / hGP) * (away_stats.away_C3G / aGP);
@@ -352,6 +420,14 @@ export const matchEntityToPredictionsDTO = (
 
   const P25 = calculateP(
     (score30Odd + score03Odd + score21Odd + score12Odd) * 25
+  );
+
+  const P35_2 = calculateP(
+    ((home_stats.home_P35 / hGP +
+      away_stats.away_P35 / aGP +
+      (home_stats.home_P35 / hGP) * (away_stats.away_P35 / aGP)) *
+      100) /
+      3
   );
 
   // Calculating P35
@@ -382,17 +458,23 @@ export const matchEntityToPredictionsDTO = (
     status,
     date: date.toISOString(),
     league_name,
+    country,
+    country_code,
     home_name,
     away_name,
+    ACE,
+    DOS,
     ACEP,
     DOSP,
     ACEP25,
     DOSP25,
     BTS,
+    P15,
     P25,
     P35,
-    // home_P35: calculateP((home_stats.home_P35 / hGP) * 100),
-    // away_p35: calculateP((away_stats.away_P35 / aGP) * 100),
+    P35_2,
+    ACEPGOD,
+    DOSPGOD,
   };
 
   return predictionsDTO;

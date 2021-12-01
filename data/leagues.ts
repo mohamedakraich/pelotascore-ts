@@ -51,6 +51,13 @@ export const leagues: League[] = [
     link: "https://www.soccerstats.com/results.asp?league=belarus&pmtype=bydate",
   },
   {
+    id: "bolivia_1",
+    name: "Primera Division",
+    country: "Bolivia",
+    countryCode: "bo",
+    link: "https://www.soccerstats.com/results.asp?league=bolivia&pmtype=bydate",
+  },
+  {
     id: "bosnia_1",
     name: "Premier Liga",
     country: "Bosnia and Herzegovina",
@@ -170,6 +177,13 @@ export const leagues: League[] = [
     link: "https://www.soccerstats.com/results.asp?league=england7&pmtype=bydate",
   },
   {
+    id: "egypt_1",
+    name: "Premier League",
+    country: "Egypt",
+    countryCode: "eg",
+    link: "https://www.soccerstats.com/results.asp?league=egypt&pmtype=bydate",
+  },
+  {
     id: "france_1",
     name: "Ligue 1",
     country: "France",
@@ -191,13 +205,6 @@ export const leagues: League[] = [
     link: "https://www.soccerstats.com/results.asp?league=france3&pmtype=bydate",
   },
   {
-    id: "egypt_1",
-    name: "Premier League",
-    country: "Egypt",
-    countryCode: "eg",
-    link: "https://www.soccerstats.com/results.asp?league=egypt&pmtype=bydate",
-  },
-  {
     id: "germany_1",
     name: "Bundesliga",
     country: "Germany",
@@ -217,6 +224,13 @@ export const leagues: League[] = [
     country: "Germany",
     countryCode: "de",
     link: "https://www.soccerstats.com/results.asp?league=germany3&pmtype=bydate",
+  },
+  {
+    id: "greece_1",
+    name: "Super League",
+    country: "Greece",
+    countryCode: "gr",
+    link: "https://www.soccerstats.com/results.asp?league=greece&pmtype=bydate",
   },
   {
     id: "hungary_1",
@@ -280,6 +294,13 @@ export const leagues: League[] = [
     country: "Japan",
     countryCode: "jp",
     link: "https://www.soccerstats.com/results.asp?league=japan2&pmtype=bydate",
+  },
+  {
+    id: "montenegro_1",
+    name: "First League",
+    country: "Montenegro",
+    countryCode: "me",
+    link: "https://www.soccerstats.com/results.asp?league=montenegro&pmtype=bydate",
   },
   {
     id: "morocco_1",

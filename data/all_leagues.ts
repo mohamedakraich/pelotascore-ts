@@ -53,6 +53,11 @@ export const all_leagues: CountryLeagues[] = [
     leagues: [{ id: "belarus_1", name: "Premier League" }],
   },
   {
+    countryName: "Bolivia",
+    countryCode: "bo",
+    leagues: [{ id: "bolivia_1", name: "Primera Division" }],
+  },
+  {
     countryName: "Bosnia and Herzegovina",
     countryCode: "ba",
     leagues: [{ id: "bosnia_1", name: "Premier Liga" }],
@@ -109,6 +114,11 @@ export const all_leagues: CountryLeagues[] = [
       { id: "england_7", name: "National L. South" },
     ],
   },
+  {
+    countryName: "Egypt",
+    countryCode: "eg",
+    leagues: [{ id: "egypt_1", name: "Premier League" }],
+  },
 
   {
     countryName: "France",
@@ -120,11 +130,6 @@ export const all_leagues: CountryLeagues[] = [
     ],
   },
   {
-    countryName: "Egypt",
-    countryCode: "eg",
-    leagues: [{ id: "egypt_1", name: "Premier League" }],
-  },
-  {
     countryName: "Germany",
     countryCode: "de",
     leagues: [
@@ -132,6 +137,11 @@ export const all_leagues: CountryLeagues[] = [
       { id: "germany_2", name: "2. Bundesliga" },
       { id: "germany_3", name: "3. Liga" },
     ],
+  },
+  {
+    countryName: "Greece",
+    countryCode: "gr",
+    leagues: [{ id: "greece_1", name: "Super League" }],
   },
   {
     countryName: "Hungaru",
@@ -162,7 +172,11 @@ export const all_leagues: CountryLeagues[] = [
       { id: "japan_2", name: "J2 League" },
     ],
   },
-
+  {
+    countryName: "Montenegro",
+    countryCode: "me",
+    leagues: [{ id: "montenegro_1", name: "First League" }],
+  },
   {
     countryName: "Morocco",
     countryCode: "ma",

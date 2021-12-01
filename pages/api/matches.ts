@@ -11,8 +11,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const fixtures = await connection
       .getRepository<MatchEntity>("MatchEntity")
       .createQueryBuilder("match")
-      .where("extract(month from match.date) = :m", { m: 11 })
-      .andWhere("extract(day from match.date) = :d", { d: 28 })
+      .where("extract(month from match.date) = :m", { m: 12 })
+      .andWhere("extract(day from match.date) = :d", { d: 1 })
       .andWhere("match.status = :status", { status: 0 })
       .leftJoinAndSelect("match.league", "league")
       .leftJoinAndSelect("match.home_team", "home_team")
