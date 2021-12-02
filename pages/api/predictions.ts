@@ -1,14 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { MatchEntity } from "../../entities/all.entity";
-import { FixtureStatsDTO } from "../../types/FixtureStatsDTO";
-import { FixtureStatsMap } from "../../types/FixtureStatsMap";
 import { PredictionsDTO } from "../../types/PreditionsDTO";
 import { getOrCreateConnection } from "../../utils";
 import compare_predictions from "../../utils/compare_predictions";
-import {
-  matchEntityToFixtureStatsDTO,
-  matchEntityToPredictionsDTO,
-} from "../../utils/dtos";
+import { matchEntityToPredictionsDTO } from "../../utils/dtos";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
@@ -17,8 +12,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const fixtures = await connection
       .getRepository<MatchEntity>("MatchEntity")
       .createQueryBuilder("match")
-      .where("extract(month from match.date) = :m", { m: 11 })
-      .andWhere("extract(day from match.date) = :d", { d: 30 })
+      .where(
+        `extract(month from match.date) = :m1 AND extract(day from match.date) = :d1
+        OR (extract(month from match.date) = :m2 AND extract(day from match.date) = :d2)
+        `,
+
+        { m1: 12, d1: 2, m2: 12, d2: 3 }
+      )
       .andWhere("match.status = :status", { status: 0 })
       .leftJoinAndSelect("match.league", "league")
       .leftJoinAndSelect("match.home_team", "home_team")
@@ -27,6 +27,20 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       .leftJoinAndSelect("away_team.stats", "away_team_stats")
       .orderBy("match.date", "ASC")
       .getMany();
+
+    /*const fixtures = await connection
+      .getRepository<MatchEntity>("MatchEntity")
+      .createQueryBuilder("match")
+      .where("extract(month from match.date) = :m", { m: 12 })
+      .andWhere("extract(day from match.date) = :d", { d: 2 })
+      .andWhere("match.status = :status", { status: 0 })
+      .leftJoinAndSelect("match.league", "league")
+      .leftJoinAndSelect("match.home_team", "home_team")
+      .leftJoinAndSelect("home_team.stats", "home_team_stats")
+      .leftJoinAndSelect("match.away_team", "away_team")
+      .leftJoinAndSelect("away_team.stats", "away_team_stats")
+      .orderBy("match.date", "ASC")
+      .getMany();*/
 
     /*const fixtures = await connection
       .getRepository<MatchEntity>("MatchEntity")

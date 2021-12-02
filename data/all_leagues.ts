@@ -29,6 +29,16 @@ export const all_leagues: CountryLeagues[] = [
     ],
   },
   {
+    countryName: "Armenia",
+    countryCode: "am",
+    leagues: [
+      {
+        id: "armenia_1",
+        name: "Premier League",
+      },
+    ],
+  },
+  {
     countryName: "Australia",
     countryCode: "au",
     leagues: [{ id: "australia_1", name: "A-League" }],
@@ -263,6 +273,11 @@ export const all_leagues: CountryLeagues[] = [
     countryName: "South Korea",
     countryCode: "kr",
     leagues: [{ id: "southkorea_1", name: "K League 1" }],
+  },
+  {
+    countryName: "Serbia",
+    countryCode: "rs",
+    leagues: [{ id: "serbia_1", name: "Super Liga" }],
   },
   {
     countryName: "Spain",

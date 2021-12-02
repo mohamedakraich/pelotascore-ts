@@ -170,7 +170,7 @@ const headCells: readonly HeadCell[] = [
     id: "ACEP25",
     numeric: true,
     disablePadding: false,
-    label: "1P25",
+    label: "1(+3)",
   },
 
   {
@@ -183,7 +183,7 @@ const headCells: readonly HeadCell[] = [
     id: "DOSP25",
     numeric: true,
     disablePadding: false,
-    label: "2P25",
+    label: "2(+3)",
   },
   {
     id: "BTS",

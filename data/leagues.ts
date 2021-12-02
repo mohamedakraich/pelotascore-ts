@@ -16,6 +16,13 @@ export const leagues: League[] = [
     link: "https://www.soccerstats.com/results.asp?league=argentina&pmtype=bydate",
   },
   {
+    id: "armenia_1",
+    name: "Premier League",
+    country: "Armenia",
+    countryCode: "am",
+    link: "https://www.soccerstats.com/results.asp?league=armenia&pmtype=bydate",
+  },
+  {
     id: "australia_1",
     name: "A-League",
     country: "Australia",
@@ -462,6 +469,13 @@ export const leagues: League[] = [
     country: "South Korea",
     countryCode: "kr",
     link: "https://www.soccerstats.com/results.asp?league=southkorea&pmtype=bydate",
+  },
+  {
+    id: "serbia_1",
+    name: "Super Liga",
+    country: "Serbia",
+    countryCode: "rs",
+    link: "https://www.soccerstats.com/results.asp?league=serbia&pmtype=bydate",
   },
   {
     id: "slovakia_1",

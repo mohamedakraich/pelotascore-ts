@@ -453,6 +453,21 @@ export const matchEntityToPredictionsDTO = (
     (score40Odd + score04Odd + score31Odd + score13Odd + score22Odd) * 20
   );
 
+  const ACE_2 = calculateP((ACE + ACEP + ACEP25) / 3);
+  const DOS_2 = calculateP((DOS + DOSP + DOSP25) / 3);
+
+  /*const BTS = calculateP(
+    (home_stats.home_BTS / hGP + away_stats.away_BTS / aGP) * 50
+  );
+
+  const P25 = calculateP(
+    (home_stats.home_P25 / hGP + away_stats.away_P25 / aGP) * 50
+  );
+
+  const P35 = calculateP(
+    (home_stats.home_P35 / hGP + away_stats.away_P35 / aGP) * 50
+  );*/
+
   const predictionsDTO: PredictionsDTO = {
     id: matchEntity.id,
     status,
@@ -464,6 +479,8 @@ export const matchEntityToPredictionsDTO = (
     away_name,
     ACE,
     DOS,
+    ACE_2,
+    DOS_2,
     ACEP,
     DOSP,
     ACEP25,

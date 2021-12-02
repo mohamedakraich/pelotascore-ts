@@ -9,6 +9,8 @@ export interface PredictionsDTO {
   away_name: string;
   ACE: number;
   DOS: number;
+  ACE_2: number;
+  DOS_2: number;
   ACEP: number;
   DOSP: number;
   ACEP25: number;
